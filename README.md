@@ -1,5 +1,6 @@
-﻿## Grupa4-TeamX
-# Online videoteka Fenix 
+# ![alt text](https://github.com/ooad-2017-2018/Grupa4-X/blob/master/Resursi/novi_logo_100x100.png) Online Videoteka Fenix
+
+## Grupa4-TeamX
 **Članovi tima:**
 * Amra Habibović
 * Mujo Hadžić
@@ -15,9 +16,9 @@ Fenix je aplikacija koja će omogućiti korisniku da se upozna sa najnovijim fil
 * Kupovina filma 
 * Pretraga filmova po nazivu
 * Pretraga korisnika po korisničkom imenu
-* Dodavanje fimova na listu pogledanih filmova
+* Dodavanje fimova na listu pregledanih filmova
 * Stavljanje filmova na listu želja
-* Korisnicko ocjenjivanje filmova
+* Korisničko ocjenjivanje filmova
 
 **Funkcionalnosti:**
 * Mogućnost registracije novog korisnika
@@ -25,9 +26,9 @@ Fenix je aplikacija koja će omogućiti korisniku da se upozna sa najnovijim fil
 * Mogućnost pretraživanja korisnika i filmova
 * Mogućnost kupovine filmova
 * Mogućnost ocjenjivanja filmova
-* Mogućnost pregleda informacija o filmu (vrijeme trajanja, zanr, kratki sadrzaj, glumci, reditelj...)
+* Mogućnost pregleda informacija o filmu (vrijeme trajanja, žanr, kratki sadržaj, glumci, reditelj...)
 * Mogućnost pravljenja liste filmova za gledanje
-* Mogućnost dodavanja filmova na listu pogledanih filmova
+* Mogućnost dodavanja filmova na listu pregledanih filmova
 
 ****Akteri:****
 
