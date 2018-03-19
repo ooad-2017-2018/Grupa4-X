@@ -12,21 +12,21 @@ Fenix je aplikacija koja će omogućiti korisniku da se upozna sa najnovijim fil
 
 **Procesi:**
 * Registracija i prijavljivanje
-** Osobe koje nemaju korisnički profil mogu doći do istog popunjavanjem osnovnih informacija o sebi(ime, prezime, username, password, email adresa ...). Persone koje su već registrovane na platformu mogu se logovati uz unošenje svog korisničkog imena i passworda.
+  * Osobe koje nemaju korisnički profil mogu doći do istog popunjavanjem osnovnih informacija o sebi(ime, prezime, username, password, email adresa ...). Persone koje su već registrovane na platformu mogu se logovati uz unošenje svog korisničkog imena i passworda.
 * Odjavljivanje iz sistema
-** Kada osoba završi sa svojim korištenjem aplikacije može se odjaviti sa sistema s tim da će svi podaci biti sačuvani i spremni za ponovno prijavljivanje korisnika. 
+  * Kada osoba završi sa svojim korištenjem aplikacije može se odjaviti sa sistema s tim da će svi podaci biti sačuvani i spremni za ponovno prijavljivanje korisnika. 
 * Kupovina filma 
-** Ukoliko korisnik poželi kupiti film, transakcija kupovine se vrši putem online servisa za plaćanje, i u slučaju uspješne transakcije korisniku biti omogućeno da downloaduje film u bilo kojem trenutku zapisom u bazu podataka.   
+  * Ukoliko korisnik poželi kupiti film, transakcija kupovine se vrši putem online servisa za plaćanje, i u slučaju uspješne transakcije korisniku biti omogućeno da downloaduje film u bilo kojem trenutku zapisom u bazu podataka.   
 * Pretraga filmova po nazivu
-** Korisnik pomoću search boxa može da pronađe traženi filmski naslov uz dodatne informacije o njemu.
+  * Korisnik pomoću search boxa može da pronađe traženi filmski naslov uz dodatne informacije o njemu.
 * Pretraga korisnika po korisničkom imenu
-** Korisnik pomoću search boxa može da pronađe traženog korisnika te pogledane filmove i listu želja korisnika.
+  * Korisnik pomoću search boxa može da pronađe traženog korisnika te pogledane filmove i listu želja korisnika.
 * Dodavanje filmova na listu pogledanih filmova
-** Filmove koje je korisnik pogledao može da stavi na svoju listu pogledanih filmova uz opcionalno ocjenjivanje filma  koja će biti zabilježena u bazu podataka i uvijek biti dostupna korisniku.
+  * Filmove koje je korisnik pogledao može da stavi na svoju listu pogledanih filmova uz opcionalno ocjenjivanje filma  koja će biti zabilježena u bazu podataka i uvijek biti dostupna korisniku.
 * Stavljanje filmova na listu želja
-** Filmove koje korisnik želi da pogleda može da stavi na svoju listu želja koja će biti zabilježena u bazu podataka i uvijek biti dostupna korisniku.
+  * Filmove koje korisnik želi da pogleda može da stavi na svoju listu želja koja će biti zabilježena u bazu podataka i uvijek biti dostupna korisniku.
 * Korisničko ocjenjivanje filmova
-** Korisnik je u mogućnosti da ocijeni film po skali 1-10 pri čemu će svaka ocjena biti upisana u bazu podataka te će to ocjenjivanje uticati na ukupnu ocjenu filma. 
+  * Korisnik je u mogućnosti da ocijeni film po skali 1-10 pri čemu će svaka ocjena biti upisana u bazu podataka te će to ocjenjivanje uticati na ukupnu ocjenu filma. 
 
 **Funkcionalnosti:**
 * Mogućnost registracije novog korisnika
