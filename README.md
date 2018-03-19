@@ -1,6 +1,6 @@
-## Grupa4-X
+## Grupa4-TeamX
 # Online videoteka Fenix 
-Članovi tima:
+**Članovi tima:**
 * Amra Habibović
 * Mujo Hadžić
 * Adnan Gobeljić
