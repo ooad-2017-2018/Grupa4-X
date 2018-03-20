@@ -42,13 +42,16 @@ Fenix je aplikacija koja će omogućiti korisniku da se upozna sa najnovijim fil
 
 ****Akteri:****
 
-1. ADMINISTRATOR
+1. ADMINISTRATORI
+   * Administratori su osobe kreatori sistema odnosno glavni odgovorni za implementaciju sistema u cjelini. Oni su zaduženi za održavanje sistema i baze podataka namijenjene za filmove i korisničke podatke i njihove preferense. Mogu upravljati oficijelnim Twitter accountom aplikacije, upravljati ažuriranjem i aktuelizacijom trenutnog stanja filmova te vrše kontrolu korisnika koji su registrovani na sistem najviše iz sigurnosnih razloga.
 
-2. KORISNIK APLIKACIJE
+2. KORISNIK APLIKACIJE 
+   * Korisnik aplikacije je osoba koja ima mogućnost kupovine filma, vođenja liste odgledanih filmova, vođenja liste filmova koje ima u planu da pogleda, pregleda ostalih korisnika te traženja korisnika i filmova.
 
 3. SISTEM
+   * Sistem čuva informacije o filmovima, korisnicima i njihovom listama pogledanih i željenih filmova, korisničkim ocjenama filmova te obavljenim kupovinama filmova putem aplikacije.
 
-4. GPS (nisam siguran)
+
 
  
 
