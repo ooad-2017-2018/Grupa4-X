@@ -7,11 +7,11 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="6b68624c-fb7f-4c66-b062-86cfd2877e3f"
+    Name="1d013c86-0927-4f6c-be0f-cd868f411b77"
     Publisher="CN=ACER"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="6b68624c-fb7f-4c66-b062-86cfd2877e3f" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="1d013c86-0927-4f6c-be0f-cd868f411b77" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>OnlineVideotekaFenix</DisplayName>

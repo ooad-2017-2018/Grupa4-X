@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{d8228bc1-c0d3-401f-9978-1d4a48126075}</ProjectGuid>
+    <ProjectGuid>{8ebe5fed-a8e6-4fab-96fb-c38e7d3ea855}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>OnlineVideotekaFenix</RootNamespace>
