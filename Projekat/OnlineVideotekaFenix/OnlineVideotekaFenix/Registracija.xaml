@@ -1,0 +1,101 @@
+﻿<Page
+    x:Name="page"
+    x:Class="OnlineVideotekaFenix.Registracija"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OnlineVideotekaFenix"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <Pivot Title="" Margin="0,0,10,0">
+            <PivotItem Header="Registracija" Margin="12,0,12,15">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid x:Name="grid0" Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="0.25*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock x:Name="textblockUsername" Text="Username:"  TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10" Grid.Row="1"/>
+                        <TextBlock x:Name="textblockPassword" Text="Password:" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10" Grid.Row="3"/>
+                        <TextBlock x:Name="textblockDatum" Text="Datum rodjenja:" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10" Grid.Row="5"/>
+                        <TextBlock x:Name="textblockImePrezime" Text="Ime i prezime:" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="10,9.333,10,0" Grid.Row="7"/>
+
+                    </Grid>
+                    <Grid x:Name="grid1" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="0.25*"/>
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="textboxUsername"  TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10" Grid.Row="1"/>
+                        <TextBox x:Name="textboxPassword" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10" Grid.Row="3"/>
+                        <TextBox x:Name="textboxDatum" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10" Grid.Row="5" TextChanged="TextBox_TextChanged"/>
+                        <TextBox x:Name="textboxImePrezime" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10" Grid.Row="7"/>
+                        <Button x:Name="buttonRegistracija" Grid.Row="12" Content="Registracija" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                    </Grid>
+                    <Grid x:Name="grid2" Grid.Column="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="0.25*"/>
+                        </Grid.RowDefinitions>
+                        <Image x:Name="buttonSlika" Grid.Row="1" HorizontalAlignment="Center" Height="120" VerticalAlignment="Center" Width="100" RenderTransformOrigin="0.544,1.228"/>
+                        <Button x:Name="buttonOtvoriKameru" Grid.Row="4" Content="Otvori kameru" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Button x:Name="buttonIzlaz" Grid.Row="12" Content="Izlaz" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </Grid>
+            </PivotItem>
+
+        </Pivot>
+
+    </Grid>
+</Page>
+    
