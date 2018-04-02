@@ -20,16 +20,11 @@ namespace OnlineVideotekaFenix
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class LogIn : Page
+    public sealed partial class Login : Page
     {
-        public LogIn()
+        public Login()
         {
             this.InitializeComponent();
-        }
-
-        private void button1_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
