@@ -9,7 +9,7 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Pivot Title="">
-            <PivotItem Header="Dodaj film">
+            <PivotItem Header="Dodaj film" Margin="14,99,10,-99">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"></ColumnDefinition>
