@@ -6,6 +6,7 @@
     xmlns:local="using:OnlineVideotekaFenix"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Korisnicke_Kontrole="using:OnlineVideotekaFenix.Korisnicke_Kontrole"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -16,7 +17,8 @@
                         <AdaptiveTrigger MinWindowWidth="0"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="buttonizlaz.Margin" Value="0,0,930,30"/>
+                        
+                        
                         <Setter Target="slika.Margin" Value="500,50,0,0"/>
                         <Setter Target="slika.Height" Value="200"/>
                         <Setter Target="slika.Width" Value="200"/>
@@ -27,7 +29,8 @@
                         <AdaptiveTrigger MinWindowWidth="1280"/>                
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="buttonizlaz.Margin" Value="0,0,930,30"/>
+                        
+                        
                         <Setter Target="slika.Margin" Value="893,50,0,0"/>
                         <Setter Target="slika.Height" Value="300"/>
                         <Setter Target="slika.Width" Value="300"/>
@@ -38,7 +41,8 @@
                         <AdaptiveTrigger MinWindowWidth="1440"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="buttonizlaz.Margin" Value="0,4,1089,30"/>
+                        
+                        
                         <Setter Target="slika.Margin" Value="1050,125,0,0"/>
                         <Setter Target="slika.Height" Value="340"/>
                         <Setter Target="slika.Width" Value="340"/>
@@ -49,7 +53,8 @@
                         <AdaptiveTrigger MinWindowWidth="1920"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="buttonizlaz.Margin" Value="0,0,1570,30"/>
+                        
+                        
                         <Setter Target="slika.Margin" Value="1520,190,0,0"/>
                         <Setter Target="slika.Height" Value="340"/>
                         <Setter Target="slika.Width" Value="340"/>
@@ -62,7 +67,8 @@
                         <AdaptiveTrigger MinWindowHeight="768"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="buttonizlaz.Margin" Value="0,0,680,30"/>
+                        
+                        
                         <Setter Target="slika.Margin" Value="628,60,0,0"/>
                         <Setter Target="slika.Height" Value="260"/>
                         <Setter Target="slika.Width" Value="260"/>
@@ -73,7 +79,8 @@
                         <AdaptiveTrigger MinWindowWidth="768"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="buttonizlaz.Margin" Value="0,0,680,30"/>
+                        
+                        
                         <Setter Target="slika.Margin" Value="628,60,0,0"/>
                         <Setter Target="slika.Height" Value="260"/>
                         <Setter Target="slika.Width" Value="260"/>
@@ -84,15 +91,15 @@
                         <AdaptiveTrigger MinWindowWidth="960"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="buttonizlaz.Margin" Value="0,0,610,20"/>
+                        
+                        
                         <Setter Target="slika.Margin" Value="620,60,0,0"/>
                         <Setter Target="slika.Height" Value="200"/>
                         <Setter Target="slika.Width" Value="200"/>
                         <Setter Target="TBusername.Margin" Value="380,0,340,20"/>
                         <Setter Target="TBpassword.Margin" Value="380,0,340,20"/>
                         <Setter Target="TBdatumrodjenja.Margin" Value="380,0,340,20"/>
-                        <Setter Target="TBimeiprezime.Margin" Value="380,0,340,20"/>
-                        <Setter Target="buttonregistracija.Margin" Value="350,0,30,20"/>
+                        <Setter Target="TBimeiprezime.Margin" Value="380,0,340,20"/>                        
                         <Setter Target="buttonkamera.Margin" Value="350,0,30,20"/>   
                     </VisualState.Setters>
                 </VisualState>
@@ -101,17 +108,14 @@
                         <AdaptiveTrigger MinWindowWidth="2560"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
+                        
+                        
                         <Setter Target="TBLupisipodatke.FontSize" Value="80"></Setter>
                         <Setter Target="TBLusername.FontSize" Value="45"></Setter>
                         <Setter Target="TBLpassword.FontSize" Value="45"></Setter>
                         <Setter Target="TBLdatumrodjenja.FontSize" Value="45"></Setter>
                         <Setter Target="TBLimeiprezime.FontSize" Value="45"></Setter>
-                        <Setter Target="buttonizlaz.Margin" Value="0,0,2100,30"></Setter>
-                        <Setter Target="buttonizlaz.FontSize" Value="50"></Setter>
-                        <Setter Target="buttonregistracija.FontSize" Value="50"></Setter>
                         <Setter Target="buttonkamera.FontSize" Value="40"></Setter>
-                        <Setter Target="buttonizlaz.Width" Value="400"></Setter>
-                        <Setter Target="buttonregistracija.Width" Value="400"></Setter>
                         <Setter Target="buttonkamera.Width" Value="350"></Setter>
                         <Setter Target="slika.Margin" Value="2100,350,0,0"/>
                         <Setter Target="slika.Height" Value="360"/>
@@ -126,14 +130,10 @@
                         <AdaptiveTrigger MinWindowWidth="853"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="buttonizlaz.Margin" Value="0,4,610,4"></Setter>
-                        <Setter Target="buttonizlaz.Width" Value="200"></Setter>
-                        <Setter Target="buttonregistracija.Width" Value="200"></Setter>
+                        
+                        
                         <Setter Target="buttonkamera.Width" Value="245"></Setter>
-                        <Setter Target="buttonregistracija.Margin" Value="0,4,60,4"></Setter>
-                        
                         <Setter Target="buttonkamera.Margin" Value="0,6,30,6"></Setter>
-                        
                         <Setter Target="TBusername.Margin" Value="250,4,340,4"></Setter>
                         <Setter Target="TBimeiprezime.Margin" Value="250,4,340,4"></Setter>
                         <Setter Target="TBdatumrodjenja.Margin" Value="250,4,340,4"></Setter>
@@ -183,8 +183,7 @@
 
 
             <TextBlock x:Name="TBLupisipodatke" Grid.Row="0" Margin="70,10,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Upišite podatke" FontFamily="Century" FontSize="35" d:LayoutOverrides="VerticalAlignment, TopPosition, BottomPosition"/>
-        <Button x:Name="buttonregistracija" Content="Registruj" Grid.Row="7" HorizontalAlignment="Right" Margin="0,0,59,30" VerticalAlignment="Stretch"  FontFamily="Century" FontSize="32" Width="277" />
-        <Button x:Name="buttonizlaz" Content="Izlaz" Grid.Row="7"   HorizontalAlignment="Right" VerticalAlignment="Stretch"  FontFamily="Century" FontSize="32" Width="277" />
+        <Korisnicke_Kontrole:Downbar x:Name="Downbar" Grid.Row="7"/>
         <Button x:Name="buttonkamera" Content="Otvori kameru" Grid.Row="4"   HorizontalAlignment="Right" Margin="0,20,59,10" VerticalAlignment="Stretch"  FontFamily="Century" FontSize="32" Width="277" />
 
 
