@@ -5,6 +5,7 @@
     xmlns:local="using:OnlineVideotekaFenix"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Korisnicke_Kontrole="using:OnlineVideotekaFenix.Korisnicke_Kontrole"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -17,17 +18,15 @@
             <Grid  x:Name="loginGrid" Grid.Row="1">
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="2*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="2*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <TextBox Grid.Row="0" HorizontalAlignment="Stretch" Margin="20,10,20,10"  TextWrapping="Wrap" PlaceholderText="Korisničko ime" VerticalAlignment="Center"/>
-                <TextBox Grid.Row="1" HorizontalAlignment="Stretch" Margin="20,10,20,10" TextWrapping="Wrap" PlaceholderText="Lozinka" VerticalAlignment="Center"/>
-                <HyperlinkButton Content="Registracija" HorizontalAlignment="Stretch" Margin="20,10,20,0" Grid.Row="2" VerticalAlignment="Center"/>
+                <Korisnicke_Kontrole:LoginTextBox x:Name="loginTextBox" Grid.Row="0"/>
+                    <HyperlinkButton Content="Registracija" HorizontalAlignment="Stretch" Margin="20,10,20,0" Grid.Row="1" VerticalAlignment="Center"/>
 
 
-                <Grid x:Name="gridButoni" Grid.Row="3">
+                <Grid x:Name="gridButoni" Grid.Row="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>

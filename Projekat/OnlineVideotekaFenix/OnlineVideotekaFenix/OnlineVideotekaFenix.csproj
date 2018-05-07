@@ -95,6 +95,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Korisnicke Kontrole\LoginTextBox.xaml.cs">
+      <DependentUpon>LoginTextBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Korisnicke Kontrole\Downbar.xaml.cs">
       <DependentUpon>Downbar.xaml</DependentUpon>
     </Compile>
@@ -136,6 +139,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Korisnicke Kontrole\LoginTextBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Korisnicke Kontrole\Downbar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
