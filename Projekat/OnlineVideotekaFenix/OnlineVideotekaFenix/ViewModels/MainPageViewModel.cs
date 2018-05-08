@@ -9,6 +9,7 @@ using OnlineVideotekaFenix.Views;
 using OnlineVideotekaFenix.Helper;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml;
+
 using System.Security;
 
 
@@ -25,6 +26,7 @@ namespace OnlineVideotekaFenix.ViewModels
         #endregion
 
         #region Atributi
+        public Videoteka Videoteka { get; set; }
         public string LoginUsername { get; set; }
         public string LoginPassword { get; set; }
 

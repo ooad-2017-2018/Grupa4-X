@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OnlineVideotekaFenix.Models
 {
-    class OnlineVideotekaFenix
+    public class Videoteka
     {
     }
 }

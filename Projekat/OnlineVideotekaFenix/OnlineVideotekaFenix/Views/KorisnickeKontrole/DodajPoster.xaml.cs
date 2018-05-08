@@ -27,7 +27,7 @@ namespace OnlineVideotekaFenix.Views.KorisnickeKontrole
             this.InitializeComponent();
         }
 
-        private async void Button_Click(System.Object sender, RoutedEventArgs e)
+        private async void DodajPosterClick(System.Object sender, RoutedEventArgs e)
         {
             FileOpenPicker openPicker = new FileOpenPicker();
             openPicker.ViewMode = PickerViewMode.Thumbnail;
