@@ -22,7 +22,7 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
-                <HyperlinkButton Content="Registracija" HorizontalAlignment="Stretch" Margin="20,10,20,0" Grid.Row="1" VerticalAlignment="Center"/>
+                <HyperlinkButton Content="Registracija" HorizontalAlignment="Stretch" Margin="20,10,20,0" Grid.Row="1" VerticalAlignment="Center" Click="RegistracijaClick"/>
 
 
                 <Grid x:Name="gridButoni" Grid.Row="2">
@@ -30,11 +30,11 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Content="Prijava" HorizontalAlignment="Stretch" Margin="20,10,20,10" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center"/>
-                    <Button Content="Odjava" HorizontalAlignment="Stretch" Margin="20,10,20,10" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center"/>
+                    <Button Content="Prijava" HorizontalAlignment="Stretch" Margin="20,10,20,10" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" Click="LoginClick"/>
+                    <Button Content="Izlaz" HorizontalAlignment="Stretch" Margin="20,10,20,10" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Click="IzlazClick"/>
                 </Grid>
 
-                <KorisnickeKontrole:LoginTextBox HorizontalAlignment="Stretch" Margin="10" Grid.Row ="0" VerticalAlignment="Center"/>
+                <KorisnickeKontrole:LoginTextBox x:Name="Cumez" HorizontalAlignment="Stretch" Margin="10" Grid.Row ="0" VerticalAlignment="Center"/>
 
             </Grid>
             <TextBlock HorizontalAlignment="Center" Margin="20" Text="Online Videoteka Fenix" VerticalAlignment="Center" FontSize="20" Foreground="Black" />
