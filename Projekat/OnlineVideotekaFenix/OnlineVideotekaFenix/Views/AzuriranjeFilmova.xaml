@@ -1,15 +1,15 @@
 ﻿<Page
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:OnlineVideotekaFenix"
+    xmlns:local="using:OnlineVideotekaFenix.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:Korisnicke_Kontrole="using:OnlineVideotekaFenix.Korisnicke_Kontrole"
-    x:Class="OnlineVideotekaFenix.AzuriranjeFilmova"
+    xmlns:KorisnickeKontrole="using:OnlineVideotekaFenix.Views.KorisnickeKontrole"
+    x:Class="OnlineVideotekaFenix.Views.AzuriranjeFilmova"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Pivot x:Name="dodajFilmPivot" Title="Ažuriranje filmova">
+        <Pivot x:Name="pivot1" Title="Ažuriranje">
             <PivotItem Header="Dodaj film">
                 <Grid x:Name="gridGlavni">
                     <Grid.ColumnDefinitions>
@@ -43,14 +43,14 @@
                         </Grid.RowDefinitions>
                         <RichEditBox x:Name="sinopsisTextBox" PlaceholderText="Sinopsis" HorizontalAlignment="Stretch" Margin ="10,0,10,0" Grid.Row="1" VerticalAlignment="Stretch"/>
                         <Button x:Name="dodajFilmButton" Content="Dodaj film"  HorizontalAlignment="Center" Margin="10" Grid.Row="2" VerticalAlignment="Center"/>
-                        <Korisnicke_Kontrole:DodajPoster x:Name="dodajPoster" HorizontalAlignment="Stretch" Margin="10" VerticalAlignment="Stretch"/>
+                        <KorisnickeKontrole:DodajPoster HorizontalAlignment="Stretch" Margin="10" VerticalAlignment="Stretch"/>
                     </Grid>
                 </Grid>
             </PivotItem>
-            
+
             <PivotItem Header="Obriši film">
                 <RelativePanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                    <SearchBox x:Name="searchBox1" FocusOnKeyboardInput="True" Height="35" PlaceholderText="Pretraga" Margin="0,10,0,0"
+                    <SearchBox x:Name="searchBox1" FocusOnKeyboardInput="True" Height="35" Width="200" PlaceholderText="Pretraga filma" Margin="0,10,0,0"
                            VerticalAlignment="Top" HorizontalAlignment="Stretch" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
                     <ListBox x:Name="listBox1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" RelativePanel.Below="searchBox1"
                              RelativePanel.AlignHorizontalCenterWithPanel="True" 
@@ -58,13 +58,29 @@
                              RelativePanel.AlignRightWithPanel="True"
                              RelativePanel.AlignVerticalCenterWithPanel="True"
                              RelativePanel.AlignBottomWithPanel="True"
-                             Margin="10,50"/>
-                    <Button Content="Obriši" Height="32" RelativePanel.AlignBottomWithPanel="True"
+                             Margin="10,10,10,50"/>
+                    <Button x:Name="obrisiFilmButton" Content="Obriši" Height="32" Width="120" RelativePanel.AlignBottomWithPanel="True"
+                            Margin="10" RelativePanel.AlignHorizontalCenterWithPanel="True"
+                            HorizontalAlignment="Center"/>
+                </RelativePanel>
+            </PivotItem>
+            <PivotItem Header="Obriši profil">
+                <RelativePanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <SearchBox x:Name="searchBox2" FocusOnKeyboardInput="True" Height="35" Width="200" PlaceholderText="Pretraga profila" Margin="0,10,0,0"
+                               VerticalAlignment="Top" HorizontalAlignment="Stretch" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+                    <ListBox x:Name="listBox2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" RelativePanel.Below="searchBox2"
+                             RelativePanel.AlignHorizontalCenterWithPanel="True" 
+                             RelativePanel.AlignLeftWithPanel="True"
+                             RelativePanel.AlignRightWithPanel="True"
+                             RelativePanel.AlignVerticalCenterWithPanel="True"
+                             RelativePanel.AlignBottomWithPanel="True"
+                             Margin="10,10,10,50"/>
+                    <Button x:Name="obrisiProfilButton" Content="Obriši" Height="32" Width="120" RelativePanel.AlignBottomWithPanel="True"
                             Margin="10" RelativePanel.AlignHorizontalCenterWithPanel="True"
                             HorizontalAlignment="Center"/>
                 </RelativePanel>
             </PivotItem>
         </Pivot>
-        <Button Content="Logout" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Top"/>
+        <Button x:Name="logoutButton" Content="Logout" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Top"/>
     </Grid>
 </Page>
