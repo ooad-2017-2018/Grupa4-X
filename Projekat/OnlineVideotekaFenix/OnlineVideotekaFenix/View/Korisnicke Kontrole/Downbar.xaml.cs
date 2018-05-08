@@ -22,7 +22,7 @@ namespace OnlineVideotekaFenix.Korisnicke_Kontrole
 {
     public sealed partial class Downbar : UserControl
     {
-        public DodajPoster()
+        public Downbar()
         {
             this.InitializeComponent();
         }
