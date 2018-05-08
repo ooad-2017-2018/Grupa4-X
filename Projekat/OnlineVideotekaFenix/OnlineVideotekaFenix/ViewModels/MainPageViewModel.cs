@@ -18,18 +18,21 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
+
 using System.Security;
 
 
 namespace OnlineVideotekaFenix.ViewModels
 {
-    class MainPageViewModel
+    public class MainPageViewModel
     {
+        static readonly string[] validatePropertiesLogin = { "Username", "Lozinka" };
         #region Icommands
 
         public ICommand LoginOtvori { get; set; }
         public ICommand LoginClick { get; set; }
         public ICommand RegistracijaClick { get; set; }
+        public ICommand RegistracijaOtvori { get; set; }
         public ICommand IzlazClick { get; set; }
         public ICommand DodajPosterClick { get; set; }
         public ICommand OtvoriKameruClick { get; set; }
@@ -53,6 +56,7 @@ namespace OnlineVideotekaFenix.ViewModels
 
         public MainPageViewModel()
         {
+            RegistracijaOtvori = new RelayCommand<Object>(RegistracijaOtvoriNew, potvrdi);
             RegistracijaClick = new RelayCommand<Object>(RegistracijaKorisnika, potvrdi);
             LoginClick = new RelayCommand<Object>(LoginKorisnika, potvrdi);
             LoginOtvori = new RelayCommand<Object>(LoginKorisnikaOtvori, potvrdi);
@@ -79,16 +83,16 @@ namespace OnlineVideotekaFenix.ViewModels
 
         public void RegistracijaKorisnika(Object o)
         {
-            var frame = (Frame)Window.Current.Content;
-            frame.Navigate(typeof(Registracija));
+            ////////////////////////////////////////////////////
         
         }
-        public void LoginKorisnika(Object o)
+        public void RegistracijaOtvoriNew(Object o)
         {
-           /* var frame = (Frame)Window.Current.Content;
-            frame.Navigate(typeof(Login));*/
+            var frame = (Frame)Window.Current.Content;
+            frame.Navigate(typeof(Registracija));
 
         }
+        
 
         public void IzlazKorisnika(Object o)
         {
@@ -121,6 +125,53 @@ namespace OnlineVideotekaFenix.ViewModels
         {
             var frame = (Frame)Window.Current.Content;
             frame.Navigate(typeof(AzuriranjeFilmova));
+        }
+
+        public void LoginKorisnika(Object o)
+        {
+            
+        }
+
+        public bool isValid()
+        {
+            
+            {
+                foreach (string property in validatePropertiesLogin)
+                {
+                    if (getValidationError(property) != null)
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
+
+        string getValidationError(string propertyName)
+        {
+            string error = null;
+            switch (propertyName)
+            {
+                case "Username":
+                    error = validirajUsername();
+                    break;
+                case "Lozinka":
+                    error = validirajLozinku();
+                    break;
+            }
+            return error;
+        }
+
+        private string validirajUsername()
+        {
+            string username = "";/* ((TextBox)Cumez.FindName("Username")).get*/
+            if (String.IsNullOrWhiteSpace(username)) return "Morate unijeti korisnicko ime!";
+            return null;
+        }        private string validirajLozinku()
+        {
+            string lozinka = "";/*                                            */
+            if (String.IsNullOrWhiteSpace(lozinka)) return "Morate unijeti lozinku!";
+            return null;
         }
 
 

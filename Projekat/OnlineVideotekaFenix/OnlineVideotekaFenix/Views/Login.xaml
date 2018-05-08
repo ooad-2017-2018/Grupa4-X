@@ -22,7 +22,7 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
-                <HyperlinkButton Content="Registracija" HorizontalAlignment="Stretch" Margin="20,10,20,0" Grid.Row="1" VerticalAlignment="Center" Click="RegistracijaClick"/>
+                <HyperlinkButton Command="{Binding Path=RegistracijaOtvori}" Content="Registracija" HorizontalAlignment="Stretch" Margin="20,10,20,0" Grid.Row="1" VerticalAlignment="Center" />
 
 
                 <Grid x:Name="gridButoni" Grid.Row="2">
@@ -30,8 +30,8 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Content="Prijava" HorizontalAlignment="Stretch" Margin="20,10,20,10" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" Click="LoginClick"/>
-                    <Button Content="Izlaz" HorizontalAlignment="Stretch" Margin="20,10,20,10" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Click="IzlazClick"/>
+                    <Button Command="{Binding Path=LoginClick}" Content="Prijava"  HorizontalAlignment="Stretch" Margin="20,10,20,10" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" />
+                    <Button Command="{Binding Path=IzlazClick}" Content="Izlaz" HorizontalAlignment="Stretch" Margin="20,10,20,10" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" />
                 </Grid>
 
                 <KorisnickeKontrole:LoginTextBox x:Name="Cumez" HorizontalAlignment="Stretch" Margin="10" Grid.Row ="0" VerticalAlignment="Center"/>
