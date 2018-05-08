@@ -18,14 +18,23 @@ using Windows.UI.Xaml.Navigation;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace OnlineVideotekaFenix.Korisnicke_Kontrole
+namespace OnlineVideotekaFenix.Views.KorisnickeKontrole
 {
-    public sealed partial class LoginTextBox : UserControl
+    public sealed partial class Downbar : UserControl
     {
-        public LoginTextBox()
+        public Downbar()
         {
             this.InitializeComponent();
         }
 
+        private void ButtonIzlaz(System.Object sender, RoutedEventArgs e)
+        {
+
+        }
+            
+        private void ButtonRegistracija(System.Object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

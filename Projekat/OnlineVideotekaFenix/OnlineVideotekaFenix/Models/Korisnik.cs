@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnlineVideotekaFenix.Model
+namespace OnlineVideotekaFenix.Models
 {
-    class OnlineVideotekaFenix
+    class Korisnik
     {
     }
 }

@@ -95,30 +95,30 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Korisnicke Kontrole\LoginTextBox.xaml.cs">
+    <Compile Include="Views\KorisnickeKontrole\LoginTextBox.xaml.cs">
       <DependentUpon>LoginTextBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Korisnicke Kontrole\Downbar.xaml.cs">
+    <Compile Include="Views\KorisnickeKontrole\Downbar.xaml.cs">
       <DependentUpon>Downbar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Korisnicke Kontrole\DodajPoster.xaml.cs">
+    <Compile Include="Views\KorisnickeKontrole\DodajPoster.xaml.cs">
       <DependentUpon>DodajPoster.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\Administrator.cs" />
-    <Compile Include="Model\Film.cs" />
-    <Compile Include="Model\Korisnik.cs" />
-    <Compile Include="Model\Ocjena.cs" />
-    <Compile Include="Model\OnlineVideotekaFenix.cs" />
-    <Compile Include="View\Login.xaml.cs">
+    <Compile Include="Models\Administrator.cs" />
+    <Compile Include="Models\Film.cs" />
+    <Compile Include="Models\Korisnik.cs" />
+    <Compile Include="Models\Ocjena.cs" />
+    <Compile Include="Models\OnlineVideotekaFenix.cs" />
+    <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Registracija.xaml.cs">
+    <Compile Include="Views\Registracija.xaml.cs">
       <DependentUpon>Registracija.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\AzuriranjeFilmova.xaml.cs">
+    <Compile Include="Views\AzuriranjeFilmova.xaml.cs">
       <DependentUpon>AzuriranjeFilmova.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\MainPage.xaml.cs">
+    <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -144,37 +144,37 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="View\Korisnicke Kontrole\LoginTextBox.xaml">
+    <Page Include="Views\KorisnickeKontrole\LoginTextBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\Korisnicke Kontrole\Downbar.xaml">
+    <Page Include="Views\KorisnickeKontrole\Downbar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\Korisnicke Kontrole\DodajPoster.xaml">
+    <Page Include="Views\KorisnickeKontrole\DodajPoster.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Login.xaml">
+    <Page Include="Views\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Registracija.xaml">
+    <Page Include="Views\Registracija.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\AzuriranjeFilmova.xaml">
+    <Page Include="Views\AzuriranjeFilmova.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\MainPage.xaml">
+    <Page Include="Views\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ModelView\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
