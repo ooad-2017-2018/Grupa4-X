@@ -80,7 +80,7 @@ namespace OnlineVideotekaFenix.Views
         }        private string validirajLozinku()
         {
             string lozinka = "";/*                                            */
-            if(String.IsNullOrWhiteSpace(lozinka) return "Morate unijeti lozinku!";
+            if(String.IsNullOrWhiteSpace(lozinka)) return "Morate unijeti lozinku!";
             return null;
         }
 
