@@ -26,7 +26,7 @@ namespace OnlineVideotekaFenix.Views.KorisnickeKontrole
         {
             this.InitializeComponent();
         }
-
+        
         private async void DodajPosterClick(System.Object sender, RoutedEventArgs e)
         {
             FileOpenPicker openPicker = new FileOpenPicker();
@@ -44,8 +44,9 @@ namespace OnlineVideotekaFenix.Views.KorisnickeKontrole
             }
             else
             {
-                //  
+                 //
             }
         }
+        
     }
 }

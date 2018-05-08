@@ -13,6 +13,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using OnlineVideotekaFenix.Views;
+using OnlineVideotekaFenix.ViewModels;
+using Windows.UI.Core;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -26,11 +28,17 @@ namespace OnlineVideotekaFenix
         public MainPage()
         {
             this.InitializeComponent();
+
+            DataContext = new MainPageViewModel();
+            NavigationCacheMode = NavigationCacheMode.Required;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            this.Frame.Navigate(typeof(AzuriranjeFilmova));
+            var currentView = SystemNavigationManager.GetForCurrentView();
+            currentView.AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
         }
+
+
     }
 }

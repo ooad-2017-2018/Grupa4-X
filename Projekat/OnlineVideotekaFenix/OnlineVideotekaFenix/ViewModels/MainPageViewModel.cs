@@ -9,6 +9,14 @@ using OnlineVideotekaFenix.Views;
 using OnlineVideotekaFenix.Helper;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml;
+using Windows.Storage;
+using Windows.Storage.Pickers;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
+using Windows.UI.Xaml.Navigation;
 
 using System.Security;
 
@@ -17,11 +25,21 @@ namespace OnlineVideotekaFenix.ViewModels
 {
     class MainPageViewModel
     {
-        #region Icommande i get i set
+        #region Icommands
 
+        public ICommand LoginOtvori { get; set; }
         public ICommand LoginClick { get; set; }
         public ICommand RegistracijaClick { get; set; }
         public ICommand IzlazClick { get; set; }
+        public ICommand DodajPosterClick { get; set; }
+        public ICommand OtvoriKameruClick { get; set; }
+        public ICommand AzuriranjeFilmovaClick { get; set; }
+
+        
+
+
+
+
 
         #endregion
 
@@ -29,63 +47,29 @@ namespace OnlineVideotekaFenix.ViewModels
         public Videoteka Videoteka { get; set; }
         public string LoginUsername { get; set; }
         public string LoginPassword { get; set; }
+        public static byte[] dodajPoster = null;
 
         #endregion
 
         public MainPageViewModel()
         {
-            RegistracijaClick = new RelayCommand<Object>(registracijaKorisnika, potvrdi);
-            LoginClick = new RelayCommand<Object>(loginKorisnika, potvrdi);
-            IzlazClick = new RelayCommand<Object>(izlazKorisnika, potvrdi);
-            /*
+            RegistracijaClick = new RelayCommand<Object>(RegistracijaKorisnika, potvrdi);
+            LoginClick = new RelayCommand<Object>(LoginKorisnika, potvrdi);
+            LoginOtvori = new RelayCommand<Object>(LoginKorisnikaOtvori, potvrdi);
+            IzlazClick = new RelayCommand<Object>(IzlazKorisnika, potvrdi);
+            OtvoriKameruClick = new RelayCommand<Object>(OtvoriKameru, boolDodaj);
+            AzuriranjeFilmovaClick = new RelayCommand<Object>(AzuriranjeFilmovaOtvori, potvrdi);
+            DodajPosterClick = new RelayCommand<Object>(DodajPoster, boolDodaj);
 
 
-            this.Sistem = new GlasackiSistem();
-            //this.Sistem = Parent.Sistem;
+            
 
-            ListaKandidata = Sistem.KandidatiD;
-            ListaNovosti = Sistem.Novosti;
-            NoviKandidat = new Kandidat();
-            NovaNovost = new Novost();
-            NoviKandidat.DatRodjenja = DateTime.Now;
-            Login = new RelayCommand<object>(registrujAdmina, potvrdi);
-            DodavanjeKandidata = new RelayCommand<object>(dodajKandidata, boolDodaj);
-            DodavanjeNovosti = new RelayCommand<object>(dodajNovost, boolDodaj);
-            BrisanjeKandidata = new RelayCommand<object>(obrisiKandidata, boolDodaj);
-            BrisanjeNovosti = new RelayCommand<object>(obrisiNovost, boolDodaj);
-            IzmjenaKandidata = new RelayCommand<object>(promjenaKandidata, boolDodaj);
-            IzmjenaNovosti = new RelayCommand<object>(promjenaNovosti, boolDodaj);
-            Odjava = new RelayCommand<object>(odjava, boolDodaj);
-            PretragaNovosti = new RelayCommand<object>(nadjiNovosti, boolDodaj);
-            PretragaKandidata = new RelayCommand<object>(nadjiKandidate, boolDodaj);
-            UcitajSliku = new RelayCommand<object>(dodajSliku, boolDodaj);
-            NaziviStranki = new ObservableCollection<string>();
-            NaziviStranki.Add("OOAD");
-            NaziviStranki.Add("Proba");
-            /*
-            for (int i=0; i<Sistem.Stranke.Count; i++)
-            {
-                NaziviStranki.Add(Sistem.Stranke[i].Naziv);
-            }
-            */
-            //NoviKandidat.ErrorsChanged += Vm_ErrorsChanged;
+
         }
 
         public bool potvrdi(Object o)
         {
-            /*
-            string password = new System.Net.NetworkCredential(string.Empty, AdminSifra).Password;
-            
-            if (AdminIme.Equals("admin") && password.Equals("mrviceljubavi"))
-            {
-                return true;
-            }
-            var dialog = new MessageDialog("Neispravni pristupni podaci!");
-            */
-
-            //stalno vraca true jer passwordBox pretvara string u SecureString, metode koje sam nasao na Internetu za pretvaranje
-            //su za starije verzije VS
-            return true;
+           return true;
         }
 
         public bool boolDodaj(Object o)
@@ -93,23 +77,52 @@ namespace OnlineVideotekaFenix.ViewModels
             return true;
         }
 
-        public void registracijaKorisnika(Object o)
+        public void RegistracijaKorisnika(Object o)
         {
             var frame = (Frame)Window.Current.Content;
             frame.Navigate(typeof(Registracija));
         
         }
-        public void loginKorisnika(Object o)
+        public void LoginKorisnika(Object o)
+        {
+           /* var frame = (Frame)Window.Current.Content;
+            frame.Navigate(typeof(Login));*/
+
+        }
+
+        public void IzlazKorisnika(Object o)
+        {
+            Application.Current.Exit();
+        }
+
+        public void DodajPoster(Object o)
+        {
+
+        }
+
+        public void LoginKorisnikaOtvori(Object o)
         {
             var frame = (Frame)Window.Current.Content;
             frame.Navigate(typeof(Login));
 
         }
-
-        public void izlazKorisnika(Object o)
+        /*public async void DodajPoster(System.Object sender, RoutedEventArgs e)
         {
-            Application.Current.Exit();
+            if (Views.KorisnickeKontrole.ImageAndButton != null)
+                uploadSlika = UserControls.ImageAndButton.uploadSlika;
+        }*/
+        public void OtvoriKameru(Object o)
+        {
+            // Pokrece se web kamera da bi se korisnik uslikao
+            // Vanjski uredjaj jos nije implementiran
         }
+        
+        public void AzuriranjeFilmovaOtvori(Object o)
+        {
+            var frame = (Frame)Window.Current.Content;
+            frame.Navigate(typeof(AzuriranjeFilmova));
+        }
+
 
     }
 }

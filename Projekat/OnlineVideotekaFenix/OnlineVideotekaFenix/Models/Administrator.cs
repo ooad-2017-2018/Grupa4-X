@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OnlineVideotekaFenix.Models
 {
-    class Administrator
+    public class Administrator
     {
         private static int GLOBAL_ID = 0;
         private int id;
