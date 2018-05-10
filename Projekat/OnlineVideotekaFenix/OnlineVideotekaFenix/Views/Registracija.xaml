@@ -141,7 +141,7 @@
         <TextBlock x:Name="TBLupisipodatke" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="0,0,0,0" VerticalAlignment="Center" TextWrapping="Wrap" Text="Upišite podatke" FontFamily="Century" FontSize="45" d:LayoutOverrides="VerticalAlignment, TopPosition, BottomPosition"/>
 
         <KorisnickeKontrole:Downbar x:Name="Downbar" Grid.Row="11"  Grid.Column="0" Grid.ColumnSpan="7"/>
-        <Button x:Name="buttonkamera"  Grid.Column="5"  Grid.Row="7"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  FontFamily="Century" FontSize="32" Margin="15,10,15,10"/>
+        <Button x:Name="buttonkamera"  Grid.Column="5"  Grid.Row="7"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  FontFamily="Century" FontSize="32" Margin="15,10,15,10" Command="{Binding Path=OtvoriKameruClick}"/>
 
 
 

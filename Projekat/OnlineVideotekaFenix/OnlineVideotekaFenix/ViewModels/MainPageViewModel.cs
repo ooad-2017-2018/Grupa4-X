@@ -26,7 +26,16 @@ namespace OnlineVideotekaFenix.ViewModels
 {
     public class MainPageViewModel
     {
-        static readonly string[] validatePropertiesLogin = { "Username", "Lozinka" };
+        #region Validacija readonly atributi
+
+        private readonly string[] validatePropertiesLogin = { "Username", "Lozinka" };
+        private readonly string[] validatePropertiesRegistracija = { "Username", "Lozinka", "Datumrodjenja", "Imeiprezime" };
+        private readonly string[] validatePropertiesAzuriranjeFilmova = { "NazivFilma", "Godina", "Zanr" , "Reziser", "Glumci", "VrijemeTrajanja", "Cijena"};
+        private readonly string[] validatePropertiesBrisanjeFilmova = { "Username", "Lozinka" };
+        private readonly string[] validatePropertiesBrisanjeKorisnika = { "Username", "Lozinka" };
+
+        #endregion
+
         #region Icommands
 
         public ICommand LoginOtvori { get; set; }
@@ -50,30 +59,89 @@ namespace OnlineVideotekaFenix.ViewModels
         public Videoteka Videoteka { get; set; }
         public string LoginUsername { get; set; }
         public string LoginPassword { get; set; }
-        public static byte[] dodajPoster = null;
+
 
         #endregion
 
+        #region Konstruktori
+
         public MainPageViewModel()
         {
+
+            #region Otvaranje viewa
+
             RegistracijaOtvori = new RelayCommand<Object>(RegistracijaOtvoriNew, potvrdi);
-            RegistracijaClick = new RelayCommand<Object>(RegistracijaKorisnika, potvrdi);
-            LoginClick = new RelayCommand<Object>(LoginKorisnika, potvrdi);
             LoginOtvori = new RelayCommand<Object>(LoginKorisnikaOtvori, potvrdi);
-            IzlazClick = new RelayCommand<Object>(IzlazKorisnika, potvrdi);
-            OtvoriKameruClick = new RelayCommand<Object>(OtvoriKameru, boolDodaj);
             AzuriranjeFilmovaClick = new RelayCommand<Object>(AzuriranjeFilmovaOtvori, potvrdi);
+
+            #endregion
+
+            #region Izlaz
+
+            IzlazClick = new RelayCommand<Object>(IzlazKorisnika, potvrdi);
+
+            #endregion
+
+            #region Registracija buttoni
+
+            RegistracijaClick = new RelayCommand<Object>(RegistracijaKorisnika, potvrdi);
+            OtvoriKameruClick = new RelayCommand<Object>(OtvoriKameru, boolDodaj);
+
+            #endregion
+
+            #region Login buttoni
+
+            LoginClick = new RelayCommand<Object>(LoginKorisnika, potvrdi);
+
+            #endregion
+
+            #region Azuriranje filmova buttoni
+
             DodajPosterClick = new RelayCommand<Object>(DodajPoster, boolDodaj);
 
+            #endregion
 
-            
+            #region Brisanje filmova buttoni
+
+            #endregion
+
+            #region Brisanje korisnika buttoni
+
+            #endregion
+
+            #region Validacija
+
+            #endregion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         }
 
+        #endregion
+
+        #region Funkcije
+
+        #region Potvrde
+
         public bool potvrdi(Object o)
         {
-           return true;
+            return true;
         }
 
         public bool boolDodaj(Object o)
@@ -81,26 +149,13 @@ namespace OnlineVideotekaFenix.ViewModels
             return true;
         }
 
-        public void RegistracijaKorisnika(Object o)
-        {
-            ////////////////////////////////////////////////////
-        
-        }
+        #endregion
+
+        #region Otvaranje viewa
         public void RegistracijaOtvoriNew(Object o)
         {
             var frame = (Frame)Window.Current.Content;
             frame.Navigate(typeof(Registracija));
-
-        }
-        
-
-        public void IzlazKorisnika(Object o)
-        {
-            Application.Current.Exit();
-        }
-
-        public void DodajPoster(Object o)
-        {
 
         }
 
@@ -110,31 +165,73 @@ namespace OnlineVideotekaFenix.ViewModels
             frame.Navigate(typeof(Login));
 
         }
-        /*public async void DodajPoster(System.Object sender, RoutedEventArgs e)
-        {
-            if (Views.KorisnickeKontrole.ImageAndButton != null)
-                uploadSlika = UserControls.ImageAndButton.uploadSlika;
-        }*/
-        public void OtvoriKameru(Object o)
-        {
-            // Pokrece se web kamera da bi se korisnik uslikao
-            // Vanjski uredjaj jos nije implementiran
-        }
-        
+
         public void AzuriranjeFilmovaOtvori(Object o)
         {
             var frame = (Frame)Window.Current.Content;
             frame.Navigate(typeof(AzuriranjeFilmova));
         }
 
-        public void LoginKorisnika(Object o)
+        #endregion
+
+        #region Izlaz
+
+        public void IzlazKorisnika(Object o)
+        {
+            Application.Current.Exit();
+        }
+
+        #endregion
+
+        #region Registracija buttoni
+
+        public void RegistracijaKorisnika(Object o)
         {
             
+        
         }
+
+        public void OtvoriKameru(Object o)
+        {
+            // Pokrece se web kamera da bi se korisnik uslikao
+            // Vanjski uredjaj jos nije implementiran
+        }
+
+        #endregion
+
+        #region Login buttoni
+
+        public void LoginKorisnika(Object o)
+        {
+
+        }
+
+        #endregion
+
+        #region Azuriranje filmova buttoni
+        public void DodajPoster(Object o)
+        {
+
+        }
+
+
+        #endregion
+
+        #region Brisanje filmova buttoni
+
+        #endregion
+
+        #region Brisanje korisnika buttoni
+
+        #endregion
+
+        #region Validacija
+
+        #region Validacija login
 
         public bool isValid()
         {
-            
+
             {
                 foreach (string property in validatePropertiesLogin)
                 {
@@ -164,16 +261,29 @@ namespace OnlineVideotekaFenix.ViewModels
 
         private string validirajUsername()
         {
-            string username = "";/* ((TextBox)Cumez.FindName("Username")).get*/
+            string username = "";
             if (String.IsNullOrWhiteSpace(username)) return "Morate unijeti korisnicko ime!";
             return null;
         }        private string validirajLozinku()
         {
-            string lozinka = "";/*                                            */
+            string lozinka = "";
             if (String.IsNullOrWhiteSpace(lozinka)) return "Morate unijeti lozinku!";
             return null;
         }
 
+        #endregion
+
+        #region Validacija registracija
+
+        #endregion
+
+        #region Validacija azuriranjeFilmova
+
+        #endregion
+
+        #endregion
+
+        #endregion
 
     }
 }
