@@ -17,10 +17,9 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
-
-
 using System.Security;
-
+using System.Runtime.InteropServices;
+using System.Runtime.CompilerServices;
 
 namespace OnlineVideotekaFenix.ViewModels
 {
@@ -30,7 +29,7 @@ namespace OnlineVideotekaFenix.ViewModels
 
         private readonly string[] validatePropertiesLogin = { "Username", "Lozinka" };
         private readonly string[] validatePropertiesRegistracija = { "Username", "Lozinka", "Datumrodjenja", "Imeiprezime" };
-        private readonly string[] validatePropertiesAzuriranjeFilmova = { "NazivFilma", "Godina", "Zanr" , "Reziser", "Glumci", "VrijemeTrajanja", "Cijena"};
+        private readonly string[] validatePropertiesAzuriranjeFilmova = { "NazivFilma", "Godina", "Zanr", "Reziser", "Glumci", "VrijemeTrajanja", "Cijena" };
         private readonly string[] validatePropertiesBrisanjeFilmova = { "Username", "Lozinka" };
         private readonly string[] validatePropertiesBrisanjeKorisnika = { "Username", "Lozinka" };
 
@@ -47,7 +46,7 @@ namespace OnlineVideotekaFenix.ViewModels
         public ICommand OtvoriKameruClick { get; set; }
         public ICommand AzuriranjeFilmovaClick { get; set; }
 
-        
+
 
 
 
@@ -58,7 +57,13 @@ namespace OnlineVideotekaFenix.ViewModels
         #region Atributi
         public Videoteka Videoteka { get; set; }
         public string LoginUsername { get; set; }
-        public string LoginPassword { get; set; }
+        public SecureString LoginPassword { get; set; }
+
+        public string RegistracijaUsername { get; set; }
+        public string RegistracijaPassword { get; set; }
+        public string RegistracijaDatumRodjenja { get; set; }
+        public string RegistracijaImePrezime { get; set; }
+
 
 
         #endregion
@@ -67,6 +72,11 @@ namespace OnlineVideotekaFenix.ViewModels
 
         public MainPageViewModel()
         {
+            this.Videoteka = new Videoteka();
+            Videoteka.ListaAdministratora.Add(new Administrator("Goba", toSecureString("DRVOPROMET")));
+            Videoteka.ListaKorisnika.Add(new Korisnik("Ado", toSecureString("MERCATOR")));
+            
+            
 
             #region Otvaranje viewa
 
@@ -113,24 +123,6 @@ namespace OnlineVideotekaFenix.ViewModels
 
             #endregion
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
 
         #endregion
@@ -155,21 +147,21 @@ namespace OnlineVideotekaFenix.ViewModels
         public void RegistracijaOtvoriNew(Object o)
         {
             var frame = (Frame)Window.Current.Content;
-            frame.Navigate(typeof(Registracija),this);
+            frame.Navigate(typeof(Registracija), this);
 
         }
 
         public void LoginKorisnikaOtvori(Object o)
         {
             var frame = (Frame)Window.Current.Content;
-            frame.Navigate(typeof(Login),this);
+            frame.Navigate(typeof(Login), this);
 
         }
 
         public void AzuriranjeFilmovaOtvori(Object o)
         {
             var frame = (Frame)Window.Current.Content;
-            frame.Navigate(typeof(AzuriranjeFilmova),this);
+            frame.Navigate(typeof(AzuriranjeFilmova), this);
         }
 
         #endregion
@@ -187,8 +179,8 @@ namespace OnlineVideotekaFenix.ViewModels
 
         public void RegistracijaKorisnika(Object o)
         {
-            
-        
+
+
         }
 
         public void OtvoriKameru(Object o)
@@ -203,7 +195,19 @@ namespace OnlineVideotekaFenix.ViewModels
 
         public void LoginKorisnika(Object o)
         {
-            AzuriranjeFilmovaOtvori(o);
+            foreach (Administrator administrator in Videoteka.ListaAdministratora)
+            {
+                if(administrator.Username.Equals(LoginUsername) && administrator.Lozinka.Equals(LoginPassword))
+                    AzuriranjeFilmovaOtvori(o);
+
+
+            }
+            foreach (Korisnik korisnik in Videoteka.ListaKorisnika)
+            {
+                if (korisnik.Username.Equals(LoginUsername) && korisnik.Lozinka.Equals(LoginPassword))
+                    RegistracijaOtvoriNew(o);
+            }
+            
         }
 
         #endregion
@@ -280,6 +284,93 @@ namespace OnlineVideotekaFenix.ViewModels
         #region Validacija azuriranjeFilmova
 
         #endregion
+
+        #endregion
+
+        #region Pomocne funkcije
+
+        public SecureString toSecureString(string lozinka)
+        { 
+           var secure = new SecureString();
+           foreach (char c in lozinka)
+           {
+               secure.AppendChar(c);
+           }
+            return secure;
+        }
+        
+        Boolean SecureStringEqual(SecureString s1, SecureString s2)
+        {
+            if (s1 == null)
+            {
+                throw new ArgumentNullException("s1");
+            }
+            if (s2 == null)
+            {
+                throw new ArgumentNullException("s2");
+            }
+
+            if (s1.Length != s2.Length)
+            {
+                return false;
+            }
+
+            IntPtr bstr1 = IntPtr.Zero;
+            IntPtr bstr2 = IntPtr.Zero;
+
+            //////
+            RuntimeHelpers.PREP();
+
+            try
+            {
+                bstr1 = Marshal.P
+                bstr2 = Marshal.SecureStringToBSTR(s2);
+
+                unsafe
+                {
+                    for (Char* ptr1 = (Char*)bstr1.ToPointer(), ptr2 = (Char*)bstr2.ToPointer();
+                        *ptr1 != 0 && *ptr2 != 0;
+                         ++ptr1, ++ptr2)
+                    {
+                        if (*ptr1 != *ptr2)
+                        {
+                            return false;
+                        }
+                    }
+                }
+
+                return true;
+            }
+            finally
+            {
+                if (bstr1 != IntPtr.Zero)
+                {
+                    Marshal.ZeroFreeBSTR(bstr1);
+                }
+
+                if (bstr2 != IntPtr.Zero)
+                {
+                    Marshal.ZeroFreeBSTR(bstr2);
+                }
+            }
+        }
+
+        String SecureStringToString(SecureString value)
+        {
+            IntPtr valuePtr = IntPtr.Zero;
+            try
+            {
+                valuePtr = Marshal.SecureStringToGlobalAllocUnicode(value);
+                return Marshal.PtrToStringUni(valuePtr);
+            }
+            finally
+            {
+                Marshal.ZeroFreeGlobalAllocUnicode(valuePtr);
+            }
+        }
+
+        
+
 
         #endregion
 

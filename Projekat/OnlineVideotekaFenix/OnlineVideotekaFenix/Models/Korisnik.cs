@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security;
 
 namespace OnlineVideotekaFenix.Models
 {
@@ -17,7 +18,7 @@ namespace OnlineVideotekaFenix.Models
         private List<Film> mojiFilmovi;
         private List<Film> listaZelja;
         private string username;
-        private string lozinka;
+        private SecureString lozinka;
 
 
 
@@ -120,7 +121,7 @@ namespace OnlineVideotekaFenix.Models
             }
         }
 
-        public string Lozinka
+        public SecureString Lozinka
         {
             get
             {
@@ -134,7 +135,7 @@ namespace OnlineVideotekaFenix.Models
         }
 
         public Korisnik() { }
-        public Korisnik(string ime, string prezime, DateTime datumRodjenja, DateTime datumRegistracije, List<Film> mojiFilmovi, List<Film> listaZelja, string username,string lozinka)
+        public Korisnik(string ime, string prezime, DateTime datumRodjenja, DateTime datumRegistracije, List<Film> mojiFilmovi, List<Film> listaZelja, string username,SecureString lozinka)
         {
             this.Ime = ime;
             this.Prezime = prezime;
@@ -142,6 +143,14 @@ namespace OnlineVideotekaFenix.Models
             this.DatumRegistracije = datumRegistracije;
             this.MojiFilmovi = mojiFilmovi;
             this.ListaZelja = listaZelja;
+            this.Username = username;
+            this.Lozinka = lozinka;
+            this.id = GLOBAL_ID++;
+
+        }
+
+        public Korisnik(string username, SecureString lozinka)
+        {
             this.Username = username;
             this.Lozinka = lozinka;
             this.id = GLOBAL_ID++;

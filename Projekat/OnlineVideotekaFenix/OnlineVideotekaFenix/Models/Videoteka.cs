@@ -57,5 +57,14 @@ namespace OnlineVideotekaFenix.Models
             this.ListaFilmova = listaFilmova;
             this.ListaAdministratora = listaAdministratora;
         }
+
+        public Videoteka()
+        {
+            this.ListaKorisnika = new List<Korisnik>();
+            this.ListaFilmova = new List<Film>();
+            this.ListaAdministratora = new List<Administrator>();
+        }
+
+            
     }
 }

@@ -13,7 +13,7 @@
             <RowDefinition Height="*"/> 
         </Grid.RowDefinitions>
         <TextBox x:Name="Username" Text="{Binding Path=LoginUsername}" Grid.Row="0" HorizontalAlignment="Stretch" Margin="20,10,20,10"  TextWrapping="Wrap" PlaceholderText="Korisničko ime" VerticalAlignment="Center"/>
-        <TextBox x:Name="Lozinka" Text="{Binding Path=LoginPassword}" Grid.Row="1" HorizontalAlignment="Stretch" Margin="20,10,20,10" PlaceholderText="Lozinka" VerticalAlignment="Center"/>
+        <PasswordBox x:Name="Lozinka" Password="{Binding Path=LoginPassword}" Grid.Row="1" HorizontalAlignment="Stretch" Margin="20,10,20,10" PlaceholderText="Lozinka" VerticalAlignment="Center"/>
 
 
     </Grid>

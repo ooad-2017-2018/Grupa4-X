@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,11 +11,11 @@ namespace OnlineVideotekaFenix.Models
     {
         private static int GLOBAL_ID = 0;
         private int id;
-        private string naziv;
-        private string lozinka;
-        public Administrator(string naziv, string lozinka)
+        private string username;
+        private SecureString lozinka;
+        public Administrator(string username, SecureString lozinka)
         {
-            this.Naziv = naziv;
+            this.Username = username;
             this.Lozinka = lozinka;
             Id = GLOBAL_ID++;
         }
@@ -32,20 +33,20 @@ namespace OnlineVideotekaFenix.Models
             }
         }
 
-        public string Naziv
+        public string Username
         {
             get
             {
-                return naziv;
+                return username;
             }
 
             set
             {
-                naziv = value;
+                username = value;
             }
         }
 
-        public string Lozinka
+        public SecureString Lozinka
         {
             get
             {
