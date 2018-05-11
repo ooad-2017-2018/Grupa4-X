@@ -12,6 +12,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using OnlineVideotekaFenix.ViewModels;
+using Windows.UI.Core;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,6 +27,25 @@ namespace OnlineVideotekaFenix.Views
         public AzuriranjeFilmova()
         {
             this.InitializeComponent();
+            var currentView = SystemNavigationManager.GetForCurrentView();
+            currentView.AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
+            SystemNavigationManager.GetForCurrentView().BackRequested += ThisPage_BackRequested;
+        }
+
+        MainPageViewModel model;
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            model = (MainPageViewModel)e.Parameter;
+            DataContext = model;
+
+        }
+        private void ThisPage_BackRequested(object sender, BackRequestedEventArgs e)
+        {
+            if (Frame.CanGoBack)
+            {
+                Frame.GoBack();
+                e.Handled = true;
+            }
         }
     }
 }

@@ -37,6 +37,7 @@ namespace OnlineVideotekaFenix.Views
         {
             model = (MainPageViewModel)e.Parameter;
             DataContext = model;
+            
         }
         private void ThisPage_BackRequested(object sender, BackRequestedEventArgs e)
         {

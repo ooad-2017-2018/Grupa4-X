@@ -155,21 +155,21 @@ namespace OnlineVideotekaFenix.ViewModels
         public void RegistracijaOtvoriNew(Object o)
         {
             var frame = (Frame)Window.Current.Content;
-            frame.Navigate(typeof(Registracija));
+            frame.Navigate(typeof(Registracija),this);
 
         }
 
         public void LoginKorisnikaOtvori(Object o)
         {
             var frame = (Frame)Window.Current.Content;
-            frame.Navigate(typeof(Login));
+            frame.Navigate(typeof(Login),this);
 
         }
 
         public void AzuriranjeFilmovaOtvori(Object o)
         {
             var frame = (Frame)Window.Current.Content;
-            frame.Navigate(typeof(AzuriranjeFilmova));
+            frame.Navigate(typeof(AzuriranjeFilmova),this);
         }
 
         #endregion
@@ -203,7 +203,7 @@ namespace OnlineVideotekaFenix.ViewModels
 
         public void LoginKorisnika(Object o)
         {
-
+            AzuriranjeFilmovaOtvori(o);
         }
 
         #endregion

@@ -15,6 +15,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
+using OnlineVideotekaFenix.ViewModels;
+using Windows.UI.Core;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -25,16 +27,9 @@ namespace OnlineVideotekaFenix.Views.KorisnickeKontrole
         public Downbar()
         {
             this.InitializeComponent();
-        }
-
-        private void ButtonIzlaz(System.Object sender, RoutedEventArgs e)
-        {
-
-        }
             
-        private void ButtonRegistracija(System.Object sender, RoutedEventArgs e)
-        {
-
         }
+
+        
     }
 }
