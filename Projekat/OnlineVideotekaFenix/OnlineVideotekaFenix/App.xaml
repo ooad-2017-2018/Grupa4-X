@@ -4,4 +4,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:OnlineVideotekaFenix"
     RequestedTheme="Light">
+    <Application.Resources>
+        <ResourceDictionary>
+            <x:Double x:Key="PivotHeaderItemFontSize">20</x:Double>
+            <x:String x:Key="PivotHeaderItemVerticalAlignment">Bottom</x:String>
+            <x:String x:Key="PivotHeaderItemHeight">20</x:String>
+        </ResourceDictionary>
+    </Application.Resources>
 </Application>

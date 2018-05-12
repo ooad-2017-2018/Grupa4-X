@@ -7,7 +7,9 @@
     xmlns:KorisnickeKontrole="using:OnlineVideotekaFenix.Views.KorisnickeKontrole"
     x:Class="OnlineVideotekaFenix.Views.AzuriranjeFilmova"
     mc:Ignorable="d">
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState>
@@ -20,7 +22,7 @@
                         <Setter Target="dodajFilmButton.(VerticalAlignment)" Value="Center"/>
                         <Setter Target="dodajFilmButton.(FontSize)" Value="10"/>
                         <Setter Target="dodajFilmButton.(Margin)" Value="0"/>
-                        <Setter Target="sinopsisTextBox.(Margin)" Value="0"/>
+                        <Setter Target="sinopsisTextBox.(Margin)" Value="10,0,10,0"/>
                         <Setter Target="dodajPosterKontrola.(Margin)" Value="0"/>
                         <Setter Target="nazivFilmaTextBox.(Margin)" Value="10,0,10,0"/>
                         <Setter Target="zanrTextBox.(Margin)" Value="10,0,10,0"/>
@@ -30,6 +32,8 @@
                         <Setter Target="vrijemeTrajanjaTextBox.(Margin)" Value="10,0,10,0"/>
                         <Setter Target="cijenaTextBox.(Margin)" Value="10,0,10,0"/>
                         <Setter Target="zadnjiRed.(Height)" Value="0"/>
+                        <Setter Target="dodajFilmPivot.(PivotItemHeader.FontSize)" Value="10"/>
+                        <Setter Target="dodajFilmPivot.(PivotItemHeader.Margin)" Value="0"/>
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState>
@@ -40,7 +44,7 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <Pivot x:Name="pivot1" Title="Ažuriranje">
-            <PivotItem x:Name="dodajFilmPivot" Header="Dodaj film" FontSize="15">
+            <PivotItem x:Name="dodajFilmPivot" Header ="Dodaj film" VerticalAlignment="Stretch">
                 <Grid x:Name="gridGlavni">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition x:Name="prvaDef" Width="*"/>
@@ -119,6 +123,6 @@
                 </RelativePanel>
             </PivotItem>
         </Pivot>
-        <Button x:Name="logoutButton" Content="Logout" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Top" Command="{Binding Path=LoginOtvori}"/>
+        <Button x:Name="logoutButton" Content="Logout" HorizontalAlignment="Right" Margin="10,10,20,10" VerticalAlignment="Top" Command="{Binding Path=LoginOtvori}"/>
     </Grid>
 </Page>
