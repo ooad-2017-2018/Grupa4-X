@@ -8,9 +8,43 @@
     x:Class="OnlineVideotekaFenix.Views.AzuriranjeFilmova"
     mc:Ignorable="d">
 
+         
+
+ 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowHeight="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="dodajPosterKontrola.(VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="sinopsisTextBox.(VerticalAlignment)" Value="Center"/>
+                        <Setter Target="dodajFilmButton.(VerticalAlignment)" Value="Center"/>
+                        <Setter Target="dodajFilmButton.(FontSize)" Value="10"/>
+                        <Setter Target="dodajFilmButton.(Margin)" Value="0"/>
+                        <Setter Target="sinopsisTextBox.(Margin)" Value="0"/>
+                        <Setter Target="dodajPosterKontrola.(Margin)" Value="0"/>
+                        <Setter Target="nazivFilmaTextBox.(Margin)" Value="10,0,10,0"/>
+                        <Setter Target="zanrTextBox.(Margin)" Value="10,0,10,0"/>
+                        <Setter Target="godinaTextBox.(Margin)" Value="10,0,10,0"/>
+                        <Setter Target="reziserTextBox.(Margin)" Value="10,0,10,0"/>
+                        <Setter Target="glumciTextBox.(Margin)" Value="10,0,10,0"/>
+                        <Setter Target="vrijemeTrajanjaTextBox.(Margin)" Value="10,0,10,0"/>
+                        <Setter Target="cijenaTextBox.(Margin)" Value="10,0,10,0"/>
+                        <Setter Target="zadnjiRed.(Height)" Value="0"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowHeight="400"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
         <Pivot x:Name="pivot1" Title="Ažuriranje">
-            <PivotItem Header="Dodaj film">
+            <PivotItem x:Name="dodajFilmPivot" Header="Dodaj film" FontSize="15">
                 <Grid x:Name="gridGlavni">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition x:Name="prvaDef" Width="*"/>
@@ -25,7 +59,7 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
-                            <RowDefinition Height="0.25*"/>
+                            <RowDefinition x:Name="zadnjiRed" Height="0.25*"/>
                         </Grid.RowDefinitions>
                         <TextBox x:Name="nazivFilmaTextBox" TextWrapping="Wrap" PlaceholderText="Naziv filma" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10,10,10,0" Grid.Row="0"
                                  Text="{Binding Path = NazivFilma}"/>
@@ -44,19 +78,19 @@
                     </Grid>
                     <Grid x:Name="grid2" Grid.Column="1">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="4*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
+                            <RowDefinition x:Name="posterRed" Height="4*"/>
+                            <RowDefinition x:Name="sinopsisRed" Height="*"/>
+                            <RowDefinition x:Name="dodajFilmButtonRed" Height="*"/>
                         </Grid.RowDefinitions>
                         <TextBox x:Name="sinopsisTextBox" PlaceholderText="Sinopsis" HorizontalAlignment="Stretch" Margin ="10,0,10,0" Grid.Row="1" VerticalAlignment="Stretch"
                                     Text="{Binding Path = Sinopsis}"/>
                         <Button x:Name="dodajFilmButton" Content="Dodaj film"  HorizontalAlignment="Center" Margin="10" Grid.Row="2" VerticalAlignment="Center"/>
-                        <KorisnickeKontrole:DodajPoster HorizontalAlignment="Stretch" Margin="10" VerticalAlignment="Stretch" />
+                        <KorisnickeKontrole:DodajPoster x:Name="dodajPosterKontrola" HorizontalAlignment="Stretch" Margin="10" VerticalAlignment="Stretch" />
                     </Grid>
                 </Grid>
             </PivotItem>
 
-            <PivotItem Header="Obriši film">
+            <PivotItem x:Name="obrisiFilmPivot" Header="Obriši film" FontSize="10">
                 <RelativePanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                     <SearchBox x:Name="searchBox1" FocusOnKeyboardInput="True" Height="35" Width="200" PlaceholderText="Pretraga filma" Margin="0,10,0,0"
                            VerticalAlignment="Top" HorizontalAlignment="Stretch" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
@@ -72,7 +106,7 @@
                             HorizontalAlignment="Center"/>
                 </RelativePanel>
             </PivotItem>
-            <PivotItem Header="Obriši profil">
+            <PivotItem x:Name="obrisiProfilPivot" Header="Obriši profil" FontSize="10">
                 <RelativePanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                     <SearchBox x:Name="searchBox2" FocusOnKeyboardInput="True" Height="35" Width="200" PlaceholderText="Pretraga profila" Margin="0,10,0,0"
                                VerticalAlignment="Top" HorizontalAlignment="Stretch" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
