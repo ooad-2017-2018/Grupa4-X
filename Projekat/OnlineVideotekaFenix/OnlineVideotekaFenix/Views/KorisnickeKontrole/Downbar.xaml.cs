@@ -26,6 +26,7 @@ namespace OnlineVideotekaFenix.Views.KorisnickeKontrole
     {
         public Downbar()
         {
+            
             this.InitializeComponent();
             
         }

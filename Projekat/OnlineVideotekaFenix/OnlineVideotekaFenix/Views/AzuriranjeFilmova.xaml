@@ -89,6 +89,6 @@
                 </RelativePanel>
             </PivotItem>
         </Pivot>
-        <Button x:Name="logoutButton" Content="Logout" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Top" Command="{Binding Path=LoginOtvori}"/>
+        <Button x:Name="logoutButton" Content="Logout" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Top" Command="{Binding Path=DodajFilmClick}"/>
     </Grid>
 </Page>

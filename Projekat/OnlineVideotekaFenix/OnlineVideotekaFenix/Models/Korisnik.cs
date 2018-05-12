@@ -18,7 +18,7 @@ namespace OnlineVideotekaFenix.Models
         private List<Film> mojiFilmovi;
         private List<Film> listaZelja;
         private string username;
-        private SecureString lozinka;
+        private string lozinka;
 
 
 
@@ -121,7 +121,7 @@ namespace OnlineVideotekaFenix.Models
             }
         }
 
-        public SecureString Lozinka
+        public string Lozinka
         {
             get
             {
@@ -135,7 +135,7 @@ namespace OnlineVideotekaFenix.Models
         }
 
         public Korisnik() { }
-        public Korisnik(string ime, string prezime, DateTime datumRodjenja, DateTime datumRegistracije, List<Film> mojiFilmovi, List<Film> listaZelja, string username,SecureString lozinka)
+        public Korisnik(string ime, string prezime, DateTime datumRodjenja, DateTime datumRegistracije, List<Film> mojiFilmovi, List<Film> listaZelja, string username, string lozinka)
         {
             this.Ime = ime;
             this.Prezime = prezime;
@@ -149,7 +149,7 @@ namespace OnlineVideotekaFenix.Models
 
         }
 
-        public Korisnik(string username, SecureString lozinka)
+        public Korisnik(string username, string lozinka)
         {
             this.Username = username;
             this.Lozinka = lozinka;

@@ -5,15 +5,19 @@
     xmlns:local="using:OnlineVideotekaFenix.Views.KorisnickeKontrole"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    
     mc:Ignorable="d">
+
+    
 
     <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/> 
         </Grid.RowDefinitions>
-        <TextBox x:Name="Username" Text="{Binding Path=LoginUsername}" Grid.Row="0" HorizontalAlignment="Stretch" Margin="20,10,20,10"  TextWrapping="Wrap" PlaceholderText="Korisničko ime" VerticalAlignment="Center"/>
-        <PasswordBox x:Name="Lozinka" Password="{Binding Path=LoginPassword}" Grid.Row="1" HorizontalAlignment="Stretch" Margin="20,10,20,10" PlaceholderText="Lozinka" VerticalAlignment="Center"/>
+        <TextBox x:Name="Username" Text="{Binding LoginUsername, Mode=TwoWay}" Grid.Row="0" HorizontalAlignment="Stretch" Margin="20,10,20,10"  TextWrapping="Wrap" PlaceholderText="Korisničko ime" VerticalAlignment="Center"/>
+        <PasswordBox x:Name="Lozinka" Password="{Binding LoginPassword, Mode=TwoWay}" Grid.Row="1" HorizontalAlignment="Stretch" Margin="20,10,20,10" PlaceholderText="Lozinka" VerticalAlignment="Center"/>
+
 
 
     </Grid>

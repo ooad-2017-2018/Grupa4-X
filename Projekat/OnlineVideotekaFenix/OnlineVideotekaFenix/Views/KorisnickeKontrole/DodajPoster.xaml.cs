@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
+using OnlineVideotekaFenix.ViewModels;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -24,6 +25,7 @@ namespace OnlineVideotekaFenix.Views.KorisnickeKontrole
     {
         public DodajPoster()
         {
+            
             this.InitializeComponent();
         }
         

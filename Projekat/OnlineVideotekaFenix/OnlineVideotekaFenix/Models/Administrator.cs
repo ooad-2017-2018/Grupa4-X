@@ -12,8 +12,8 @@ namespace OnlineVideotekaFenix.Models
         private static int GLOBAL_ID = 0;
         private int id;
         private string username;
-        private SecureString lozinka;
-        public Administrator(string username, SecureString lozinka)
+        private string lozinka;
+        public Administrator(string username, string lozinka)
         {
             this.Username = username;
             this.Lozinka = lozinka;
@@ -46,7 +46,7 @@ namespace OnlineVideotekaFenix.Models
             }
         }
 
-        public SecureString Lozinka
+        public string Lozinka
         {
             get
             {

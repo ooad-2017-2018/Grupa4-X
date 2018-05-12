@@ -20,6 +20,7 @@ using Windows.UI.Xaml.Navigation;
 using System.Security;
 using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
+using Windows.UI.Popups;
 
 namespace OnlineVideotekaFenix.ViewModels
 {
@@ -46,6 +47,8 @@ namespace OnlineVideotekaFenix.ViewModels
         public ICommand OtvoriKameruClick { get; set; }
         public ICommand AzuriranjeFilmovaClick { get; set; }
 
+        public ICommand DodajFilmClick { get; set; }
+
 
 
 
@@ -57,12 +60,14 @@ namespace OnlineVideotekaFenix.ViewModels
         #region Atributi
         public Videoteka Videoteka { get; set; }
         public string LoginUsername { get; set; }
-        public SecureString LoginPassword { get; set; }
+        public string LoginPassword { get; set; }
 
         public string RegistracijaUsername { get; set; }
         public string RegistracijaPassword { get; set; }
         public string RegistracijaDatumRodjenja { get; set; }
         public string RegistracijaImePrezime { get; set; }
+
+        public string NazivFilma { get; set; }
 
 
 
@@ -73,8 +78,8 @@ namespace OnlineVideotekaFenix.ViewModels
         public MainPageViewModel()
         {
             this.Videoteka = new Videoteka();
-            Videoteka.ListaAdministratora.Add(new Administrator("Goba", toSecureString("DRVOPROMET")));
-            Videoteka.ListaKorisnika.Add(new Korisnik("Ado", toSecureString("MERCATOR")));
+            Videoteka.ListaAdministratora.Add(new Administrator("Goba", "DRVOPROMET"));
+            Videoteka.ListaKorisnika.Add(new Korisnik("Ado", "MERCATOR"));
             
             
 
@@ -108,6 +113,7 @@ namespace OnlineVideotekaFenix.ViewModels
             #region Azuriranje filmova buttoni
 
             DodajPosterClick = new RelayCommand<Object>(DodajPoster, boolDodaj);
+            DodajFilmClick = new RelayCommand<Object>(DodajFilm, boolDodaj);
 
             #endregion
 
@@ -193,21 +199,28 @@ namespace OnlineVideotekaFenix.ViewModels
 
         #region Login buttoni
 
-        public void LoginKorisnika(Object o)
+        public async void LoginKorisnika(Object o)
         {
             foreach (Administrator administrator in Videoteka.ListaAdministratora)
             {
-                if(administrator.Username.Equals(LoginUsername) && administrator.Lozinka.Equals(LoginPassword))
+                if (administrator.Username.Equals(LoginUsername) && administrator.Lozinka.Equals(LoginPassword))
+                {
+                    await (new MessageDialog("Uspješan login administratora")).ShowAsync();
                     AzuriranjeFilmovaOtvori(o);
-
-
+                    return;
+                }
             }
-            foreach (Korisnik korisnik in Videoteka.ListaKorisnika)
-            {
+             foreach (Korisnik korisnik in Videoteka.ListaKorisnika)
+             {
                 if (korisnik.Username.Equals(LoginUsername) && korisnik.Lozinka.Equals(LoginPassword))
+                {
+                    await (new MessageDialog("Uspješan login korisnika")).ShowAsync();
                     RegistracijaOtvoriNew(o);
-            }
-            
+                    return;
+                }     
+             }
+            await (new MessageDialog("Neispravan unos")).ShowAsync();
+
         }
 
         #endregion
@@ -215,6 +228,12 @@ namespace OnlineVideotekaFenix.ViewModels
         #region Azuriranje filmova buttoni
         public void DodajPoster(Object o)
         {
+
+        }
+
+        public async void DodajFilm(Object o)
+        {
+            await(new MessageDialog("+ " + RegistracijaImePrezime + " +")).ShowAsync();
 
         }
 
@@ -288,7 +307,7 @@ namespace OnlineVideotekaFenix.ViewModels
         #endregion
 
         #region Pomocne funkcije
-
+        /*
         public SecureString toSecureString(string lozinka)
         { 
            var secure = new SecureString();
@@ -299,75 +318,21 @@ namespace OnlineVideotekaFenix.ViewModels
             return secure;
         }
         
-        Boolean SecureStringEqual(SecureString s1, SecureString s2)
-        {
-            if (s1 == null)
-            {
-                throw new ArgumentNullException("s1");
-            }
-            if (s2 == null)
-            {
-                throw new ArgumentNullException("s2");
-            }
-
-            if (s1.Length != s2.Length)
-            {
-                return false;
-            }
-
-            IntPtr bstr1 = IntPtr.Zero;
-            IntPtr bstr2 = IntPtr.Zero;
-
-            //////
-            RuntimeHelpers.PREP();
-
-            try
-            {
-                bstr1 = Marshal.P
-                bstr2 = Marshal.SecureStringToBSTR(s2);
-
-                unsafe
-                {
-                    for (Char* ptr1 = (Char*)bstr1.ToPointer(), ptr2 = (Char*)bstr2.ToPointer();
-                        *ptr1 != 0 && *ptr2 != 0;
-                         ++ptr1, ++ptr2)
-                    {
-                        if (*ptr1 != *ptr2)
-                        {
-                            return false;
-                        }
-                    }
-                }
-
-                return true;
-            }
-            finally
-            {
-                if (bstr1 != IntPtr.Zero)
-                {
-                    Marshal.ZeroFreeBSTR(bstr1);
-                }
-
-                if (bstr2 != IntPtr.Zero)
-                {
-                    Marshal.ZeroFreeBSTR(bstr2);
-                }
-            }
-        }
+        
 
         String SecureStringToString(SecureString value)
         {
             IntPtr valuePtr = IntPtr.Zero;
             try
             {
-                valuePtr = Marshal.SecureStringToGlobalAllocUnicode(value);
+                valuePtr = SecureStringMarshal.SecureStringToGlobalAllocUnicode(value);
                 return Marshal.PtrToStringUni(valuePtr);
             }
             finally
             {
                 Marshal.ZeroFreeGlobalAllocUnicode(valuePtr);
             }
-        }
+        }*/
 
         
 
@@ -378,3 +343,8 @@ namespace OnlineVideotekaFenix.ViewModels
 
     }
 }
+
+/*
+ * 
+ * 
+    */
