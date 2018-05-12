@@ -231,9 +231,9 @@ namespace OnlineVideotekaFenix.ViewModels
 
         }
 
-        public async void DodajFilm(Object o)
+        public void DodajFilm(Object o)
         {
-            await(new MessageDialog("+ " + RegistracijaImePrezime + " +")).ShowAsync();
+            
 
         }
 
