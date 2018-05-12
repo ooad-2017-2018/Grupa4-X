@@ -321,7 +321,9 @@ namespace OnlineVideotekaFenix.ViewModels
         {
             if (String.IsNullOrWhiteSpace(LoginUsername)) return "Username";
             return null;
-        }        private string validirajLozinkuLogin()
+        }
+
+        private string validirajLozinkuLogin()
         {
             if (String.IsNullOrWhiteSpace(LoginPassword)) return "Lozinka";
             return null;
@@ -386,7 +388,9 @@ namespace OnlineVideotekaFenix.ViewModels
         {
             if (String.IsNullOrWhiteSpace(RegistracijaUsername)) return "Username";
             return null;
-        }        private string validirajLozinkuRegistracija()
+        }
+
+        private string validirajLozinkuRegistracija()
         {
             if (String.IsNullOrWhiteSpace(RegistracijaPassword)) return "Lozinka";
             return null;
@@ -475,13 +479,21 @@ namespace OnlineVideotekaFenix.ViewModels
             return error;
         }
 
+        public Boolean imaSlova(String s)
+        {
+            return s.Any(x => char.IsLetter(x));
+        }
+
         private string validirajNazivFilmaAzuriranjeFilmova()
         {
             if (String.IsNullOrWhiteSpace(AzuriranjeFilmovaNazivFilma)) return "Naziv";
             return null;
-        }        private string validirajGodinaAzuriranjeFilmova()
+        }
+
+        private string validirajGodinaAzuriranjeFilmova()
         {
             if (String.IsNullOrWhiteSpace(AzuriranjeFilmovaGodinaFilma)) return "Godina";
+            else if (imaSlova(AzuriranjeFilmovaGodinaFilma)) return "Nedozvoljeni znakovi godina";
             return null;
         }
 
@@ -506,12 +518,14 @@ namespace OnlineVideotekaFenix.ViewModels
         private string validirajVrijemeTrajanjaAzuriranjeFilmova()
         {
             if (String.IsNullOrWhiteSpace(AzuriranjeFilmovaVrijemeTrajanja)) return "VrijemeTrajanja";
+            else if (imaSlova(AzuriranjeFilmovaVrijemeTrajanja)) return "Nedozvoljeni znakovi trajanje";
             return null;
         }
 
         private string validirajCijenaAzuriranjeFilmova()
         {
             if (String.IsNullOrWhiteSpace(AzuriranjeFilmovaCijena)) return "Cijena";
+            else if (imaSlova(AzuriranjeFilmovaCijena)) return "Nedozvoljeni znakovi cijena";
             return null;
         }
         private string validirajSinopsisAzuriranjeFilmova()
@@ -548,8 +562,16 @@ namespace OnlineVideotekaFenix.ViewModels
                 case "Sinopsis":
                     await (new MessageDialog("Morate unijeti sinopsis!")).ShowAsync();
                     break;
+                case "Nedozvoljeni znakovi godina":
+                    await (new MessageDialog("Godina ne smije sadržavati slova!")).ShowAsync();
+                    break;
+                case "Nedozvoljeni znakovi cijena":
+                    await (new MessageDialog("Cijena ne smije sadržavati slova!")).ShowAsync();
+                    break;
+                case "Nedozvoljeni znakovi trajanje":
+                    await (new MessageDialog("Trajanje filma ne smije sadržavati slova!")).ShowAsync();
+                    break;
             }
-
 
         }
 

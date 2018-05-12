@@ -11,11 +11,11 @@ namespace OnlineVideotekaFenix.Models
     {
         public int FilmID { get; set; }
         public string NazivFilma { get; set; }
-        public int GodinaFilma { get; set; } //nije potrebno cuvati u datetime formatu 
+        public int GodinaFilma { get; set; } 
         public string ZanrFilma { get; set; }
         public string Reziser { get; set; }
-        public string Glumci { get; set; } //cuva se samo par imena glumaca zbog opisa, nije potrebna lista
-        public int VrijemeTrajanja { get; set; } //cuva se u minutama
+        public string Glumci { get; set; } 
+        public int VrijemeTrajanja { get; set; } 
         public double Cijena { get; set; }
         public Image Poster { get; set; }
         public string Sinopsis { get; set; }

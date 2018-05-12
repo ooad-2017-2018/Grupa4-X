@@ -7,11 +7,6 @@
     xmlns:KorisnickeKontrole="using:OnlineVideotekaFenix.Views.KorisnickeKontrole"
     x:Class="OnlineVideotekaFenix.Views.AzuriranjeFilmova"
     mc:Ignorable="d">
-
-
-
-
-
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
