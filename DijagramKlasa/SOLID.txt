@@ -1,0 +1,50 @@
+1.) Princip pojedinaène odgovornosti
+
+SRP je princip koji naglašava da svaka klasa mora imati pojedinaènu odgovornost i poznaje samo jednu stvar, 
+taènije za svaki poseban posao veže se i posebna klasa.
+Posmatrajuæi DijagramKlasa koji smo mi izgradili uoèavamo da sve klase koje su prisutne
+na dijagramu su zasebne u smislu da svaka obavlja odgovarajuæi posao koji je samo njoj 
+svojstven. Time se zakljuèuje da princip pojedinaène odgovornosti u ovom sluèaju nije narušen.
+
+
+
+2.) Otvoreno zatvoreni princip
+
+OCP je princip koji istièe nadogradnju sistema, ali zatvorenost prema modifikacijama. U
+DijagramuKlasa uoèava se povezanost sa interfejsom koji se tièe baze podataka. Pored
+toga, sve klase su tako definirane i struktuirane tako da nema potrebe za modifikacijama,
+mada nadogradnje mogu biti poželjne, u smislu da se doda više funkcionalnosti samom sistemu
+ili èak korisniku sistema. Obzirom da svaka klasa obavlja svoj osnovni dio posla, modifikacije
+ne trebaju, ali nasluæuje se da æe nadogradnja u svakom sluèaju itekako biti poželjna. To
+naglašava i otvoreno zatvoreni princip.
+
+
+
+3.) Liskov princip zamjene
+
+LSP je princip koji se zasniva na tome da svi podtipovi trebaju biti zamjenjivi njihovim osnovnim
+tipovima. Liskov princip generalno nije ispunjen ukoliko se pokušava naraviti nelegalan poziv na
+izvedenoj klasi. Posmatrajuæi naš DijagramKlasa vidimo da nemamo nasljeðivanja, niti izvedene klase.
+Pa je Liskov princip zamjene u tom sluèaju ispunjen.
+
+
+
+4.) Princip inverzije ovisnosti
+
+DIP je princip koji nam ukazuje da ne treba ovisiti od konkretnih klasa, taènije treba se poštovati pravilo
+da je osnovna klasa apstraktna, jer se takve klase i interfejsi manje mijenjaju nego njihove konkretne klase. 
+Time æemo imati manje promjena na sistem, što je pozitivna osobina. DijagramKlasa ne sadrži direktno princip 
+nasljeðivanja, ali vidimo da postoje klase koje su osnovne klase. Primjer za to možemo uzeti klasu Videoteka
+i Film. Izmjene filmova, u njihovoj internoj strukturi, neæe direktno utjecati na klasu Videoteka. Taènije nju
+"ne zanima" da li su se npr. cijena, naziv, žanr mijenjali. Tako da zakljuèujemo da naš dijagram poštuje i ovaj princip.
+
+
+5.) Princip izoliranja interfejsa
+
+ISP je princip koji se temelji na tome da korisnik ne treba da ovisi o metodama koje neæe ni koristiti. Radi boljeg korištenja sistema,
+nastojimo zaštiti korisnika od detalja implementacije objekta koji koristi. Nije poželjno "servirati" pred
+korisnika sve metode klasa. To smo na dijagramu klasa primijenili tako što smo korisniku omoguæili njemu svojstvene poslove, a to 
+su ocjeni, kupi, pretraga izmjena profila. S druge strane, administrator je zadužen za funkcionisanje sistema. 
+Korisnika se ne tièe kako se rukuje sa bazom podataka, niti dodavanje ili brisanje drugih korisnika.
+Posebno se odvaja interfejs korisnika i njegovim funkcijama, a posebno administrator sistema sa svojim odgovornostima. Kako su time
+sve metode vezane samo za odgovarajuæe uloge sistema, princip izoliranja interfejsa je ispoštovan.
