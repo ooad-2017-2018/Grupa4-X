@@ -111,14 +111,14 @@
     <Compile Include="Models\Korisnik.cs" />
     <Compile Include="Models\Ocjena.cs" />
     <Compile Include="Models\Videoteka.cs" />
+    <Compile Include="Views\AzuriranjeFilmova.xaml.cs">
+      <DependentUpon>AzuriranjeFilmova.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Registracija.xaml.cs">
       <DependentUpon>Registracija.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\AzuriranjeFilmova.xaml.cs">
-      <DependentUpon>AzuriranjeFilmova.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -158,6 +158,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\AzuriranjeFilmova.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -165,10 +169,6 @@
     <Page Include="Views\Registracija.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\AzuriranjeFilmova.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>

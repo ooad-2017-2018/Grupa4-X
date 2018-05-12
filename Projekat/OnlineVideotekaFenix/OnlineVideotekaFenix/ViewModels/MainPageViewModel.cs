@@ -181,7 +181,7 @@ namespace OnlineVideotekaFenix.ViewModels
         public void AzuriranjeFilmovaOtvori(Object o)
         {
             var frame = (Frame)Window.Current.Content;
-            frame.Navigate(typeof(AzuriranjeFilmova), this);
+            frame.Navigate(typeof(Login), this);
         }
 
         #endregion
