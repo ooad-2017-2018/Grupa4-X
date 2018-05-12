@@ -28,17 +28,26 @@ namespace OnlineVideotekaFenix.Views
         public AzuriranjeFilmova()
         {
             this.InitializeComponent();
-
-            DataContext = new MainPageViewModel();
-            NavigationCacheMode = NavigationCacheMode.Required;
+            var currentView = SystemNavigationManager.GetForCurrentView();
+            currentView.AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
+            SystemNavigationManager.GetForCurrentView().BackRequested += ThisPage_BackRequested;
         }
+        MainPageViewModel model;
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            var currentView = SystemNavigationManager.GetForCurrentView();
-            currentView.AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
+            model = (MainPageViewModel)e.Parameter;
+            DataContext = model;
         }
-        
+        private void ThisPage_BackRequested(object sender, BackRequestedEventArgs e)
+        {
+            if (Frame.CanGoBack)
+            {
+                Frame.GoBack();
+                e.Handled = true;
+            }
+        }
+
 
 
 
