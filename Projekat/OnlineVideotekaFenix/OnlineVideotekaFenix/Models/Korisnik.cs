@@ -11,8 +11,7 @@ namespace OnlineVideotekaFenix.Models
     {
         private static int GLOBAL_ID = 0;
         private int id;
-        private string ime;
-        private string prezime;
+        private string imePrezime;
         private DateTime datumRodjenja;
         private DateTime datumRegistracije;
         private List<Film> mojiFilmovi;
@@ -30,31 +29,18 @@ namespace OnlineVideotekaFenix.Models
             }
         }
 
-        public string Ime
+        public string ImePrezime
         {
             get
             {
-                return ime;
+                return imePrezime;
             }
 
             set
             {
-                ime = value;
+                imePrezime = value;
             }
-        }
-
-        public string Prezime
-        {
-            get
-            {
-                return prezime;
-            }
-
-            set
-            {
-                prezime = value;
-            }
-        }
+        }        
 
         public DateTime DatumRodjenja
         {
@@ -135,10 +121,9 @@ namespace OnlineVideotekaFenix.Models
         }
 
         public Korisnik() { }
-        public Korisnik(string ime, string prezime, DateTime datumRodjenja, DateTime datumRegistracije, List<Film> mojiFilmovi, List<Film> listaZelja, string username, string lozinka)
+        public Korisnik(string imePrezime, DateTime datumRodjenja, DateTime datumRegistracije, List<Film> mojiFilmovi, List<Film> listaZelja, string username, string lozinka)
         {
-            this.Ime = ime;
-            this.Prezime = prezime;
+            this.ImePrezime = imePrezime;
             this.DatumRodjenja = datumRodjenja;
             this.DatumRegistracije = datumRegistracije;
             this.MojiFilmovi = mojiFilmovi;
@@ -151,6 +136,19 @@ namespace OnlineVideotekaFenix.Models
 
         public Korisnik(string username, string lozinka)
         {
+            this.Username = username;
+            this.Lozinka = lozinka;
+            this.id = GLOBAL_ID++;
+
+        }
+
+        public Korisnik(string imePrezime, DateTime datumRodjenja, DateTime datumRegistracije, string username, string lozinka)
+        {
+            this.ImePrezime = imePrezime;
+            this.DatumRodjenja = datumRodjenja;
+            this.DatumRegistracije = datumRegistracije;
+            this.MojiFilmovi = mojiFilmovi;
+            this.ListaZelja = listaZelja;
             this.Username = username;
             this.Lozinka = lozinka;
             this.id = GLOBAL_ID++;

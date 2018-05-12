@@ -152,7 +152,7 @@
         <PasswordBox x:Name="TBpassword" Password="{Binding Path=RegistracijaPassword, Mode=TwoWay}"  Grid.Row="5" Grid.Column="3" FontFamily="Century" FontSize="32" Margin="15,0,15,0" d:LayoutOverrides="HorizontalAlignment, LeftMargin, RightMargin, TopMargin, BottomMargin"/>
 
         <TextBlock x:Name="TBLdatumrodjenja" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap" Text="Datum rođenja" FontFamily="Century" FontSize="32"  d:LayoutOverrides="HorizontalAlignment, LeftMargin, RightMargin, TopMargin, BottomMargin, TopPosition, BottomPosition"/>
-        <TextBox x:Name="TBdatumrodjenja" Text="{Binding Path=RegistracijaDatumRodjenja, Mode=TwoWay}" Grid.Row="7" Grid.Column="3" TextWrapping="Wrap" FontFamily="Century" FontSize="32" Margin="15,0,15,0" d:LayoutOverrides="HorizontalAlignment, TopMargin, BottomMargin"/>
+        <TextBox x:Name="TBdatumrodjenja"  Text="{Binding RegistracijaDatumRodjenja, Mode=TwoWay}" Grid.Row="7" Grid.Column="3" FontFamily="Century" FontSize="32" Margin="15,0,15,0" d:LayoutOverrides="HorizontalAlignment, TopMargin, BottomMargin"/>
 
         <TextBlock x:Name="TBLimeiprezime" Grid.Row="9" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"    TextWrapping="Wrap" Text="Ime i prezime" FontFamily="Century" FontSize="32"  d:LayoutOverrides="HorizontalAlignment, LeftMargin, RightMargin, TopMargin, BottomMargin, TopPosition, BottomPosition"/>
         <TextBox x:Name="TBimeiprezime" Text="{Binding Path=RegistracijaImePrezime, Mode=TwoWay}" Grid.Row="9" Grid.Column="3" TextWrapping="Wrap"   FontFamily="Century" FontSize="32" Margin="15,0,15,0" d:LayoutOverrides="HorizontalAlignment, TopMargin, BottomMargin"/>
