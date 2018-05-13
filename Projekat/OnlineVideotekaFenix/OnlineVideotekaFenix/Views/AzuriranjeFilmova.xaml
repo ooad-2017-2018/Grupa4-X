@@ -116,7 +116,8 @@
                              RelativePanel.AlignRightWithPanel="True"
                              RelativePanel.AlignVerticalCenterWithPanel="True"
                              RelativePanel.AlignBottomWithPanel="True"
-                             Margin="10,10,10,50"/>
+                             Margin="10,10,10,50"
+                             ItemsSource="{Binding Path=RezultatiPretrageFilmova}"/>
                     <Button x:Name="obrisiProfilButton" Content="Obriši" Height="32" Width="120" RelativePanel.AlignBottomWithPanel="True"
                             Margin="10" RelativePanel.AlignHorizontalCenterWithPanel="True"
                             HorizontalAlignment="Center"/>

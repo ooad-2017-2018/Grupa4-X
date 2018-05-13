@@ -132,6 +132,7 @@
     <None Include="OnlineVideotekaFenix_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\madmax.jpg" />
     <Content Include="Assets\novi_logo_100x100.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
