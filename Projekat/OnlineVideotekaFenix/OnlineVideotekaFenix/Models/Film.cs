@@ -52,15 +52,19 @@ namespace OnlineVideotekaFenix.Models
             Glumci = glumci;
             VrijemeTrajanja = vrijemeTrajanja;
             Cijena = cijena;
-            Task<BitmapImage> task= GetImage(poster);
-            /*Poster = task.Result;*/
+            GetImage(poster);            
             Sinopsis = sinopsis;
         }
 
-        public async Task<BitmapImage> GetImage(string value)
+        public /*async */void GetImage(string value)
         {
-            if (value == null)
-                return null;
+            Poster = null;
+            
+            /*if (value == null)
+            {
+                Poster = null;
+                return;
+            }
 
             var buffer = Convert.FromBase64String(value);
             using (InMemoryRandomAccessStream ms = new InMemoryRandomAccessStream())
@@ -73,8 +77,8 @@ namespace OnlineVideotekaFenix.Models
 
                 var image = new BitmapImage();
                 image.SetSource(ms);
-                return image;
-            }
+                Poster = image; 
+            }*/
         }
     }
 }
