@@ -4,23 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
-<<<<<<< HEAD
-=======
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Data;
->>>>>>> 3a983eba3cd50b9aeafc0c0a332c78a9bbb0e653
+
 using Windows.UI.Xaml.Media.Imaging;
+using Windows.Storage.Streams;
 
 namespace OnlineVideotekaFenix.Models
 {
     public class Film
     {
         private static int GLOBAL_ID = 0;
-<<<<<<< HEAD
-        
-=======
-
->>>>>>> 3a983eba3cd50b9aeafc0c0a332c78a9bbb0e653
         public int FilmID { get; set; }
         public string NazivFilma { get; set; }
         public int GodinaFilma { get; set; }
@@ -29,20 +23,12 @@ namespace OnlineVideotekaFenix.Models
         public string Glumci { get; set; }
         public int VrijemeTrajanja { get; set; }
         public double Cijena { get; set; }
-<<<<<<< HEAD
         public BitmapImage Poster { get; set; }
         public string Sinopsis { get; set; }
 
         public Film(){}
 
-        public Film(string nazivFilma, int godinaFilma, string zanrFilma, string reziser, string glumci, int vrijemeTrajanja, double cijena, string sinopsis, BitmapImage poster)
-=======
-        public Image Poster { get; set; }
-
-        public string Sinopsis { get; set; }
-
-        public Film(string nazivFilma, int godinaFilma, string zanrFilma, string reziser, string glumci, int vrijemeTrajanja, double cijena, string posterPath, string sinopsis)
->>>>>>> 3a983eba3cd50b9aeafc0c0a332c78a9bbb0e653
+        public Film(string nazivFilma, int godinaFilma, string zanrFilma, string reziser, string glumci, int vrijemeTrajanja, double cijena, string sinopsis, BitmapImage poster)             
         {
             FilmID = GLOBAL_ID++;
             NazivFilma = nazivFilma;
@@ -52,14 +38,43 @@ namespace OnlineVideotekaFenix.Models
             Glumci = glumci;
             VrijemeTrajanja = vrijemeTrajanja;
             Cijena = cijena;
-<<<<<<< HEAD
             Poster = poster;
             Sinopsis = sinopsis;
-=======
-           // Poster.Source = new BitmapImage(new Uri(posterPath, UriKind.Absolute));
-            Sinopsis = sinopsis;
+        }
 
->>>>>>> 3a983eba3cd50b9aeafc0c0a332c78a9bbb0e653
+        public Film(string nazivFilma, int godinaFilma, string zanrFilma, string reziser, string glumci, int vrijemeTrajanja, double cijena, string sinopsis, string poster)
+        {
+            FilmID = GLOBAL_ID++;
+            NazivFilma = nazivFilma;
+            GodinaFilma = godinaFilma;
+            ZanrFilma = zanrFilma;
+            Reziser = reziser;
+            Glumci = glumci;
+            VrijemeTrajanja = vrijemeTrajanja;
+            Cijena = cijena;
+            Task<BitmapImage> task= GetImage(poster);
+            /*Poster = task.Result;*/
+            Sinopsis = sinopsis;
+        }
+
+        public async Task<BitmapImage> GetImage(string value)
+        {
+            if (value == null)
+                return null;
+
+            var buffer = Convert.FromBase64String(value);
+            using (InMemoryRandomAccessStream ms = new InMemoryRandomAccessStream())
+            {
+                using (DataWriter writer = new DataWriter(ms.GetOutputStreamAt(0)))
+                {
+                    writer.WriteBytes(buffer);
+                    await writer.StoreAsync();
+                }
+
+                var image = new BitmapImage();
+                image.SetSource(ms);
+                return image;
+            }
         }
     }
 }

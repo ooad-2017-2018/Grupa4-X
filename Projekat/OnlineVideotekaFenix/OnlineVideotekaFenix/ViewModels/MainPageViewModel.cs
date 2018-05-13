@@ -30,12 +30,9 @@ namespace OnlineVideotekaFenix.ViewModels
         #region Validacija readonly atributi
         private readonly string[] validatePropertiesLogin = { "Username", "Lozinka" };
         private readonly string[] validatePropertiesRegistracija = { "Username", "Lozinka", "DatumRodjenja", "ImePrezime" };
-<<<<<<< HEAD
         private readonly string[] validatePropertiesAzuriranjeFilmova = { "NazivFilma", "Godina", "Zanr", "Reziser", "Glumci", "VrijemeTrajanja", "Cijena", "Sinopsis", "Poster" };        
+       
 
-=======
-        private readonly string[] validatePropertiesAzuriranjeFilmova = { "NazivFilma", "Godina", "Zanr", "Reziser", "Glumci", "VrijemeTrajanja", "Cijena", "Sinopsis" };        
->>>>>>> 3a983eba3cd50b9aeafc0c0a332c78a9bbb0e653
         #endregion
 
         #region Icommands
@@ -50,7 +47,6 @@ namespace OnlineVideotekaFenix.ViewModels
         public ICommand DodajFilmClick { get; set; }
         public ICommand BrisanjeFilmovaSearch { get; set; }
         public ICommand BrisanjeKorisnikaSearch { get; set; }
-<<<<<<< HEAD
         public ICommand AzuriranjeFilmovaLogout { get; set; }
 
 
@@ -61,8 +57,7 @@ namespace OnlineVideotekaFenix.ViewModels
 
 
 
-=======
->>>>>>> 3a983eba3cd50b9aeafc0c0a332c78a9bbb0e653
+
         #endregion
 
         #region Atributi
@@ -87,15 +82,8 @@ namespace OnlineVideotekaFenix.ViewModels
         public string AzuriranjeFilmovaVrijemeTrajanja { get; set; }
         public string AzuriranjeFilmovaCijena { get; set; }
         public string AzuriranjeFilmovaSinopsis { get; set; }
-<<<<<<< HEAD
-
         public BitmapImage AzuriranjeFilmovaPoster { get; set; }
 
-
-
-
-=======
->>>>>>> 3a983eba3cd50b9aeafc0c0a332c78a9bbb0e653
         #endregion
 
         #region Konstruktori
@@ -106,8 +94,8 @@ namespace OnlineVideotekaFenix.ViewModels
             Videoteka.ListaAdministratora.Add(new Administrator("amra", "1234"));
             Videoteka.ListaKorisnika.Add(new Korisnik("Ado", "MERCATOR"));
             Videoteka.ListaFilmova.Add(new Film("Mad Max: Fury Road", 2015, "Akcija, Avantura, Sci-Fi", "George Miller",
-                "Tom Hardy, Charlize Theron, Nicholas Hoult", 120, 10, "ms-appx:///Assets/novi_logo_100x100.png",
-                "A woman rebels against a tyrannical ruler in postapocalyptic Australia in search for her home-land with the help of a group of female prisoners, a psychotic worshipper, and a drifter named Max."));
+                "Tom Hardy, Charlize Theron, Nicholas Hoult", 120, 10,
+                "A woman rebels against a tyrannical ruler in postapocalyptic Australia in search for her home-land with the help of a group of female prisoners, a psychotic worshipper, and a drifter named Max.", "ms-appx:///Assets/novi_logo_100x100.png"));
 
             #region Otvaranje viewa
             RegistracijaOtvori = new RelayCommand<Object>(RegistracijaOtvoriNew, potvrdi);
@@ -131,11 +119,9 @@ namespace OnlineVideotekaFenix.ViewModels
             #region Azuriranje filmova buttoni
             DodajPosterClick = new RelayCommand<Object>(DodajPoster, boolDodaj);
             DodajFilmClick = new RelayCommand<Object>(DodajFilm, boolDodaj);
-<<<<<<< HEAD
             AzuriranjeFilmovaLogout = new RelayCommand<Object>(AzuriranjeFilmovaLogoutClick, boolDodaj);
 
-=======
->>>>>>> 3a983eba3cd50b9aeafc0c0a332c78a9bbb0e653
+
             #endregion
 
             #region Brisanje filmova buttoni
@@ -145,15 +131,7 @@ namespace OnlineVideotekaFenix.ViewModels
             #region Brisanje korisnika buttoni
             BrisanjeKorisnikaSearch = new RelayCommand<Object>(BrisanjeKorisnikaPretraga, potvrdi);
             #endregion
-<<<<<<< HEAD
-            
 
-=======
-
-            #region Validacija
-
-            #endregion
->>>>>>> 3a983eba3cd50b9aeafc0c0a332c78a9bbb0e653
         }
         #endregion
 
@@ -201,12 +179,9 @@ namespace OnlineVideotekaFenix.ViewModels
         #endregion
 
         #region Registracija buttoni
-<<<<<<< HEAD
+
 
         public async void RegistracijaKorisnika(Object o)
-=======
-        public void RegistracijaKorisnika(Object o)
->>>>>>> 3a983eba3cd50b9aeafc0c0a332c78a9bbb0e653
         {
             if (!isValidRegistracija())
                 return;
@@ -224,8 +199,6 @@ namespace OnlineVideotekaFenix.ViewModels
             // Pokrece se web kamera da bi se korisnik uslikao
             // Vanjski uredjaj jos nije implementiran
         }
-<<<<<<< HEAD
-
         public void OcistiRegistracija()
         {
             RegistracijaUsername = "";
@@ -234,8 +207,7 @@ namespace OnlineVideotekaFenix.ViewModels
             RegistracijaImePrezime = "";
         }
 
-=======
->>>>>>> 3a983eba3cd50b9aeafc0c0a332c78a9bbb0e653
+
         #endregion
 
         #region Login buttoni
@@ -268,16 +240,13 @@ namespace OnlineVideotekaFenix.ViewModels
              }
             await (new MessageDialog("Neispravan unos")).ShowAsync();
         }
-<<<<<<< HEAD
-
         public void OcistiLogin()
         {
             LoginUsername = "";
             LoginPassword = "";            
         }
 
-=======
->>>>>>> 3a983eba3cd50b9aeafc0c0a332c78a9bbb0e653
+
         #endregion
 
         #region Azuriranje filmova buttoni
