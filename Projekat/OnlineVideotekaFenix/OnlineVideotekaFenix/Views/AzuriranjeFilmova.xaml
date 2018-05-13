@@ -84,7 +84,7 @@
                         </Grid.RowDefinitions>
                         <TextBox x:Name="sinopsisTextBox" PlaceholderText="Sinopsis" HorizontalAlignment="Stretch" Margin ="10,0,10,0" Grid.Row="1" VerticalAlignment="Stretch"
                                     Text="{Binding Path = AzuriranjeFilmovaSinopsis, Mode=TwoWay}"/>
-                        <Button x:Name="dodajFilmButton" Command="{Binding Path = DodajFilmClick}" Content="Dodaj film"  HorizontalAlignment="Center" Margin="10" Grid.Row="2" VerticalAlignment="Center"/>
+                        <Button x:Name="dodajFilmButton" Command="{Binding Path = DodajFilmClick}" CommandParameter ="{Binding ElementName=dodajPosterKontrola::poster}" Content="Dodaj film"  HorizontalAlignment="Center" Margin="10" Grid.Row="2" VerticalAlignment="Center"/>
                         <KorisnickeKontrole:DodajPoster x:Name="dodajPosterKontrola" HorizontalAlignment="Stretch" Margin="10" VerticalAlignment="Stretch" />
                     </Grid>
                 </Grid>
@@ -123,6 +123,6 @@
                 </RelativePanel>
             </PivotItem>
         </Pivot>
-        <Button x:Name="logoutButton" Content="Logout" HorizontalAlignment="Right" Margin="10,10,20,10" VerticalAlignment="Top" Command="{Binding Path=LoginOtvori}"/>
+        <Button x:Name="logoutButton" Content="Logout" HorizontalAlignment="Right" Margin="10,10,20,10" VerticalAlignment="Top" Command="{Binding Path=AzuriranjeFilmovaLogout}"/>
     </Grid>
 </Page>

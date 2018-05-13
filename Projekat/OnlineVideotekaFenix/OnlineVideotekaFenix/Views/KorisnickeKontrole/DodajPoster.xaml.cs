@@ -27,28 +27,6 @@ namespace OnlineVideotekaFenix.Views.KorisnickeKontrole
         {
             
             this.InitializeComponent();
-        }
-        
-        private async void DodajPosterClick(System.Object sender, RoutedEventArgs e)
-        {
-            FileOpenPicker openPicker = new FileOpenPicker();
-            openPicker.ViewMode = PickerViewMode.Thumbnail;
-            openPicker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
-            openPicker.FileTypeFilter.Add(".jpg");
-            openPicker.FileTypeFilter.Add(".png");
-            StorageFile file = await openPicker.PickSingleFileAsync();
-            if (file != null)
-            {
-                var stream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read);
-                var varimage = new BitmapImage();
-                varimage.SetSource(stream);
-                poster.Source = varimage;
-            }
-            else
-            {
-                 //
-            }
-        }
-        
+        } 
     }
 }

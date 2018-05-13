@@ -22,6 +22,7 @@ using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
 using Windows.UI.Popups;
 
+
 namespace OnlineVideotekaFenix.ViewModels
 {
     public class MainPageViewModel
@@ -30,7 +31,7 @@ namespace OnlineVideotekaFenix.ViewModels
 
         private readonly string[] validatePropertiesLogin = { "Username", "Lozinka" };
         private readonly string[] validatePropertiesRegistracija = { "Username", "Lozinka", "DatumRodjenja", "ImePrezime" };
-        private readonly string[] validatePropertiesAzuriranjeFilmova = { "NazivFilma", "Godina", "Zanr", "Reziser", "Glumci", "VrijemeTrajanja", "Cijena", "Sinopsis" };        
+        private readonly string[] validatePropertiesAzuriranjeFilmova = { "NazivFilma", "Godina", "Zanr", "Reziser", "Glumci", "VrijemeTrajanja", "Cijena", "Sinopsis", "Poster" };        
 
         #endregion
 
@@ -47,6 +48,7 @@ namespace OnlineVideotekaFenix.ViewModels
         public ICommand DodajFilmClick { get; set; }
         public ICommand BrisanjeFilmovaSearch { get; set; }
         public ICommand BrisanjeKorisnikaSearch { get; set; }
+        public ICommand AzuriranjeFilmovaLogout { get; set; }
 
 
 
@@ -77,6 +79,8 @@ namespace OnlineVideotekaFenix.ViewModels
         public string AzuriranjeFilmovaCijena { get; set; }
 
         public string AzuriranjeFilmovaSinopsis { get; set; }
+
+        public BitmapImage AzuriranjeFilmovaPoster { get; set; }
 
 
 
@@ -124,6 +128,7 @@ namespace OnlineVideotekaFenix.ViewModels
 
             DodajPosterClick = new RelayCommand<Object>(DodajPoster, boolDodaj);
             DodajFilmClick = new RelayCommand<Object>(DodajFilm, boolDodaj);
+            AzuriranjeFilmovaLogout = new RelayCommand<Object>(AzuriranjeFilmovaLogoutClick, boolDodaj);
 
             #endregion
 
@@ -138,10 +143,7 @@ namespace OnlineVideotekaFenix.ViewModels
             BrisanjeKorisnikaSearch = new RelayCommand<Object>(BrisanjeKorisnikaPretraga, potvrdi);
 
             #endregion
-
-            #region Validacija
-
-            #endregion
+            
 
         }
 
@@ -197,7 +199,7 @@ namespace OnlineVideotekaFenix.ViewModels
 
         #region Registracija buttoni
 
-        public void RegistracijaKorisnika(Object o)
+        public async void RegistracijaKorisnika(Object o)
         {
             if (!isValidRegistracija())
                 return;
@@ -205,12 +207,23 @@ namespace OnlineVideotekaFenix.ViewModels
             DateTime.TryParse(RegistracijaDatumRodjenja, out datum);
             Korisnik korisnik = new Korisnik(RegistracijaImePrezime, datum, DateTime.Now, RegistracijaUsername, RegistracijaPassword);
             Videoteka.ListaKorisnika.Add(korisnik);
+            await (new MessageDialog("Uspješna registracija!")).ShowAsync();
+            LoginKorisnikaOtvori(o);
+            OcistiRegistracija();
         }
 
         public void OtvoriKameru(Object o)
         {
             // Pokrece se web kamera da bi se korisnik uslikao
             // Vanjski uredjaj jos nije implementiran
+        }
+
+        public void OcistiRegistracija()
+        {
+            RegistracijaUsername = "";
+            RegistracijaPassword = "";
+            RegistracijaDatumRodjenja = "";
+            RegistracijaImePrezime = "";
         }
 
         #endregion
@@ -227,7 +240,9 @@ namespace OnlineVideotekaFenix.ViewModels
                 if (administrator.Username.Equals(LoginUsername) && administrator.Lozinka.Equals(LoginPassword))
                 {
                     await (new MessageDialog("Uspješan login administratora")).ShowAsync();
+                    OcistiLogin();
                     AzuriranjeFilmovaOtvori(o);
+                    
                     return;
                 }
             }
@@ -236,7 +251,9 @@ namespace OnlineVideotekaFenix.ViewModels
                 if (korisnik.Username.Equals(LoginUsername) && korisnik.Lozinka.Equals(LoginPassword))
                 {
                     await (new MessageDialog("Uspješan login korisnika")).ShowAsync();
+                    OcistiLogin();
                     RegistracijaOtvoriNew(o);
+                    
                     return;
                 }     
              }
@@ -244,21 +261,75 @@ namespace OnlineVideotekaFenix.ViewModels
 
         }
 
+        public void OcistiLogin()
+        {
+            LoginUsername = "";
+            LoginPassword = "";            
+        }
+
         #endregion
 
         #region Azuriranje filmova buttoni
-        public void DodajPoster(Object o)
+        public async void DodajPoster(Object poster)
         {
+            
+            FileOpenPicker openPicker = new FileOpenPicker();
+            openPicker.ViewMode = PickerViewMode.Thumbnail;
+            openPicker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
+            openPicker.FileTypeFilter.Add(".jpg");
+            openPicker.FileTypeFilter.Add(".png");
+            StorageFile file = await openPicker.PickSingleFileAsync();
+            if (file != null)
+            {
+                var stream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read);
+                var varimage = new BitmapImage();
+                varimage.SetSource(stream);
+                ((Image)poster).Source = varimage;
+                AzuriranjeFilmovaPoster = new BitmapImage();
+                AzuriranjeFilmovaPoster = varimage;
+            }
+            else
+            {
+                //
+            }
+        
+         }
 
-        }
-
-        public void DodajFilm(Object o)
+        public void DodajFilm(Object poster)
         {
             if (!isValidAzuriranjeFilmova())
                 return;
+            int godinaFilma;
+            int vrijemeTrajanja;
+            double cijenaFilma;
+            Int32.TryParse(AzuriranjeFilmovaGodinaFilma, out godinaFilma);
+            Int32.TryParse(AzuriranjeFilmovaVrijemeTrajanja, out vrijemeTrajanja);
+            double.TryParse(AzuriranjeFilmovaCijena, out cijenaFilma);
 
-
+            Videoteka.ListaFilmova.Add(new Film(AzuriranjeFilmovaNazivFilma, godinaFilma, AzuriranjeFilmovaZanrFilma, AzuriranjeFilmovaReziser, AzuriranjeFilmovaGlumci, vrijemeTrajanja, cijenaFilma, AzuriranjeFilmovaSinopsis, AzuriranjeFilmovaPoster));
+            
+            
         }
+
+        public void AzuriranjeFilmovaLogoutClick(Object o)
+        {
+            AzuriranjeFilmovaPoster = null;
+            LoginKorisnikaOtvori(o);
+            OcistiAzuriranjeFilmova();
+        }
+
+        public void OcistiAzuriranjeFilmova()
+        {
+            AzuriranjeFilmovaNazivFilma = "";
+            AzuriranjeFilmovaGodinaFilma = "";
+            AzuriranjeFilmovaZanrFilma = "";
+            AzuriranjeFilmovaReziser = "";
+            AzuriranjeFilmovaVrijemeTrajanja = "";
+            AzuriranjeFilmovaCijena = "";
+            AzuriranjeFilmovaSinopsis = "";
+        }
+
+
 
 
         #endregion
@@ -475,6 +546,9 @@ namespace OnlineVideotekaFenix.ViewModels
                 case "Sinopsis":
                     error = validirajSinopsisAzuriranjeFilmova();
                     break;
+                case "Poster":
+                    error = validirajPosterAzuriranjeFilmova();
+                    break;
             }
             return error;
         }
@@ -482,6 +556,24 @@ namespace OnlineVideotekaFenix.ViewModels
         public Boolean imaSlova(String s)
         {
             return s.Any(x => char.IsLetter(x));
+        }
+
+        public Boolean neispravnaGodina(String godina)
+        {
+            int Godina;
+            return !(Int32.TryParse(godina, out Godina) && Godina >= 0 && Godina<=DateTime.Now.Year);               
+        }
+
+        public Boolean neispravnoVrijemeTrajanja(String vrijemeTrajanja)
+        {
+            int VrijemeTrajanja;
+            return !(Int32.TryParse(vrijemeTrajanja, out VrijemeTrajanja) && VrijemeTrajanja > 0);
+        }
+
+        public Boolean neispravnaCijena(String cijena)
+        {
+            double Cijena;
+            return !(double.TryParse(cijena, out Cijena) && Cijena>=0); // Film može biti besplatan
         }
 
         private string validirajNazivFilmaAzuriranjeFilmova()
@@ -494,6 +586,7 @@ namespace OnlineVideotekaFenix.ViewModels
         {
             if (String.IsNullOrWhiteSpace(AzuriranjeFilmovaGodinaFilma)) return "Godina";
             else if (imaSlova(AzuriranjeFilmovaGodinaFilma)) return "Nedozvoljeni znakovi godina";
+            else if (neispravnaGodina(AzuriranjeFilmovaGodinaFilma)) return "Neispravna godina";
             return null;
         }
 
@@ -519,6 +612,7 @@ namespace OnlineVideotekaFenix.ViewModels
         {
             if (String.IsNullOrWhiteSpace(AzuriranjeFilmovaVrijemeTrajanja)) return "VrijemeTrajanja";
             else if (imaSlova(AzuriranjeFilmovaVrijemeTrajanja)) return "Nedozvoljeni znakovi trajanje";
+            else if (neispravnoVrijemeTrajanja(AzuriranjeFilmovaVrijemeTrajanja)) return "Neispravno vrijeme trajanja";
             return null;
         }
 
@@ -526,11 +620,17 @@ namespace OnlineVideotekaFenix.ViewModels
         {
             if (String.IsNullOrWhiteSpace(AzuriranjeFilmovaCijena)) return "Cijena";
             else if (imaSlova(AzuriranjeFilmovaCijena)) return "Nedozvoljeni znakovi cijena";
+            else if (neispravnaCijena(AzuriranjeFilmovaCijena)) return "Neispravna cijena";
             return null;
         }
         private string validirajSinopsisAzuriranjeFilmova()
         {
             if (String.IsNullOrWhiteSpace(AzuriranjeFilmovaSinopsis)) return "Sinopsis";
+            return null;
+        }
+        private string validirajPosterAzuriranjeFilmova()
+        {
+            if (AzuriranjeFilmovaPoster==null) return "Poster";
             return null;
         }
 
@@ -562,6 +662,9 @@ namespace OnlineVideotekaFenix.ViewModels
                 case "Sinopsis":
                     await (new MessageDialog("Morate unijeti sinopsis!")).ShowAsync();
                     break;
+                case "Poster":
+                    await (new MessageDialog("Morate unijeti poster!")).ShowAsync();
+                    break;
                 case "Nedozvoljeni znakovi godina":
                     await (new MessageDialog("Godina ne smije sadržavati slova!")).ShowAsync();
                     break;
@@ -570,6 +673,15 @@ namespace OnlineVideotekaFenix.ViewModels
                     break;
                 case "Nedozvoljeni znakovi trajanje":
                     await (new MessageDialog("Trajanje filma ne smije sadržavati slova!")).ShowAsync();
+                    break;
+                case "Neispravna godina":
+                    await (new MessageDialog("Neispravna godina filma!")).ShowAsync();
+                    break;
+                case "Neispravno vrijeme trajanja":
+                    await (new MessageDialog("Neispravno vrijeme trajanja!")).ShowAsync();
+                    break;
+                case "Neispravna cijena":
+                    await (new MessageDialog("Neispravna cijena filma!")).ShowAsync();
                     break;
             }
 
@@ -618,3 +730,4 @@ namespace OnlineVideotekaFenix.ViewModels
 }
 
 
+/*Source="{Binding AzuriranjeFilmovaPoster}"*/
