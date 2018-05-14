@@ -15,7 +15,7 @@ namespace OnlineVideotekaFenix.Models
     public class Film
     {
         private static int GLOBAL_ID = 0;
-        public int FilmID { get; set; }
+        public int FilmID { get; }
         public string NazivFilma { get; set; }
         public int GodinaFilma { get; set; }
         public string ZanrFilma { get; set; }

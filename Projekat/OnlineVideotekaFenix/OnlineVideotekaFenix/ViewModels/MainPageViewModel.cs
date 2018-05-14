@@ -21,7 +21,7 @@ using System.Security;
 using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
 using Windows.UI.Popups;
-
+using System.Globalization;
 
 namespace OnlineVideotekaFenix.ViewModels
 {
@@ -36,6 +36,8 @@ namespace OnlineVideotekaFenix.ViewModels
         #endregion
 
         #region Icommands
+
+       
         public ICommand LoginOtvori { get; set; }
         public ICommand LoginClick { get; set; }
         public ICommand RegistracijaClick { get; set; }
@@ -48,6 +50,8 @@ namespace OnlineVideotekaFenix.ViewModels
         public ICommand BrisanjeFilmovaSearch { get; set; }
         public ICommand BrisanjeKorisnikaSearch { get; set; }
         public ICommand AzuriranjeFilmovaLogout { get; set; }
+
+        public ICommand KorisnikOverviewOtvori { get; set; }
 
 
 
@@ -65,6 +69,11 @@ namespace OnlineVideotekaFenix.ViewModels
         public List<Korisnik> RezultatiPretrageKorisnika { get; set; }
 
 
+        public Administrator loginAdmin { get; set; }
+        public Korisnik loginKorisnik { get; set; }
+        public string loginKorisnikImePrezime { get; set; }
+        public string loginKorisnikUsername { get; set; }
+        public string loginKorisnikDatum { get; set; }
         public Videoteka Videoteka { get; set; }
         public string LoginUsername { get; set; }
         public string LoginPassword { get; set; }
@@ -83,6 +92,10 @@ namespace OnlineVideotekaFenix.ViewModels
         public string AzuriranjeFilmovaCijena { get; set; }
         public string AzuriranjeFilmovaSinopsis { get; set; }
         public BitmapImage AzuriranjeFilmovaPoster { get; set; }
+        
+
+
+        
 
         #endregion
 
@@ -90,9 +103,9 @@ namespace OnlineVideotekaFenix.ViewModels
         public MainPageViewModel()
         {
             this.Videoteka = new Videoteka();
-            Videoteka.ListaAdministratora.Add(new Administrator("Goba", "DRVOPROMET"));
+            Videoteka.ListaAdministratora.Add(new Administrator( "Goba", "DRVOPROMET"));
             Videoteka.ListaAdministratora.Add(new Administrator("amra", "1234"));
-            Videoteka.ListaKorisnika.Add(new Korisnik("Ado", "MERCATOR"));
+            Videoteka.ListaKorisnika.Add(new Korisnik("Adnan Gobeljic", DateTime.Now, DateTime.Now, "Ado", "MERCATOR"));
             Videoteka.ListaFilmova.Add(new Film("Mad Max: Fury Road", 2015, "Akcija, Avantura, Sci-Fi", "George Miller",
                 "Tom Hardy, Charlize Theron, Nicholas Hoult", 120, 10,
                 "A woman rebels against a tyrannical ruler in postapocalyptic Australia in search for her home-land with the help of a group of female prisoners, a psychotic worshipper, and a drifter named Max.", "ms-appx:///Assets/novi_logo_100x100.png"));
@@ -100,6 +113,7 @@ namespace OnlineVideotekaFenix.ViewModels
             #region Otvaranje viewa
             RegistracijaOtvori = new RelayCommand<Object>(RegistracijaOtvoriNew, potvrdi);
             LoginOtvori = new RelayCommand<Object>(LoginKorisnikaOtvori, potvrdi);
+            KorisnikOverviewOtvori = new RelayCommand<Object>(KorisnikHomePageOtvori, potvrdi);
             AzuriranjeFilmovaClick = new RelayCommand<Object>(AzuriranjeFilmovaOtvori, potvrdi);
             #endregion
 
@@ -169,6 +183,13 @@ namespace OnlineVideotekaFenix.ViewModels
             var frame = (Frame)Window.Current.Content;
             frame.Navigate(typeof(AzuriranjeFilmova), this);
         }
+
+        public void KorisnikHomePageOtvori(Object o)
+        {
+            var frame = (Frame)Window.Current.Content;
+            frame.Navigate(typeof(KorisnikOverview), this);
+            
+        }
         #endregion
 
         #region Izlaz
@@ -186,7 +207,10 @@ namespace OnlineVideotekaFenix.ViewModels
             if (!isValidRegistracija())
                 return;
             DateTime datum;
-            DateTime.TryParse(RegistracijaDatumRodjenja, out datum);
+            DateTime.TryParseExact(RegistracijaDatumRodjenja, "dd'.'MM'.'yyyy",
+                           CultureInfo.InvariantCulture,
+                           DateTimeStyles.None,
+                           out datum);
             Korisnik korisnik = new Korisnik(RegistracijaImePrezime, datum, DateTime.Now, RegistracijaUsername, RegistracijaPassword);
             Videoteka.ListaKorisnika.Add(korisnik);
             await (new MessageDialog("Uspješna registracija!")).ShowAsync();
@@ -221,8 +245,9 @@ namespace OnlineVideotekaFenix.ViewModels
                 if (administrator.Username.Equals(LoginUsername) && administrator.Lozinka.Equals(LoginPassword))
                 {
                     await (new MessageDialog("Uspješan login administratora")).ShowAsync();
-                    OcistiLogin();
+                    loginAdmin = administrator;
                     AzuriranjeFilmovaOtvori(o);
+                    
                     
                     return;
                 }
@@ -232,9 +257,12 @@ namespace OnlineVideotekaFenix.ViewModels
                 if (korisnik.Username.Equals(LoginUsername) && korisnik.Lozinka.Equals(LoginPassword))
                 {
                     await (new MessageDialog("Uspješan login korisnika")).ShowAsync();
-                    OcistiLogin();
-                    RegistracijaOtvoriNew(o);
-                    
+                    loginKorisnik = korisnik;
+                    loginKorisnikDatum = korisnik.DatumRodjenja.ToString("dd.MM.yyyy");
+                    loginKorisnikImePrezime = korisnik.ImePrezime.ToString();
+                    loginKorisnikUsername = korisnik.Username.ToString();
+                    KorisnikHomePageOtvori(o);
+
                     return;
                 }     
              }
@@ -434,6 +462,14 @@ namespace OnlineVideotekaFenix.ViewModels
             }
             return error;
         }
+        private bool neispravanDatum(string datum)
+        {
+            DateTime Datum;
+            return !(DateTime.TryParseExact(datum, "dd'.'MM'.'yyyy",
+                           CultureInfo.InvariantCulture,
+                           DateTimeStyles.None,
+                           out Datum) && DateTime.Compare(DateTime.Now,Datum)>=0);
+        }
 
         private string validirajUsernameRegistracija()
         {
@@ -450,6 +486,7 @@ namespace OnlineVideotekaFenix.ViewModels
         private string validirajDatumRodjenjaRegistracija()
         {
             if (String.IsNullOrWhiteSpace(RegistracijaDatumRodjenja)) return "DatumRodjenja";
+            else if (neispravanDatum(RegistracijaDatumRodjenja)) return "Neispravan datum";
             return null;
         }
 
@@ -471,6 +508,9 @@ namespace OnlineVideotekaFenix.ViewModels
                     break;
                 case "DatumRodjenja":
                     await (new MessageDialog("Morate unijeti datum rodjenja!")).ShowAsync();
+                    break;
+                case "Neispravan datum":
+                    await (new MessageDialog("Unijeli ste neispravan datum!")).ShowAsync();
                     break;
                 case "ImePrezime":
                     await (new MessageDialog("Morate unijeti ime i prezime!")).ShowAsync();

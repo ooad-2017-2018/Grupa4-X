@@ -1,0 +1,152 @@
+﻿<Page
+    x:Class="OnlineVideotekaFenix.KorisnikOverview"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OnlineVideotekaFenix"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="TBLupisipodatke.FontSize" Value="15"/>
+                        <Setter Target="TBLusername.FontSize" Value="12"/>
+                        <Setter Target="TBusername.FontSize" Value="22"/>
+                        <Setter Target="TBLdatumrodjenja.FontSize" Value="12"/>
+                        <Setter Target="TBdatumrodjenja.FontSize" Value="12"/>
+                        <Setter Target="TBLimeiprezime.FontSize" Value="12"/>
+                        <Setter Target="TBimeiprezime.FontSize" Value="12"/>
+                        <Setter Target="Logout.FontSize" Value="10"/>
+                        <Setter Target="Logout.Margin" Value="0,5,0,5"/>
+                        <Setter Target="buttonkamera.FontSize" Value="10"/>
+                        <Setter Target="buttonkamera.Content" Value=" Otvori &#xa;kameru"/>
+                        <Setter Target="buttonkamera.Margin" Value="0,0,0,0"/>
+                        <Setter Target="slika.(Grid.RowSpan)" Value="3"/>
+                        <Setter Target="slika.(Grid.Row)" Value="3"/>
+                        <Setter Target="slika.Margin" Value="0,0,0,4"/>
+
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="600"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="TBLupisipodatke.FontSize" Value="20"/>
+                        <Setter Target="TBLusername.FontSize" Value="16"/>
+                        <Setter Target="TBusername.FontSize" Value="20"/>
+                        <Setter Target="TBLdatumrodjenja.FontSize" Value="16"/>
+                        <Setter Target="TBdatumrodjenja.FontSize" Value="20"/>
+                        <Setter Target="TBLimeiprezime.FontSize" Value="16"/>
+                        <Setter Target="TBimeiprezime.FontSize" Value="20"/>
+                        <Setter Target="Logout.FontSize" Value="15"/>
+                        <Setter Target="buttonkamera.FontSize" Value="15"/>
+                        <Setter Target="buttonkamera.Margin" Value="0,0,0,0"/>
+                        <Setter Target="buttonkamera.Content" Value="Otvori kameru"/>
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="960"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="TBLupisipodatke.FontSize" Value="20"/>
+                        <Setter Target="TBLusername.FontSize" Value="16"/>
+                        <Setter Target="TBusername.FontSize" Value="20"/>
+                        <Setter Target="TBLdatumrodjenja.FontSize" Value="16"/>
+                        <Setter Target="TBdatumrodjenja.FontSize" Value="20"/>
+                        <Setter Target="TBLimeiprezime.FontSize" Value="16"/>
+                        <Setter Target="TBimeiprezime.FontSize" Value="20"/>
+                        <Setter Target="Logout.FontSize" Value="20"/>
+                        <Setter Target="buttonkamera.FontSize" Value="20"/>
+                        <Setter Target="buttonkamera.Content" Value="Otvori kameru"/>
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1500"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="TBLupisipodatke.FontSize" Value="45"/>
+                        <Setter Target="TBLusername.FontSize" Value="32"/>
+                        <Setter Target="TBusername.FontSize" Value="32"/>
+                        <Setter Target="TBLdatumrodjenja.FontSize" Value="32"/>
+                        <Setter Target="TBdatumrodjenja.FontSize" Value="32"/>
+                        <Setter Target="TBLimeiprezime.FontSize" Value="32"/>
+                        <Setter Target="TBimeiprezime.FontSize" Value="32"/>
+                        <Setter Target="Logout.FontSize" Value="32"/>
+                        <Setter Target="buttonkamera.FontSize" Value="32"/>
+                        <Setter Target="buttonkamera.Content" Value="Otvori kameru"/>
+                    </VisualState.Setters>
+                </VisualState>
+
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.4*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0.4"/>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0.1*"/>
+
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+
+
+
+        <TextBlock x:Name="TBLupisipodatke" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="0,0,0,0" VerticalAlignment="Center" TextWrapping="Wrap" Text="Dobrodošli" FontSize="45" d:LayoutOverrides="VerticalAlignment, TopPosition, BottomPosition"/>
+
+
+        <Button x:Name="buttonkamera"  Grid.Column="5"  Grid.Row="7"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="32" Margin="15,10,15,10" Command="{Binding Path=OtvoriKameruClick}" CommandParameter ="{Binding ElementName=slika}"/>
+
+
+
+        <TextBlock x:Name="TBLusername" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"   TextWrapping="Wrap" Text="Username" FontSize="32"  d:LayoutOverrides="HorizontalAlignment, LeftMargin, RightMargin, TopMargin, BottomMargin, TopPosition, BottomPosition" />
+        <TextBox x:Name="TBusername" Text="{Binding loginKorisnikUsername}" Grid.Row="3" Grid.Column="3" TextWrapping="Wrap" FontSize="32" Margin="15,0,15,0" d:LayoutOverrides="HorizontalAlignment, TopMargin, BottomMargin" IsReadOnly="True"/>
+
+        <TextBlock x:Name="TBLdatumrodjenja" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap" Text="Datum rođenja" FontSize="32"  d:LayoutOverrides="HorizontalAlignment, LeftMargin, RightMargin, TopMargin, BottomMargin, TopPosition, BottomPosition"/>
+        <TextBox x:Name="TBdatumrodjenja"  Text="{Binding loginKorisnikDatum}" Grid.Row="5" Grid.Column="3" FontSize="32" Margin="15,0,15,0" d:LayoutOverrides="HorizontalAlignment, TopMargin, BottomMargin" IsReadOnly="True"/>
+
+        <TextBlock x:Name="TBLimeiprezime" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"    TextWrapping="Wrap" Text="Ime i prezime" FontSize="32"  d:LayoutOverrides="HorizontalAlignment, LeftMargin, RightMargin, TopMargin, BottomMargin, TopPosition, BottomPosition"/>
+        <TextBox x:Name="TBimeiprezime" Text="{Binding loginKorisnikImePrezime}" Grid.Row="7" Grid.Column="3" TextWrapping="Wrap" FontSize="32" Margin="15,0,15,0" d:LayoutOverrides="HorizontalAlignment, TopMargin, BottomMargin" IsReadOnly="True"/>
+
+
+
+        <Image x:Name="slika" Grid.Row="2" Grid.Column="5" Grid.RowSpan="4" Margin="10,10,10,10"  />
+        <Button x:Name="Logout" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Logout" FontSize="32" Margin="10,10,10,10" Command="{Binding LoginOtvori}" />
+
+
+
+
+
+    </Grid>
+</Page>
+    
