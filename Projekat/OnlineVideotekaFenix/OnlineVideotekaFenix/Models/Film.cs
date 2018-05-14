@@ -16,7 +16,7 @@ namespace OnlineVideotekaFenix.Models
     public class Film
     {
         private static int GLOBAL_ID = 0;
-        public int FilmID { get; set; }
+        public int FilmID { get; }
         public string NazivFilma { get; set; }
         public int GodinaFilma { get; set; }
         public string ZanrFilma { get; set; }
@@ -73,7 +73,8 @@ namespace OnlineVideotekaFenix.Models
                 using (DataWriter writer = new DataWriter(ms.GetOutputStreamAt(0)))
                 {
                     writer.WriteBytes(buffer);
-                    await writer.StoreAsync();
+                    
+             writer.StoreAsync();
                 }
 
                 var image = new BitmapImage();

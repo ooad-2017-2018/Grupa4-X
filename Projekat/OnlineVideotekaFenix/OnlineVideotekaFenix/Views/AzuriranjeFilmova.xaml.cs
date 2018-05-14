@@ -25,9 +25,14 @@ namespace OnlineVideotekaFenix.Views
     /// </summary>
     public sealed partial class AzuriranjeFilmova : Page
     {
-        
+        List<Film> filmoviList;
+        bool filmOK = false;
+        List<Korisnik> korisniciList;
+        bool profilOK = false;
+
         public AzuriranjeFilmova()
         {
+            filmoviList = new List<Film>();
             this.InitializeComponent();
             var currentView = SystemNavigationManager.GetForCurrentView();
             currentView.AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
@@ -48,6 +53,41 @@ namespace OnlineVideotekaFenix.Views
                 e.Handled = true;
             }
         }
+        private void filmTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!filmOK)
+            {
+                filmoviList = ((List<Film>)(FilmoviListView.ItemsSource));
+                filmOK = true;
+            }
+            string textBoxNaziv = pretragaFilmaTextBox.Text.ToLower();
+            FilmoviListView.ItemsSource = null;
+            FilmoviListView.Items.Clear();
+            foreach (Film f in filmoviList)
+            {
+                string nazivFilmaTemp = f.NazivFilma.ToLower();
+                if (nazivFilmaTemp.Contains(textBoxNaziv))
+                    FilmoviListView.Items.Add(f);
+            }
+        }
+        private void profilTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!profilOK)
+            {
+                korisniciList = ((List<Korisnik>)(KorisniciListView.ItemsSource));
+                profilOK = true;
+            }
+            string textBoxUsername = pretragaProfilaTextBox.Text.ToLower();
+            KorisniciListView.ItemsSource = null;
+            KorisniciListView.Items.Clear();
+            foreach (Korisnik k in korisniciList)
+            {
+                string username = k.Username.ToLower();
+                if (username.Contains(textBoxUsername))
+                    FilmoviListView.Items.Add(k);
+            }
+        }
+
 
     }
 }
