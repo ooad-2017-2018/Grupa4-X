@@ -9,7 +9,6 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
         <Grid x:Name="glavniGrid">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -17,29 +16,26 @@
                 <RowDefinition Height="0.25*"/>
             </Grid.RowDefinitions>
             <Grid  x:Name="loginGrid" Grid.Row="1">
-
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="1.5*"/>
                 </Grid.RowDefinitions>
                 <HyperlinkButton Command="{Binding Path=RegistracijaOtvori}" Content="Registracija" HorizontalAlignment="Stretch" Margin="20,10,20,0" Grid.Row="1" VerticalAlignment="Center" />
-
-
                 <Grid x:Name="gridButoni" Grid.Row="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Command="{Binding Path=LoginClick}"  Content="Prijava"  HorizontalAlignment="Stretch" Margin="20,10,20,10" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" />
-                    <Button Command="{Binding Path=IzlazClick}" Content="Izlaz" HorizontalAlignment="Stretch" Margin="20,10,20,10" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" />
+                    <Button x:Name="buttonPrijava" Command="{Binding Path=LoginClick}"  Content="Prijava"  HorizontalAlignment="Center"  Width="200" Margin="20,10,20,10" Grid.Column="0" Grid.Row="0"  VerticalAlignment="Center" />
+                    <Button x:Name="buttonIzlaz" Command="{Binding Path=IzlazClick}" Content="Izlaz" HorizontalAlignment="Center" Width="200" Margin="20,10,20,10" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" />
                 </Grid>
 
-                <KorisnickeKontrole:LoginTextBox x:Name="Cumez" HorizontalAlignment="Stretch" Margin="0" Grid.Row ="0" VerticalAlignment="Center"/>
+                <KorisnickeKontrole:LoginTextBox x:Name="Cumez" HorizontalAlignment="Stretch" MaxWidth="1000" Margin="0" Grid.Row ="0" VerticalAlignment="Bottom"/>
 
             </Grid>
         </Grid>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" >
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,20,0,20">
             <Image HorizontalAlignment="Center" x:Name="logo" Source="ms-appx:///Assets/novi_logo_100x100.png" Width="50" Height="50"/>
             <TextBlock HorizontalAlignment="Center" Margin="20" Text="Online Videoteka Fenix" VerticalAlignment="Center" FontSize="20" Foreground="Black" />
         </StackPanel>
