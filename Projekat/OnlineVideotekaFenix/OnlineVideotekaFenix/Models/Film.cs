@@ -9,6 +9,7 @@ using Windows.UI.Xaml.Data;
 
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.Storage.Streams;
+using System.ComponentModel;
 
 namespace OnlineVideotekaFenix.Models
 {

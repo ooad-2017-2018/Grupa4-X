@@ -21,17 +21,17 @@ using System.Security;
 using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
 using Windows.UI.Popups;
-
+using System.ComponentModel;
 
 namespace OnlineVideotekaFenix.ViewModels
 {
-    public class MainPageViewModel
+    public class MainPageViewModel: INotifyPropertyChanged
     {
         #region Validacija readonly atributi
         private readonly string[] validatePropertiesLogin = { "Username", "Lozinka" };
         private readonly string[] validatePropertiesRegistracija = { "Username", "Lozinka", "DatumRodjenja", "ImePrezime" };
-        private readonly string[] validatePropertiesAzuriranjeFilmova = { "NazivFilma", "Godina", "Zanr", "Reziser", "Glumci", "VrijemeTrajanja", "Cijena", "Sinopsis", "Poster" };        
-       
+        private readonly string[] validatePropertiesAzuriranjeFilmova = { "NazivFilma", "Godina", "Zanr", "Reziser", "Glumci", "VrijemeTrajanja", "Cijena", "Sinopsis", "Poster" };
+
 
         #endregion
 
@@ -48,6 +48,8 @@ namespace OnlineVideotekaFenix.ViewModels
         public ICommand BrisanjeFilmovaSearch { get; set; }
         public ICommand BrisanjeKorisnikaSearch { get; set; }
         public ICommand AzuriranjeFilmovaLogout { get; set; }
+        public ICommand BrisanjeFilmova { get; set; }
+        public ICommand BrisanjeKorisnika { get; set; }
 
 
 
@@ -61,8 +63,6 @@ namespace OnlineVideotekaFenix.ViewModels
         #endregion
 
         #region Atributi
-        public List<Film> RezultatiPretrageFilmova { get; set; }
-        public List<Korisnik> RezultatiPretrageKorisnika { get; set; }
 
 
         public Videoteka Videoteka { get; set; }
@@ -84,6 +84,9 @@ namespace OnlineVideotekaFenix.ViewModels
         public string AzuriranjeFilmovaSinopsis { get; set; }
         public BitmapImage AzuriranjeFilmovaPoster { get; set; }
 
+        public List<Film> PretragaFilmovaList { get; set; }
+        public Film TempFilm {get;set;}
+        public string AzuriranjeFilmovaPretragaFilma { get; set; }
         #endregion
 
         #region Konstruktori
@@ -96,11 +99,17 @@ namespace OnlineVideotekaFenix.ViewModels
             Videoteka.ListaFilmova.Add(new Film("Mad Max: Fury Road", 2015, "Akcija, Avantura, Sci-Fi", "George Miller",
                 "Tom Hardy, Charlize Theron, Nicholas Hoult", 120, 10,
                 "A woman rebels against a tyrannical ruler in postapocalyptic Australia in search for her home-land with the help of a group of female prisoners, a psychotic worshipper, and a drifter named Max.", "ms-appx:///Assets/novi_logo_100x100.png"));
+            Videoteka.ListaFilmova.Add(new Film("Avengers: Infinity War", 2018, "Akcija, Avantura, Fantasy", "Anthony Russo, Joe Russo",
+                 " Robert Downey Jr., Chris Hemsworth, Mark Ruffalo", 120, 10,
+                 "The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos before his blitz of devastation and ruin puts an end to the universe.", "ms-appx:///Assets/novi_logo_100x100.png"));
 
             #region Otvaranje viewa
             RegistracijaOtvori = new RelayCommand<Object>(RegistracijaOtvoriNew, potvrdi);
             LoginOtvori = new RelayCommand<Object>(LoginKorisnikaOtvori, potvrdi);
             AzuriranjeFilmovaClick = new RelayCommand<Object>(AzuriranjeFilmovaOtvori, potvrdi);
+
+            PretragaFilmovaList = new List<Film>();
+            TempFilm = new Film();
             #endregion
 
             #region Izlaz
@@ -130,6 +139,10 @@ namespace OnlineVideotekaFenix.ViewModels
 
             #region Brisanje korisnika buttoni
             BrisanjeKorisnikaSearch = new RelayCommand<Object>(BrisanjeKorisnikaPretraga, potvrdi);
+            #endregion
+
+            #region
+            BrisanjeFilmova = new RelayCommand<Object>(ObrisiFilm, potvrdi);
             #endregion
 
         }
@@ -309,7 +322,11 @@ namespace OnlineVideotekaFenix.ViewModels
             AzuriranjeFilmovaSinopsis = "";
         }
 
-
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnNotifyPropertyChanged([CallerMemberName] string memberName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(memberName));
+        }
 
 
         #endregion
@@ -317,12 +334,32 @@ namespace OnlineVideotekaFenix.ViewModels
         #region Brisanje filmova buttoni
         public void BrisanjeFilmovaPretraga(Object o)
         {
-            foreach (Film f in Videoteka.ListaFilmova)
+           foreach (Film f in Videoteka.ListaFilmova)
             {
-                if (AzuriranjeFilmovaNazivFilma.Equals(f.NazivFilma))
-                    RezultatiPretrageFilmova.Add(f);
+                if (AzuriranjeFilmovaPretragaFilma.Equals(f.NazivFilma))
+                {
+                    PretragaFilmovaList.Add(f);
+                    TempFilm = f;
+                }
             }
 
+        }
+        #endregion
+
+        #region Brisanje filmova buttoni
+        
+        public void ObrisiFilm(Object o)
+        {
+            Film f = new Film();
+            for (int i = 0; i < Videoteka.ListaFilmova.Count(); i++)
+            {
+                if (f.NazivFilma == AzuriranjeFilmovaPretragaFilma)
+                {
+                    Videoteka.ListaFilmova.RemoveAt(i);
+                    AzuriranjeFilmovaPretragaFilma = "";
+                    break;
+                }
+            }
         }
         #endregion
 

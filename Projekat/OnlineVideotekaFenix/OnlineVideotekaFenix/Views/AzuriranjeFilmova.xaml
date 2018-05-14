@@ -90,21 +90,27 @@
                 </Grid>
             </PivotItem>
 
-            <PivotItem x:Name="obrisiFilmPivot" Header="Obriši film" FontSize="10">
-                <RelativePanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                    <SearchBox x:Name="searchBox1" FocusOnKeyboardInput="True" Height="35" Width="200" PlaceholderText="Pretraga filma" Margin="0,10,0,0"
-                           VerticalAlignment="Top" HorizontalAlignment="Stretch" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
-                    <ListBox x:Name="listBox1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" RelativePanel.Below="searchBox1"
-                             RelativePanel.AlignHorizontalCenterWithPanel="True" 
-                             RelativePanel.AlignLeftWithPanel="True"
-                             RelativePanel.AlignRightWithPanel="True"
-                             RelativePanel.AlignVerticalCenterWithPanel="True"
-                             RelativePanel.AlignBottomWithPanel="True"
-                             Margin="10,10,10,50"/>
-                    <Button x:Name="obrisiFilmButton" Content="Obriši" Height="32" Width="120" RelativePanel.AlignBottomWithPanel="True"
-                            Margin="10" RelativePanel.AlignHorizontalCenterWithPanel="True"
-                            HorizontalAlignment="Center"/>
-                </RelativePanel>
+            <PivotItem x:Name="obrisiFilmPivot" Header="Obriši film">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="pretragaFilmaTextBox" Grid.Column="0" PlaceholderText="Naziv filma" HorizontalAlignment="Stretch" Margin="10,0,10,0" TextWrapping="Wrap" VerticalAlignment="Center" 
+                             Text="{Binding Path = AzuriranjeFilmovaPretragaFilma, Mode=TwoWay}"/>
+                        <Button Command ="{Binding Path = BrisanjeFilmovaSearch}"  Grid.Column="1" Content="Pretraga" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Button Command ="{Binding Path = BrisanjeFilmova}" Grid.Row="2" Content="Obriši film" HorizontalAlignment="Center" Margin="10" VerticalAlignment="Top"/>
+                    <ListView Name="FilmoviListView" Grid.Row="1" Grid.ColumnSpan="1" Grid.Column="0" HorizontalAlignment="Stretch" Width="100" MinHeight="100" Height="Auto" VerticalAlignment="Stretch" 
+                              ItemsSource="{Binding PretragaFilmovaList}" SelectedItem="{Binding TempFilm, Mode=TwoWay}" DisplayMemberPath="NazivFilma"/>
+
+                </Grid>
             </PivotItem>
             <PivotItem x:Name="obrisiProfilPivot" Header="Obriši profil" FontSize="10">
                 <RelativePanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
