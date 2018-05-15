@@ -36,12 +36,12 @@ namespace OnlineVideotekaFenix.ViewModels
         #endregion
 
         #region Baza podataka
-
+        
         
         IMobileServiceTable<Administrator> administratorTabela = App.MobileService.GetTable<Administrator>();
         IMobileServiceTable<Film> filmTabela = App.MobileService.GetTable<Film>();
         IMobileServiceTable<Korisnik> korisnikTabela = App.MobileService.GetTable<Korisnik>();
-
+        
         #endregion
 
         #region Icommands
@@ -351,38 +351,44 @@ namespace OnlineVideotekaFenix.ViewModels
         #region Brisanje filmova
         public async void ObrisiFilm(Object o)
         {
-            for (int i = 0; i < Videoteka.ListaFilmova.Count(); i++)
-            {
-                if (Videoteka.ListaFilmova.ElementAt(i).NazivFilma.Equals(TempFilm.NazivFilma))
+            if (TempFilm == null)
+                await (new MessageDialog("Niste odabrali film za brisanje")).ShowAsync();
+            else
+                for (int i = 0; i < Videoteka.ListaFilmova.Count(); i++)
                 {
-                    Film film = Videoteka.ListaFilmova.ElementAt(i);
-                    Videoteka.ListaFilmova.RemoveAt(i);
-                    await(new MessageDialog("Uspješno ste obrisali film")).ShowAsync();
-                    await filmTabela.DeleteAsync(film);
-                    AzuriranjeFilmovaOtvori(o);
-                    OcistiAzuriranjeBrisanjeFilma();
-                    break;
+                    if (Videoteka.ListaFilmova.ElementAt(i).NazivFilma.Equals(TempFilm.NazivFilma))
+                    {
+                        Film film = Videoteka.ListaFilmova.ElementAt(i);
+                        Videoteka.ListaFilmova.RemoveAt(i);
+                        await (new MessageDialog("Uspješno ste obrisali film")).ShowAsync();
+                        await filmTabela.DeleteAsync(film);
+                        AzuriranjeFilmovaOtvori(o);
+                        OcistiAzuriranjeBrisanjeFilma();
+                        break;
+                    }
                 }
-            }
         }
         #endregion
 
         #region Brisanje korisnika 
         public async void ObrisiKorisnika(Object o)
         {
-            for (int i = 0; i < Videoteka.ListaKorisnika.Count(); i++)
-            {
-                if (Videoteka.ListaKorisnika.ElementAt(i).Username.Equals(TempProfil.Username))
+            if (TempProfil == null)
+                await (new MessageDialog("Niste odabrali profil za brisanje")).ShowAsync();
+            else
+                for (int i = 0; i < Videoteka.ListaKorisnika.Count(); i++)
                 {
-                    Korisnik korisnik = Videoteka.ListaKorisnika.ElementAt(i);
-                    Videoteka.ListaKorisnika.RemoveAt(i);
-                    await(new MessageDialog("Uspješno ste obrisali profil")).ShowAsync();
-                    await korisnikTabela.DeleteAsync(korisnik);
-                    AzuriranjeFilmovaOtvori(o);
-                    OcistiAzuriranjeBrisanjeProfila();
-                    break;
+                    if (Videoteka.ListaKorisnika.ElementAt(i).Username.Equals(TempProfil.Username))
+                    {
+                        Korisnik korisnik = Videoteka.ListaKorisnika.ElementAt(i);
+                        Videoteka.ListaKorisnika.RemoveAt(i);
+                        await(new MessageDialog("Uspješno ste obrisali profil")).ShowAsync();
+                        await korisnikTabela.DeleteAsync(korisnik);
+                        AzuriranjeFilmovaOtvori(o);
+                        OcistiAzuriranjeBrisanjeProfila();
+                        break;
+                    }
                 }
-            }
         }
 
         #endregion
