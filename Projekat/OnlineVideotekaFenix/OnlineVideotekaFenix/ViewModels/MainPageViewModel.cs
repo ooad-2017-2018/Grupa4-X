@@ -37,11 +37,11 @@ namespace OnlineVideotekaFenix.ViewModels
 
         #region Baza podataka
         
-        
+        /*
         IMobileServiceTable<Administrator> administratorTabela = App.MobileService.GetTable<Administrator>();
         IMobileServiceTable<Film> filmTabela = App.MobileService.GetTable<Film>();
         IMobileServiceTable<Korisnik> korisnikTabela = App.MobileService.GetTable<Korisnik>();
-        
+        */
         #endregion
 
         #region Icommands
@@ -96,8 +96,8 @@ namespace OnlineVideotekaFenix.ViewModels
         public MainPageViewModel()
         {
             
-            
-            /*Videoteka.ListaAdministratora.Add(new Administrator( "Goba", "DRVOPROMET"));
+            /*KAD BAZA PRORADI BRISE SE 100-111*/
+            Videoteka.ListaAdministratora.Add(new Administrator( "Goba", "DRVOPROMET"));
             Videoteka.ListaAdministratora.Add(new Administrator("amra", "1234"));
             Videoteka.ListaKorisnika.Add(new Korisnik("Adnan Gobeljic", DateTime.Now, DateTime.Now, "Ado", "MERCATOR"));
             Videoteka.ListaKorisnika.Add(new Korisnik("Mujo Hadžić", DateTime.Now, DateTime.Now, "jomu", "jomu123"));
@@ -106,12 +106,12 @@ namespace OnlineVideotekaFenix.ViewModels
                 "A woman rebels against a tyrannical ruler in postapocalyptic Australia in search for her home-land with the help of a group of female prisoners, a psychotic worshipper, and a drifter named Max.", "ms-appx:///Assets/novi_logo_100x100.png"));
             Videoteka.ListaFilmova.Add(new Film("Avengers: Infinity War", 2018, "Akcija, Avantura, Fantasy", "Anthony Russo, Joe Russo",
                  " Robert Downey Jr., Chris Hemsworth, Mark Ruffalo", 120, 10,
-                 "The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos before his blitz of devastation and ruin puts an end to the universe.", "ms-appx:///Assets/novi_logo_100x100.png"));*/
+                 "The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos before his blitz of devastation and ruin puts an end to the universe.", "ms-appx:///Assets/novi_logo_100x100.png"));
 
 
-            /*
+            
             PretragaFilmovaList = Videoteka.ListaFilmova;
-            PretragaKorisnikaList = Videoteka.ListaKorisnika;---------------------------------------------------*/
+            PretragaKorisnikaList = Videoteka.ListaKorisnika;
 
 
             #region Otvaranje viewa
@@ -212,7 +212,7 @@ namespace OnlineVideotekaFenix.ViewModels
                            out datum);
             Korisnik korisnik = new Korisnik(RegistracijaImePrezime, datum, DateTime.Now, RegistracijaUsername, RegistracijaPassword);
             Videoteka.ListaKorisnika.Add(korisnik);
-            await korisnikTabela.InsertAsync(korisnik);
+            /*await korisnikTabela.InsertAsync(korisnik);*/
             await (new MessageDialog("Uspješna registracija!")).ShowAsync();
             LoginKorisnikaOtvori(o);
             OcistiRegistracija();
@@ -249,7 +249,7 @@ namespace OnlineVideotekaFenix.ViewModels
         {
             if (!isValidLogin())
                 return;
-            Videoteka.ListaAdministratora = (List<Administrator>)from a in administratorTabela where a.Username != "" select a;
+            /*Videoteka.ListaAdministratora = (List<Administrator>)from a in administratorTabela where a.Username != "" select a;*/
             foreach (Administrator administrator in Videoteka.ListaAdministratora)
             {
                 if (administrator.Username.Equals(LoginUsername) && administrator.Lozinka.Equals(LoginPassword))
@@ -262,7 +262,7 @@ namespace OnlineVideotekaFenix.ViewModels
                     return;
                 }
             }
-            Videoteka.ListaKorisnika = (List<Korisnik>)from a in korisnikTabela where a.Username != "" select a;
+            /*Videoteka.ListaKorisnika = (List<Korisnik>)from a in korisnikTabela where a.Username != "" select a;*/
             foreach (Korisnik korisnik in Videoteka.ListaKorisnika)
              {
                 if (korisnik.Username.Equals(LoginUsername) && korisnik.Lozinka.Equals(LoginPassword))
@@ -322,7 +322,7 @@ namespace OnlineVideotekaFenix.ViewModels
             Film film = new Film(AzuriranjeFilmovaNazivFilma, godinaFilma, AzuriranjeFilmovaZanrFilma, AzuriranjeFilmovaReziser, AzuriranjeFilmovaGlumci, vrijemeTrajanja, cijenaFilma, AzuriranjeFilmovaSinopsis, AzuriranjeFilmovaPoster);
             Videoteka.ListaFilmova.Add(film);
             await (new MessageDialog("Uspješno ste dodali film")).ShowAsync();
-            await filmTabela.InsertAsync(film);
+            /*await filmTabela.InsertAsync(film);*/
             AzuriranjeFilmovaOtvori(poster);
             OcistiAzuriranjeFilmova();
         }
@@ -361,7 +361,7 @@ namespace OnlineVideotekaFenix.ViewModels
                         Film film = Videoteka.ListaFilmova.ElementAt(i);
                         Videoteka.ListaFilmova.RemoveAt(i);
                         await (new MessageDialog("Uspješno ste obrisali film")).ShowAsync();
-                        await filmTabela.DeleteAsync(film);
+                        /*await filmTabela.DeleteAsync(film);*/
                         AzuriranjeFilmovaOtvori(o);
                         OcistiAzuriranjeBrisanjeFilma();
                         break;
@@ -383,7 +383,7 @@ namespace OnlineVideotekaFenix.ViewModels
                         Korisnik korisnik = Videoteka.ListaKorisnika.ElementAt(i);
                         Videoteka.ListaKorisnika.RemoveAt(i);
                         await(new MessageDialog("Uspješno ste obrisali profil")).ShowAsync();
-                        await korisnikTabela.DeleteAsync(korisnik);
+                        /*await korisnikTabela.DeleteAsync(korisnik);*/
                         AzuriranjeFilmovaOtvori(o);
                         OcistiAzuriranjeBrisanjeProfila();
                         break;
