@@ -9,6 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>OnlineVideotekaFenix</RootNamespace>
     <AssemblyName>OnlineVideotekaFenix</AssemblyName>
+    <NoStdLib>True</NoStdLib>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
@@ -96,6 +97,8 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helper\RelayCommand.cs" />
+    <Compile Include="Models\DB\FilmDB.cs" />
+    <Compile Include="Models\DB\KorisnikDB.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="Views\KorisnickeKontrole\LoginTextBox.xaml.cs">
       <DependentUpon>LoginTextBox.xaml</DependentUpon>
@@ -177,7 +180,6 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

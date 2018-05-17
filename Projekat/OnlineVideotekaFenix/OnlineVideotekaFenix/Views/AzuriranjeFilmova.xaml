@@ -4,6 +4,7 @@
     xmlns:local="using:OnlineVideotekaFenix.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
     xmlns:KorisnickeKontrole="using:OnlineVideotekaFenix.Views.KorisnickeKontrole"
     x:Class="OnlineVideotekaFenix.Views.AzuriranjeFilmova"
     mc:Ignorable="d">
@@ -97,10 +98,12 @@
                         <RowDefinition Height="2*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <TextBox TextChanged="filmTextChanged" x:Name="pretragaFilmaTextBox" Grid.Column="0" PlaceholderText="Naziv filma" HorizontalAlignment="Stretch" Margin="10,0,10,0" TextWrapping="Wrap" VerticalAlignment="Center" />
+                    <TextBox TextChanged="filmTextChanged" x:Name="pretragaFilmaTextBox" Grid.Column="0" PlaceholderText="Naziv filma" HorizontalAlignment="Stretch" Margin="10,0,10,0" TextWrapping="Wrap" VerticalAlignment="Center" >
+                        
+                    </TextBox>
                     <Button Command ="{Binding Path = BrisanjeFilmova}" Grid.Row="2" Content="Obriši film" HorizontalAlignment="Center" Margin="10" VerticalAlignment="Top"/>
                     <ListView Name="FilmoviListView" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" 
-                              ItemsSource="{Binding PretragaFilmovaList}" SelectedItem="{Binding TempFilm, Mode=TwoWay}" DisplayMemberPath="NazivFilma"/>
+                              ItemsSource="{Binding videoteka.ListaFilmova}" SelectedItem="{Binding TempFilm, Mode=TwoWay}" DisplayMemberPath="NazivFilma"/>
                 </Grid>
             </PivotItem>
             <PivotItem x:Name="obrisiProfilPivot" Header="Obriši profil">
@@ -113,7 +116,7 @@
                     <TextBox TextChanged="profilTextChanged" x:Name="pretragaProfilaTextBox" Grid.Column="0" PlaceholderText="Korisničko ime" HorizontalAlignment="Stretch" Margin="10,0,10,0" TextWrapping="Wrap" VerticalAlignment="Center" />
                     <Button Command ="{Binding Path = BrisanjeKorisnika}" Grid.Row="2" Content="Obriši profil" HorizontalAlignment="Center" Margin="10" VerticalAlignment="Top"/>
                     <ListView Name="KorisniciListView" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" 
-                              ItemsSource="{Binding PretragaKorisnikaList}" SelectedItem="{Binding TempProfil, Mode=TwoWay}" DisplayMemberPath="Username"/>
+                              ItemsSource="{Binding videoteka.ListaKorisnika}" SelectedItem="{Binding TempProfil, Mode=TwoWay}" DisplayMemberPath="Username"/>
                 </Grid>
             </PivotItem>
         </Pivot>

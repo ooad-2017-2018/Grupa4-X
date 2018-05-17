@@ -7,6 +7,7 @@ using System.Windows.Input;
 using OnlineVideotekaFenix.Models;
 using OnlineVideotekaFenix.Views;
 using OnlineVideotekaFenix.Helper;
+using OnlineVideotekaFenix.Models.DB;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml;
 using Windows.Storage;
@@ -25,6 +26,11 @@ using System.ComponentModel;
 using System.Globalization;
 using Microsoft.WindowsAzure.MobileServices;
 
+/*
+ * 
+                        */
+
+
 namespace OnlineVideotekaFenix.ViewModels
 {
     public class MainPageViewModel
@@ -36,12 +42,12 @@ namespace OnlineVideotekaFenix.ViewModels
         #endregion
 
         #region Baza podataka
-        
-        /*
+
+        IMobileServiceTable<KorisnikDB> korisnikTabela = App.MobileService.GetTable<KorisnikDB>();        
         IMobileServiceTable<Administrator> administratorTabela = App.MobileService.GetTable<Administrator>();
-        IMobileServiceTable<Film> filmTabela = App.MobileService.GetTable<Film>();
-        IMobileServiceTable<Korisnik> korisnikTabela = App.MobileService.GetTable<Korisnik>();
-        */
+        IMobileServiceTable<FilmDB> filmTabela = App.MobileService.GetTable<FilmDB>();
+       
+        
         #endregion
 
         #region Icommands
@@ -61,12 +67,13 @@ namespace OnlineVideotekaFenix.ViewModels
         #endregion
 
         #region Atributi
+        static int Pocetak = 0;
         public Administrator loginAdmin { get; set; }
         public Korisnik loginKorisnik { get; set; }
         public string loginKorisnikImePrezime { get; set; }
         public string loginKorisnikUsername { get; set; }
         public string loginKorisnikDatum { get; set; }
-        public static Videoteka Videoteka = new Videoteka(); 
+        public Videoteka videoteka { get; set; } 
         public string LoginUsername { get; set; }
         public string LoginPassword { get; set; }
 
@@ -83,35 +90,25 @@ namespace OnlineVideotekaFenix.ViewModels
         public string AzuriranjeFilmovaVrijemeTrajanja { get; set; }
         public string AzuriranjeFilmovaCijena { get; set; }
         public string AzuriranjeFilmovaSinopsis { get; set; }
-        public BitmapImage AzuriranjeFilmovaPoster { get; set; }
-
-        public List<Korisnik> PretragaKorisnikaList { get; set; }
-        public List<Film> PretragaFilmovaList { get; set; }
+        public BitmapImage AzuriranjeFilmovaPoster { get; set; }     
         public Film TempFilm {get;set;}
         public Korisnik TempProfil { get; set; }
-        public string AzuriranjeFilmovaPretragaFilma { get; set; }
+        public string AzuriranjeFilmovaPretragaFilma { get; set; }        
+
         #endregion
 
         #region Konstruktori
         public MainPageViewModel()
         {
+            videoteka= new Videoteka();
+            if (Pocetak++==0)
+            {
+                InicijalizirajFilmove();
+                InicijalizirajKorisnike();
+                InicijalizirajAdministratore();                
+            }           
+         
             
-            /*KAD BAZA PRORADI BRISE SE 100-111*/
-            Videoteka.ListaAdministratora.Add(new Administrator( "Goba", "DRVOPROMET"));
-            Videoteka.ListaAdministratora.Add(new Administrator("amra", "1234"));
-            Videoteka.ListaKorisnika.Add(new Korisnik("Adnan Gobeljic", DateTime.Now, DateTime.Now, "Ado", "MERCATOR"));
-            Videoteka.ListaKorisnika.Add(new Korisnik("Mujo Hadžić", DateTime.Now, DateTime.Now, "jomu", "jomu123"));
-            Videoteka.ListaFilmova.Add(new Film("Mad Max: Fury Road", 2015, "Akcija, Avantura, Sci-Fi", "George Miller",
-                "Tom Hardy, Charlize Theron, Nicholas Hoult", 120, 10,
-                "A woman rebels against a tyrannical ruler in postapocalyptic Australia in search for her home-land with the help of a group of female prisoners, a psychotic worshipper, and a drifter named Max.", "ms-appx:///Assets/novi_logo_100x100.png"));
-            Videoteka.ListaFilmova.Add(new Film("Avengers: Infinity War", 2018, "Akcija, Avantura, Fantasy", "Anthony Russo, Joe Russo",
-                 " Robert Downey Jr., Chris Hemsworth, Mark Ruffalo", 120, 10,
-                 "The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos before his blitz of devastation and ruin puts an end to the universe.", "ms-appx:///Assets/novi_logo_100x100.png"));
-
-
-            
-            PretragaFilmovaList = Videoteka.ListaFilmova;
-            PretragaKorisnikaList = Videoteka.ListaKorisnika;
 
 
             #region Otvaranje viewa
@@ -154,6 +151,44 @@ namespace OnlineVideotekaFenix.ViewModels
         #endregion
 
         #region Funkcije
+
+        #region Inicijalizacija
+
+        public async void InicijalizirajFilmove()
+        {
+            var films = await (from a in filmTabela select a).ToListAsync();            
+            foreach (FilmDB film in films)
+            {
+                videoteka.ListaFilmova.Add(new Film(film));
+            }
+
+        }
+        public async void InicijalizirajKorisnike()
+        {
+            var users = await (from a in korisnikTabela select a).ToListAsync();
+            foreach (KorisnikDB user in users)
+            {
+                videoteka.ListaKorisnika.Add(new Korisnik(user));
+            }            
+        }
+
+        public async void InicijalizirajAdministratore()
+        {
+            var administrators = await (from a in administratorTabela select a).ToListAsync();
+            if(administrators.Count==0)
+            {
+                await administratorTabela.InsertAsync(new Administrator("Goba", "DRVOPROMET",null));
+                await administratorTabela.InsertAsync(new Administrator("amra", "1234", null));
+            }
+            var admins = await (from a in administratorTabela select a).ToListAsync();
+            foreach (var admin in admins)
+            {
+                videoteka.ListaAdministratora.Add(admin);
+            }            
+        }
+
+
+        #endregion
         #region Potvrde
 
         public bool potvrdi(Object o)
@@ -211,11 +246,35 @@ namespace OnlineVideotekaFenix.ViewModels
                            DateTimeStyles.None,
                            out datum);
             Korisnik korisnik = new Korisnik(RegistracijaImePrezime, datum, DateTime.Now, RegistracijaUsername, RegistracijaPassword);
-            Videoteka.ListaKorisnika.Add(korisnik);
-            /*await korisnikTabela.InsertAsync(korisnik);*/
-            await (new MessageDialog("Uspješna registracija!")).ShowAsync();
-            LoginKorisnikaOtvori(o);
-            OcistiRegistracija();
+            bool exists = false;
+            foreach (Korisnik user in videoteka.ListaKorisnika)
+            {
+                if (user.Username == RegistracijaUsername)
+                {
+                    await (new MessageDialog("Username već postoji!")).ShowAsync();
+                    exists = true;
+                    break;
+                }
+            }
+            if(!exists)
+            foreach (Administrator administrator in videoteka.ListaAdministratora)
+            {
+                if (administrator.Username == RegistracijaUsername)
+                {
+                    await (new MessageDialog("Username već postoji!")).ShowAsync();
+                    exists = true;
+                        break;
+                }
+            }
+            if (!exists)
+            {
+                videoteka.ListaKorisnika.Add(korisnik);
+                KorisnikDB korisnikDB = new KorisnikDB(korisnik);
+                await korisnikTabela.InsertAsync(korisnikDB);
+                await (new MessageDialog("Uspješna registracija!")).ShowAsync();
+                LoginKorisnikaOtvori(o);
+                OcistiRegistracija();
+            }
         }
 
         public async void OtvoriKameru(Object o)
@@ -249,34 +308,30 @@ namespace OnlineVideotekaFenix.ViewModels
         {
             if (!isValidLogin())
                 return;
-            /*Videoteka.ListaAdministratora = (List<Administrator>)from a in administratorTabela where a.Username != "" select a;*/
-            foreach (Administrator administrator in Videoteka.ListaAdministratora)
+
+            foreach(Administrator administrator in videoteka.ListaAdministratora)
             {
-                if (administrator.Username.Equals(LoginUsername) && administrator.Lozinka.Equals(LoginPassword))
+                if(administrator.Username==LoginUsername && administrator.Lozinka==LoginPassword)
                 {
                     await (new MessageDialog("Uspješan login administratora")).ShowAsync();
                     loginAdmin = administrator;
                     AzuriranjeFilmovaOtvori(o);
-                    
-                    
                     return;
                 }
             }
-            /*Videoteka.ListaKorisnika = (List<Korisnik>)from a in korisnikTabela where a.Username != "" select a;*/
-            foreach (Korisnik korisnik in Videoteka.ListaKorisnika)
-             {
-                if (korisnik.Username.Equals(LoginUsername) && korisnik.Lozinka.Equals(LoginPassword))
+            foreach(Korisnik korisnik in videoteka.ListaKorisnika)
+            {
+                if (korisnik.Username == LoginUsername && korisnik.Lozinka == LoginPassword)
                 {
                     await (new MessageDialog("Uspješan login korisnika")).ShowAsync();
                     loginKorisnik = korisnik;
-                    loginKorisnikDatum = korisnik.DatumRodjenja.ToString("dd.MM.yyyy");
-                    loginKorisnikImePrezime = korisnik.ImePrezime.ToString();
-                    loginKorisnikUsername = korisnik.Username.ToString();
+                    loginKorisnikDatum = loginKorisnik.DatumRodjenja.ToString("dd.MM.yyyy");
+                    loginKorisnikImePrezime = loginKorisnik.ImePrezime.ToString();
+                    loginKorisnikUsername = loginKorisnik.Username.ToString();
                     KorisnikHomePageOtvori(o);
-
-                    return;
-                }     
-             }
+                }
+            }           
+            
             await (new MessageDialog("Neispravan unos")).ShowAsync();
         }
         public void OcistiLogin()
@@ -320,11 +375,31 @@ namespace OnlineVideotekaFenix.ViewModels
             Int32.TryParse(AzuriranjeFilmovaVrijemeTrajanja, out vrijemeTrajanja);
             double.TryParse(AzuriranjeFilmovaCijena, out cijenaFilma);
             Film film = new Film(AzuriranjeFilmovaNazivFilma, godinaFilma, AzuriranjeFilmovaZanrFilma, AzuriranjeFilmovaReziser, AzuriranjeFilmovaGlumci, vrijemeTrajanja, cijenaFilma, AzuriranjeFilmovaSinopsis, AzuriranjeFilmovaPoster);
-            Videoteka.ListaFilmova.Add(film);
-            await (new MessageDialog("Uspješno ste dodali film")).ShowAsync();
-            /*await filmTabela.InsertAsync(film);*/
-            AzuriranjeFilmovaOtvori(poster);
-            OcistiAzuriranjeFilmova();
+            bool exists = false;
+            foreach(Film movie in videoteka.ListaFilmova)
+            {
+                if(movie.NazivFilma==AzuriranjeFilmovaNazivFilma && movie.GodinaFilma.ToString()==godinaFilma.ToString())
+                {
+                    exists = true;
+                    break;
+                }
+            }
+            if (!exists)
+            {
+                videoteka.ListaFilmova.Add(film);
+                FilmDB filmDB = new FilmDB(film);
+
+                try
+                {
+                    await filmTabela.InsertAsync(filmDB);
+                    await (new MessageDialog("Uspješno ste dodali film")).ShowAsync();
+                }
+                catch (Exception e) { await (new MessageDialog("Nije se povezalo dobro")).ShowAsync(); }
+                AzuriranjeFilmovaOtvori(poster);
+                OcistiAzuriranjeFilmova();
+            }
+            else
+                await (new MessageDialog("Film vec postoji")).ShowAsync();
         }
 
         public void AzuriranjeFilmovaLogoutClick(Object o)
@@ -351,22 +426,52 @@ namespace OnlineVideotekaFenix.ViewModels
         #region Brisanje filmova
         public async void ObrisiFilm(Object o)
         {
+
             if (TempFilm == null)
                 await (new MessageDialog("Niste odabrali film za brisanje")).ShowAsync();
             else
-                for (int i = 0; i < Videoteka.ListaFilmova.Count(); i++)
+            {
+                var films = await (from a in filmTabela where a.NazivFilma==TempFilm.NazivFilma select a).ToListAsync();
+                if(films.Count==1)
+                {
+                    foreach(Film film in videoteka.ListaFilmova)
+                    {
+                        if (film.NazivFilma==TempFilm.NazivFilma)
+                        {
+                            videoteka.ListaFilmova.Remove(film);
+                            break;
+                        }
+                    }
+
+                    await (new MessageDialog("Uspješno ste obrisali film")).ShowAsync();
+                    await filmTabela.DeleteAsync(films[0]);
+                    AzuriranjeFilmovaOtvori(o);
+                    OcistiAzuriranjeBrisanjeFilma();
+                    return;
+                }
+                else
+                    await (new MessageDialog("Greska pri povezivanju")).ShowAsync();
+
+
+
+
+
+
+                /*for (int i = 0; i < Videoteka.ListaFilmova.Count(); i++)
                 {
                     if (Videoteka.ListaFilmova.ElementAt(i).NazivFilma.Equals(TempFilm.NazivFilma))
                     {
                         Film film = Videoteka.ListaFilmova.ElementAt(i);
                         Videoteka.ListaFilmova.RemoveAt(i);
                         await (new MessageDialog("Uspješno ste obrisali film")).ShowAsync();
-                        /*await filmTabela.DeleteAsync(film);*/
+                        await filmTabela.DeleteAsync(film);
                         AzuriranjeFilmovaOtvori(o);
                         OcistiAzuriranjeBrisanjeFilma();
                         break;
+                        
                     }
-                }
+                }*/
+            }
         }
         #endregion
 
@@ -376,12 +481,12 @@ namespace OnlineVideotekaFenix.ViewModels
             if (TempProfil == null)
                 await (new MessageDialog("Niste odabrali profil za brisanje")).ShowAsync();
             else
-                for (int i = 0; i < Videoteka.ListaKorisnika.Count(); i++)
+                for (int i = 0; i < videoteka.ListaKorisnika.Count(); i++)
                 {
-                    if (Videoteka.ListaKorisnika.ElementAt(i).Username.Equals(TempProfil.Username))
+                    if (videoteka.ListaKorisnika.ElementAt(i).Username.Equals(TempProfil.Username))
                     {
-                        Korisnik korisnik = Videoteka.ListaKorisnika.ElementAt(i);
-                        Videoteka.ListaKorisnika.RemoveAt(i);
+                        Korisnik korisnik = videoteka.ListaKorisnika.ElementAt(i);
+                        videoteka.ListaKorisnika.RemoveAt(i);
                         await(new MessageDialog("Uspješno ste obrisali profil")).ShowAsync();
                         /*await korisnikTabela.DeleteAsync(korisnik);*/
                         AzuriranjeFilmovaOtvori(o);
@@ -468,6 +573,7 @@ namespace OnlineVideotekaFenix.ViewModels
                     return false;
                 }
             }
+
             return true;            
         }
 
@@ -735,28 +841,7 @@ namespace OnlineVideotekaFenix.ViewModels
         #endregion
 
         #region Pomocne funkcije
-        public SecureString toSecureString(string lozinka)
-        { 
-           var secure = new SecureString();
-           foreach (char c in lozinka)
-           {
-               secure.AppendChar(c);
-           }
-            return secure;
-        }
-        String SecureStringToString(SecureString value)
-        {
-            IntPtr valuePtr = IntPtr.Zero;
-            try
-            {
-                valuePtr = SecureStringMarshal.SecureStringToGlobalAllocUnicode(value);
-                return Marshal.PtrToStringUni(valuePtr);
-            }
-            finally
-            {
-                Marshal.ZeroFreeGlobalAllocUnicode(valuePtr);
-            }
-        }
+
         #endregion
         #endregion
     }

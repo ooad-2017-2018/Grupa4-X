@@ -1,8 +1,8 @@
 ﻿{
   "dependencies": {
+    "Expression.Blend.Sdk": "1.0.2",
     "Microsoft.Azure.Mobile.Client": "4.0.2",
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
-    "System.Security.SecureString": "4.3.0"
+    "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.4"
   },
   "frameworks": {
     "uap10.0": {}

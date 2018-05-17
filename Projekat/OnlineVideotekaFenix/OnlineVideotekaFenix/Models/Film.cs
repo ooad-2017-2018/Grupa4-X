@@ -10,12 +10,13 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.Storage.Streams;
 using System.ComponentModel;
+using OnlineVideotekaFenix.Models.DB;
 
 namespace OnlineVideotekaFenix.Models
 {
     public class Film
     {
-        private static int GLOBAL_ID = 0;
+        public static int GLOBAL_ID = 0;
         public int FilmID { get; }
         public string NazivFilma { get; set; }
         public int GodinaFilma { get; set; }
@@ -26,6 +27,10 @@ namespace OnlineVideotekaFenix.Models
         public double Cijena { get; set; }
         public BitmapImage Poster { get; set; }
         public string Sinopsis { get; set; }
+        public int BrojOcjena { get; set; }
+        public double ProsjekOcjena { get; set; }
+
+
 
         public Film(){}
 
@@ -41,6 +46,8 @@ namespace OnlineVideotekaFenix.Models
             Cijena = cijena;
             Poster = poster;
             Sinopsis = sinopsis;
+            BrojOcjena = 0;
+            ProsjekOcjena = 0;
         }
 
         public Film(string nazivFilma, int godinaFilma, string zanrFilma, string reziser, string glumci, int vrijemeTrajanja, double cijena, string sinopsis, string poster)
@@ -55,7 +62,26 @@ namespace OnlineVideotekaFenix.Models
             Cijena = cijena;
             GetImage(poster);            
             Sinopsis = sinopsis;
+            BrojOcjena = 0;
+            ProsjekOcjena = 0;
         }
+        public Film(FilmDB filmDB)
+        {
+            int ID;
+            Int32.TryParse(filmDB.id, out ID);
+            FilmID = ID;
+            NazivFilma = filmDB.NazivFilma;
+            GodinaFilma = filmDB.GodinaFilma;
+            ZanrFilma = filmDB.ZanrFilma;
+            Reziser = filmDB.Reziser;
+            Glumci = filmDB.Glumci;
+            VrijemeTrajanja = filmDB.VrijemeTrajanja;
+            Cijena = filmDB.Cijena;
+            Sinopsis = filmDB.Sinopsis;
+            BrojOcjena = filmDB.BrojOcjena;
+            ProsjekOcjena = filmDB.ProsjekOcjena;
+        }
+
 
         public /*async */void GetImage(string value)
         {

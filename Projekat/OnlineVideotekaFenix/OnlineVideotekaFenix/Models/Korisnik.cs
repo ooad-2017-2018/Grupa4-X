@@ -14,8 +14,8 @@ namespace OnlineVideotekaFenix.Models
         private string imePrezime;
         private DateTime datumRodjenja;
         private DateTime datumRegistracije;
-        private List<Film> mojiFilmovi;
-        private List<Film> listaZelja;
+        private List<int> mojiFilmovi;
+        private List<int> listaZelja;
         private string username;
         private string lozinka;
 
@@ -40,7 +40,7 @@ namespace OnlineVideotekaFenix.Models
             {
                 imePrezime = value;
             }
-        }        
+        }
 
         public DateTime DatumRodjenja
         {
@@ -68,7 +68,7 @@ namespace OnlineVideotekaFenix.Models
             }
         }
 
-        public List<Film> MojiFilmovi
+        public List<int> MojiFilmovi
         {
             get
             {
@@ -81,7 +81,7 @@ namespace OnlineVideotekaFenix.Models
             }
         }
 
-        public List<Film> ListaZelja
+        public List<int> ListaZelja
         {
             get
             {
@@ -121,13 +121,13 @@ namespace OnlineVideotekaFenix.Models
         }
 
         public Korisnik() { }
-        public Korisnik(string imePrezime, DateTime datumRodjenja, DateTime datumRegistracije, List<Film> mojiFilmovi, List<Film> listaZelja, string username, string lozinka)
+        public Korisnik(string imePrezime, DateTime datumRodjenja, DateTime datumRegistracije, List<int> mojiFilmovi, List<int> listaZelja, string username, string lozinka)
         {
             this.ImePrezime = imePrezime;
             this.DatumRodjenja = datumRodjenja;
             this.DatumRegistracije = datumRegistracije;
             this.MojiFilmovi = mojiFilmovi;
-            this.ListaZelja = listaZelja;
+            this.ListaZelja = listaZelja;            
             this.Username = username;
             this.Lozinka = lozinka;
             this.id = GLOBAL_ID++;
@@ -147,12 +147,42 @@ namespace OnlineVideotekaFenix.Models
             this.ImePrezime = imePrezime;
             this.DatumRodjenja = datumRodjenja;
             this.DatumRegistracije = datumRegistracije;
-            this.MojiFilmovi = mojiFilmovi;
-            this.ListaZelja = listaZelja;
+            this.MojiFilmovi = new List<int>();
+            this.ListaZelja = new List<int>();
             this.Username = username;
             this.Lozinka = lozinka;
             this.id = GLOBAL_ID++;
 
+        }
+        public Korisnik(KorisnikDB korisnik)
+        {
+            Int32.TryParse(korisnik.id, out id);
+            imePrezime=korisnik.ImePrezime;
+            datumRodjenja=korisnik.DatumRodjenja;
+            datumRegistracije=korisnik.DatumRegistracije;
+            mojiFilmovi=StringToArray(korisnik.MojiFilmovi);
+            listaZelja=StringToArray(korisnik.ListaZelja);
+            username=korisnik.Username;
+            lozinka=korisnik.Username;
+        }        
+        public List<int> StringToArray(string sifra)
+        {
+            List<int> niz = new List<int>();
+            int indeks = 0;
+            for (int i = 0; i < sifra.Length; i++)
+            {
+                if (sifra[i] == ' ')
+                {
+                    string pomocni = sifra.Substring(indeks, i - indeks);
+                    int broj;
+                    Int32.TryParse(pomocni, out broj);
+                    niz.Add(broj);
+                    indeks = i + 1;
+                }
+            }
+
+
+            return niz;
         }
     }
 }
