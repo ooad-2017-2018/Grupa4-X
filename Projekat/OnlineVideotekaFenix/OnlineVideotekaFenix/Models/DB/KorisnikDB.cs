@@ -8,16 +8,119 @@ namespace OnlineVideotekaFenix.Models
 {
     public class KorisnikDB
     {
-        public string id { get; set; }
-        public string ImePrezime { get; set; }
-        public DateTime DatumRodjenja { get; set; }
-        public DateTime DatumRegistracije { get; set; }
-        public string MojiFilmovi { get; set; }
-        public string ListaZelja { get; set; }
-        public string Username { get; set; }
-        public string Lozinka { get; set; }
+        private string ID;
+        private string imePrezime;
+        private DateTime datumRodjenja;
+        private DateTime datumRegistracije;
+        private string mojiFilmovi;
+        private string listaZelja;
+        private string username;
+        private string lozinka;
 
-        
+        public string id
+        {
+            get
+            {
+                return ID;
+            }
+
+            set
+            {
+                ID = value;
+            }
+        }
+
+        public string ImePrezime
+        {
+            get
+            {
+                return imePrezime;
+            }
+
+            set
+            {
+                imePrezime = value;
+            }
+        }
+
+        public DateTime DatumRodjenja
+        {
+            get
+            {
+                return datumRodjenja;
+            }
+
+            set
+            {
+                datumRodjenja = value;
+            }
+        }
+
+        public DateTime DatumRegistracije
+        {
+            get
+            {
+                return datumRegistracije;
+            }
+
+            set
+            {
+                datumRegistracije = value;
+            }
+        }
+
+        public string MojiFilmovi
+        {
+            get
+            {
+                return mojiFilmovi;
+            }
+
+            set
+            {
+                mojiFilmovi = value;
+            }
+        }
+
+        public string ListaZelja
+        {
+            get
+            {
+                return listaZelja;
+            }
+
+            set
+            {
+                listaZelja = value;
+            }
+        }
+
+        public string Username
+        {
+            get
+            {
+                return username;
+            }
+
+            set
+            {
+                username = value;
+            }
+        }
+
+        public string Lozinka
+        {
+            get
+            {
+                return lozinka;
+            }
+
+            set
+            {
+                lozinka = value;
+            }
+        }
+
         public KorisnikDB() { }
         public KorisnikDB(int korisnikID, string imePrezime, DateTime datumRodjenja, DateTime datumRegistracije, string mojiFilmovi, string listaZelja, string username, string lozinka)
         {

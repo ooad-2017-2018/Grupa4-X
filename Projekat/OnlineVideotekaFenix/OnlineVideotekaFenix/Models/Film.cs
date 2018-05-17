@@ -16,21 +16,175 @@ namespace OnlineVideotekaFenix.Models
 {
     public class Film
     {
-        public static int GLOBAL_ID = 0;
-        public int FilmID { get; }
-        public string NazivFilma { get; set; }
-        public int GodinaFilma { get; set; }
-        public string ZanrFilma { get; set; }
-        public string Reziser { get; set; }
-        public string Glumci { get; set; }
-        public int VrijemeTrajanja { get; set; }
-        public double Cijena { get; set; }
-        public BitmapImage Poster { get; set; }
-        public string Sinopsis { get; set; }
-        public int BrojOcjena { get; set; }
-        public double ProsjekOcjena { get; set; }
+        private static int GLOBAL_ID = 0;
+        private int filmID;
+        private string nazivFilma;
+        private int godinaFilma;
+        private string zanrFilma;
+        private string reziser;
+        private string glumci;
+        private int vrijemeTrajanja;
+        private double cijena;
+        private BitmapImage poster;
+        private string sinopsis;    
+        private int brojOcjena;
+        private double prosjekOcjena;
 
+        public int FilmID
+        {
+            get
+            {
+                return filmID;
+            }
 
+            set
+            {
+                filmID = value;
+            }
+        }
+
+        public string NazivFilma
+        {
+            get
+            {
+                return nazivFilma;
+            }
+
+            set
+            {
+                nazivFilma = value;
+            }
+        }
+
+        public int GodinaFilma
+        {
+            get
+            {
+                return godinaFilma;
+            }
+
+            set
+            {
+                godinaFilma = value;
+            }
+        }
+
+        public string ZanrFilma
+        {
+            get
+            {
+                return zanrFilma;
+            }
+
+            set
+            {
+                zanrFilma = value;
+            }
+        }
+
+        public string Reziser
+        {
+            get
+            {
+                return reziser;
+            }
+
+            set
+            {
+                reziser = value;
+            }
+        }
+
+        public string Glumci
+        {
+            get
+            {
+                return glumci;
+            }
+
+            set
+            {
+                glumci = value;
+            }
+        }
+
+        public int VrijemeTrajanja
+        {
+            get
+            {
+                return vrijemeTrajanja;
+            }
+
+            set
+            {
+                vrijemeTrajanja = value;
+            }
+        }
+
+        public double Cijena
+        {
+            get
+            {
+                return cijena;
+            }
+
+            set
+            {
+                cijena = value;
+            }
+        }
+
+        public BitmapImage Poster
+        {
+            get
+            {
+                return poster;
+            }
+
+            set
+            {
+                poster = value;
+            }
+        }
+
+        public string Sinopsis
+        {
+            get
+            {
+                return sinopsis;
+            }
+
+            set
+            {
+                sinopsis = value;
+            }
+        }
+
+        public int BrojOcjena
+        {
+            get
+            {
+                return brojOcjena;
+            }
+
+            set
+            {
+                brojOcjena = value;
+            }
+        }
+
+        public double ProsjekOcjena
+        {
+            get
+            {
+                return prosjekOcjena;
+            }
+
+            set
+            {
+                prosjekOcjena = value;
+            }
+        }
 
         public Film(){}
 

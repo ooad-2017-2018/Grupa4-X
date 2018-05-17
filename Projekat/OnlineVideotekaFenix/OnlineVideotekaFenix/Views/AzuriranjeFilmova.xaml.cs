@@ -84,7 +84,7 @@ namespace OnlineVideotekaFenix.Views
             {
                 string username = k.Username.ToLower();
                 if (username.Contains(textBoxUsername))
-                    FilmoviListView.Items.Add(k);
+                    KorisniciListView.Items.Add(k);
             }
             
         }

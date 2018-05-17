@@ -9,13 +9,51 @@ namespace OnlineVideotekaFenix.Models
 {
     public class Administrator
     {
-        
 
-            
-        public string Username { get; set; }
-        public string Lozinka { get; set; }
 
-        public string id { get; set; }
+
+        private string username;
+        private string lozinka;
+        private string Id;
+
+        public string Username
+        {
+            get
+            {
+                return username;
+            }
+
+            set
+            {
+                username = value;
+            }
+        }
+
+        public string Lozinka
+        {
+            get
+            {
+                return lozinka;
+            }
+
+            set
+            {
+                lozinka = value;
+            }
+        }
+
+        public string id
+        {
+            get
+            {
+                return Id;
+            }
+
+            set
+            {
+                Id = value;
+            }
+        }
 
         public Administrator(string username,string lozinka,string id = null)
         {

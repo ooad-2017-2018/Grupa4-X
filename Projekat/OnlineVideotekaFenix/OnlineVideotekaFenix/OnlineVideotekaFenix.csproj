@@ -112,7 +112,6 @@
     <Compile Include="Models\Administrator.cs" />
     <Compile Include="Models\Film.cs" />
     <Compile Include="Models\Korisnik.cs" />
-    <Compile Include="Models\Ocjena.cs" />
     <Compile Include="Models\Videoteka.cs" />
     <Compile Include="Views\AzuriranjeFilmova.xaml.cs">
       <DependentUpon>AzuriranjeFilmova.xaml</DependentUpon>
