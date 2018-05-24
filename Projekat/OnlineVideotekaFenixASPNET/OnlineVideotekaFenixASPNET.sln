@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineVideotekaFenixASPNET", "OnlineVideotekaFenixASPNET\OnlineVideotekaFenixASPNET.csproj", "{461F9BD5-BAC5-41CC-BA30-680D4A961857}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineVideotekaFenixASPNET", "OnlineVideotekaFenixASPNET\OnlineVideotekaFenixASPNET.csproj", "{F5088167-C76E-46CA-8E82-E21A8549B81E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{461F9BD5-BAC5-41CC-BA30-680D4A961857}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{461F9BD5-BAC5-41CC-BA30-680D4A961857}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{461F9BD5-BAC5-41CC-BA30-680D4A961857}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{461F9BD5-BAC5-41CC-BA30-680D4A961857}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5088167-C76E-46CA-8E82-E21A8549B81E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5088167-C76E-46CA-8E82-E21A8549B81E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5088167-C76E-46CA-8E82-E21A8549B81E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5088167-C76E-46CA-8E82-E21A8549B81E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
