@@ -1,4 +1,4 @@
-/* NUGET: BEGIN LICENSE TEXT
+﻿/* NUGET: BEGIN LICENSE TEXT
  *
  * Microsoft grants you the right to use these script files for the sole
  * purpose of either: (i) interacting through your browser with the Microsoft
@@ -1803,6 +1803,46 @@ textarea.form-control {
   margin-left: 10px;
 }
 
+.rate {
+    border: 1px solid #cccccc;
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+
+ 
+.rate:not(:checked) > input {
+    position: absolute;
+    top: -9999px;
+}
+
+ 
+
+.rate:not(:checked) > label {
+    
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 30px;
+    color: #ccc;
+}
+
+.rate:not(:checked) > label:before { content: '★ '; }
+
+ 
+
+.rate > input:checked ~ label { color: #ffc700; }
+
+ 
+
+.rate:not(:checked) > label:hover, .rate:not(:checked) > label:hover ~ label { color: #deb217; }
+
+ 
+
+.rate > input:checked + label:hover, .rate > input:checked + label:hover ~ label, .rate > input:checked ~ label:hover, .rate > input:checked ~ label:hover ~ label, .rate > label:hover ~ input:checked ~ label { color: #c59b08; }
+
 input[type="radio"][disabled],
 input[type="checkbox"][disabled],
 .radio[disabled],
@@ -2392,6 +2432,15 @@ input[type="button"].btn-block {
   overflow: hidden;
   -webkit-transition: height 0.35s ease;
           transition: height 0.35s ease;
+}
+
+.conttainer > div {
+    display: inline-block;
+    *display: inline; /* For IE7 */
+    zoom: 1; /* Trigger hasLayout */
+    width: 33%;
+    text-align: center;
+    background-color: white;
 }
 
 @font-face {

@@ -202,12 +202,23 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Film.cs" />
+    <Compile Include="Models\FilmViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ProfileViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\bookclub.jpg" />
+    <Content Include="Assets\breakingin.jpg" />
+    <Content Include="Assets\deadpool.jpg" />
+    <Content Include="Assets\hacksaw.jpg" />
+    <Content Include="Assets\madmax.jpg" />
+    <Content Include="Assets\novi_logo_100x100.png" />
+    <Content Include="Assets\post.jpg" />
+    <Content Include="Assets\profil.png" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -267,9 +278,14 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\FilmOverview.cshtml" />
+    <Content Include="Views\Home\MyProfile.cshtml" />
+    <Content Include="Views\Home\MyMovies.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Film\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
