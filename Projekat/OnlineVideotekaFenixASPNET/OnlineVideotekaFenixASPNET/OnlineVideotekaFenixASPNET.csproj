@@ -207,6 +207,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ProfileViewModels.cs" />
+    <Compile Include="Models\SearchViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -282,6 +283,9 @@
     <Content Include="Views\Home\MyProfile.cshtml" />
     <Content Include="Views\Home\MyMovies.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Home\_SearchMoviePartial.cshtml" />
+    <Content Include="Views\Home\_SearchUserPartial.cshtml" />
+    <Content Include="Views\Home\PurchaseMovie.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

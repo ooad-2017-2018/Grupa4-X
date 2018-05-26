@@ -1,0 +1,54 @@
+﻿@using OnlineVideotekaFenixASPNET.Models
+@model PurchaseViewModel
+@{
+    ViewBag.Title = "Purchase movie";
+}
+<br/>
+<br/>
+<fieldset>
+    <legend>Complete transaction</legend>
+   
+    <div class="form-group">
+        @Html.LabelFor(m => m.PaypalAcc, new { @class = "col-md-3 control-label" })
+        @Html.TextBoxFor(m => m.PaypalAcc, new { @class = "form-control"})
+        @Html.ValidationMessageFor(m => m.PaypalAcc, "", new { @class = "text-danger" })
+          
+        
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(m => m.CreditCardNumber, new { @class = "col-md-3 control-label" })
+        @Html.TextBoxFor(m => m.CreditCardNumber, new { @class = "form-control"})
+        @Html.ValidationMessageFor(m => m.CreditCardNumber, "", new { @class = "text-danger" })
+        
+        
+    </div>
+    
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.EmailAdress, new { @class = "col-md-3 control-label" })
+        @Html.TextBoxFor(m => m.EmailAdress, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.EmailAdress, "", new { @class = "text-danger" })
+
+
+    </div>
+    
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Address, new { @class = "col-md-3 control-label" })
+        @Html.TextBoxFor(m => m.Address, new { @class = "form-control"})
+        @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+    </div>
+    
+    <br/>
+    <br/>
+    
+    
+    <div class="form-group">
+        <div class="col-md-offset-4 col-md-8">
+            <input type="submit" value="Send" class="btn btn-default" />
+        </div>
+    </div>
+    
+</fieldset>
+

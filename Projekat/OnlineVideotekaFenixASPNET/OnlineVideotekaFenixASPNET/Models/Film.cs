@@ -20,6 +20,8 @@ namespace OnlineVideotekaFenixASPNET.Models
         private string Sinopsis { get; set; }
         private int BrojOcjena { get; set; }
         private double ProsjekOcjena { get; set; }
+
+        
         
 
 

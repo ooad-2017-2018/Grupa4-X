@@ -42,5 +42,23 @@ namespace OnlineVideotekaFenixASPNET.Controllers
 
             return View();
         }
+
+        public ActionResult Search()
+        {
+
+            return View();
+        }
+
+        public ActionResult PurchaseMovie()
+        {
+
+            return View();
+        }
+
+        public ActionResult MyMovies()
+        {
+
+            return View();
+        }
     }
 }

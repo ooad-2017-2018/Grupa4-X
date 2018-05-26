@@ -139,3 +139,19 @@ namespace OnlineVideotekaFenixASPNET.Models
 
 
 /*<input type="file" name="files" id="file1" style="display:inline" />  ODABERI DATOTEKU */
+
+
+
+/*
+fieldset {
+padding: 0.35em 0.625em 0.75em;
+margin: 0 2px;
+border: 1px solid #c0c0c0;
+}
+
+legend {
+padding: 0;
+border: 0;
+}
+
+    */

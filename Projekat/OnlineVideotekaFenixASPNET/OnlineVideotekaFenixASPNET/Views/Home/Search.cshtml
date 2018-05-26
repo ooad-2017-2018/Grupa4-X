@@ -1,17 +1,26 @@
-﻿@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-</head>
-<body>
-    <div>
-    
+﻿@using OnlineVideotekaFenixASPNET.Models
+<br/>
+<br />
+<br />
+<div class="row">
+    <div class="col-md-6">
+        <section id="searchMovieForm">
+            @Html.Partial("_SearchMoviePartial", new SearchMovieViewModel { })
+        </section>
     </div>
-</body>
-</html>
+
+    <div class="col-md-6">
+        <section id="searchUserForm">
+            @Html.Partial("_SearchUserPartial", new SearchUserViewModel { })
+        </section>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+

@@ -147,15 +147,16 @@ figure {
   margin: 0;
 }
 
+
 fieldset {
-  padding: 0.35em 0.625em 0.75em;
-  margin: 0 2px;
-  border: 1px solid #c0c0c0;
+    margin: 8px;
+    border: 1px solid silver;
+    padding: 8px;    
+    border-radius: 4px;
 }
 
 legend {
-  padding: 0;
-  border: 0;
+    padding: 2px;    
 }
 
 button,

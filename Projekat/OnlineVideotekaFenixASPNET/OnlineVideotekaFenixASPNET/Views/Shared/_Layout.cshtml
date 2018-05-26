@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity
+
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -19,16 +22,34 @@
                 </button>
                 @Html.ActionLink("Fenix", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
+        @if (Request.IsAuthenticated)
+        {
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>  
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Film", "FilmOverview", "Home")</li>
                     <li>@Html.ActionLink("My profile", "MyProfile", "Home")</li>
+                    <li>@Html.ActionLink("Search", "Search", "Home")</li>
+                    <li>@Html.ActionLink("Purchase", "PurchaseMovie", "Home")</li>
+                    <li>@Html.ActionLink("My movies", "MyMovies", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
+        }
+        else
+        {
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Search", "Search", "Home")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        }
         </div>
     </div>
     <div class="container body-content">
