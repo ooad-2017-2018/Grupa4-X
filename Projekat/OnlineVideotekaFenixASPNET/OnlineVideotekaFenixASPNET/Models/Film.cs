@@ -8,18 +8,19 @@ namespace OnlineVideotekaFenixASPNET.Models
 {
     public class Film
     {
-        private int FilmId { get; set; }
-        private string NazivFilma { get; set; }
-        private int GodinaFilma { get; set; }
-        private string ZanrFilma { get; set; }
-        private string Reziser { get; set; }
-        private string Glumci { get; set; }
-        private int VrijemeTrajanja { get; set; }
-        private double Cijena { get; set; }
-        private Image Poster { get; set; }
-        private string Sinopsis { get; set; }
-        private int BrojOcjena { get; set; }
-        private double ProsjekOcjena { get; set; }
+        public int FilmId { get; set; }
+        public string NazivFilma { get; set; }
+        public int GodinaFilma { get; set; }
+        public string ZanrFilma { get; set; }
+        public string Reziser { get; set; }
+        public string Glumci { get; set; }
+        public int VrijemeTrajanja { get; set; }
+        public double Cijena { get; set; }
+        public Image Poster { get; set; }
+        public string Sinopsis { get; set; }
+        public string Direktor { get; set; }
+        public int BrojOcjena { get; set; }
+        public double ProsjekOcjena { get; set; }
 
         
         
