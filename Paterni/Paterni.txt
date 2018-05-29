@@ -69,10 +69,3 @@ Serveri se mogu uključivati/isključivati. Potreban je jedan objekat koji zna o
 Uloga Factory Method paterna je da omogući kreiranje objekata na način da podklase odluče koju klasu je instancirati. 
 Različite podklase mogu na različite načine implementirati interfejs. 
 Nije korišten u našem projektu jer ne postoji dobro mjesto za njegovu upotrebu.
-
-						
-
-
-
-
-
