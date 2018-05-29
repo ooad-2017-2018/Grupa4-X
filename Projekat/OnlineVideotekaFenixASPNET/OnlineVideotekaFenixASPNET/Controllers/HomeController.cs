@@ -68,14 +68,14 @@ namespace OnlineVideotekaFenixASPNET.Controllers
             return View();
         }
 
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> FilmOverview(FilmViewModel model, string returnUrl)
-        {
-            F
+       // [HttpPost]
+       // [AllowAnonymous]
+       // [ValidateAntiForgeryToken]
+       //public async Task<ActionResult> FilmOverview(FilmViewModel model, string returnUrl)
+       //{
+            
            
-        }
+       //}
 
     }
 }

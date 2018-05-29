@@ -1,0 +1,22 @@
+1. Prototype patern
+
+Uloga Prototype paterna je da kreira nove objekte klonirajuæi jedan od postojeæi objekat. Ako je trošak kreiranja 
+novog objekta velik i kreiranje objekta je resursno zahtjevno tada se vrši kloniranje veæ postojeæeg objekata.
+Prototype dizajn patern dozvoljava da se kreiraju prilagoðeni objekti bez poznavanja njihove klase ili detalja kako je
+objekat kreiran.
+
+Patern nije korišten, ali efikasnog istog bi se mogla iskoristiti kod pravljenja razlicitih instanci iz klase Film u projektu.
+
+2. Observe patern ima ulogu da obavjesti korisnika sistema o nekim promjenama u stanju sistema, ali prvo moramo imati
+registrovane observere, kao i metodu u interfacu notify observer. Sada kada mijenjamo stanje nekog atributa možemo pozvati
+notify observer, time on dobiva informaciju o promjeni.
+
+Ovaj patern nije iskorišten. Mogao bi se iskoristiti pri promjeni cijena filmova ili kada se doda novi film da se šalje obavijest.
+
+
+3. Adapter patern nam omoguèava da dva interfaca rade zajedno kao jedan, kada imamo jedan interface i pozivaju se metode a korisnik
+oèekuje rezultate iz drugog interface-a.
+
+U našem sluèaju nije korišten ni ovaj patern jer nemamo nekih interface-a koji bi radili kao jedan, ali da sada kupimo ili 
+dobijemo novi interface koji ima implementirane metode za pretragu, ne bi prepravljai sve postojeæe metode nego pomoæu adapter 
+paterna pozvali preko postojeæih metoda nove.
