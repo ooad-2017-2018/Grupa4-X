@@ -41,7 +41,9 @@ Uloga Prototype paterna je da kreira nove objekte klonirajuæi jedan od postoje�
 novog objekta velik i kreiranje objekta je resursno zahtjevno tada se vrši kloniranje veæ postojeæeg objekata.
 Prototype dizajn patern dozvoljava da se kreiraju prilagoðeni objekti bez poznavanja njihove klase ili detalja kako je
 objekat kreiran.
-Patern nije korišten, ali efikasnog istog bi se mogla iskoristiti kod pravljenja razlicitih instanci iz klase Film u projektu.
+Patern nije korišten, ali efikasnog istog bi se mogla iskoristiti kod pravljenja razlicitih instanci iz klase Film u projektu
+npr. nije potrebno ponovno kreiranje nekog filma nakon što ga korisnik kupi. Potrebno je samo klonirati postojeći te promijeniti odgovarajuće atribute tako da korisnik 
+ima dodatne opcije kod prikaza.
 
 						Adapter patern
 Omoguèava da dva interfaca rade zajedno kao jedan, kada imamo jedan interface i pozivaju se metode a korisnik
@@ -50,6 +52,27 @@ oèekuje rezultate iz drugog interface-a.
 U našem sluèaju nije korišten ni ovaj patern jer nemamo nekih interface-a koji bi radili kao jedan, ali da sada kupimo ili 
 dobijemo novi interface koji ima implementirane metode za pretragu, ne bi prepravljai sve postojeæe metode nego pomoæu adapter 
 paterna pozvali preko postojeæih metoda nove.
+
+						Decorator pattern
+Osnovna namjena Decorator paterna je da omogući dinamičko dodavanje novih elemenata i ponašanja (funkcionalnosti) postojećim objektima. 
+Nije iskorišten u našem projektu.
+Moguć primjer bi bio kod dodavanja nove opcije prikaza filma (rezolucija prikaza, 3D prikaz i slično).
+
+						Singleton pattern
+Uloga Singleton paterna je da osigura da se klasa može instancirati samo jednom i da osigura globalni pristup kreiranoj instanci klase. 
+Postoji više objekata koje je potrebno samo jednom instancirati i nad kojim je potrebna jedinstvena kontrola pristupa.
+Nije iskorišten u našem projektu. Primjer:
+Postoji više servera koji mogu uslužiti zahtjev korisnika.
+Serveri se mogu uključivati/isključivati. Potreban je jedan objekat koji zna o stanju cjelokupne mreže i koji će vršiti usmjeravanje saobraćaja.
+
+						Factory Method pattern
+Uloga Factory Method paterna je da omogući kreiranje objekata na način da podklase odluče koju klasu je instancirati. 
+Različite podklase mogu na različite načine implementirati interfejs. 
+Nije korišten u našem projektu jer ne postoji dobro mjesto za njegovu upotrebu.
+
+						
+
+
 
 
 
