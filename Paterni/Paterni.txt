@@ -1,0 +1,55 @@
+						Strategy patern 
+Izdvaja algoritam iz matične klase i uključuje ga u posebne klase.
+Pogodan je kada postoje različiti primjenjivi algoritmi (strategije) za neki problem.
+Strategy patern omogućava klijentu izbor jednog od algoritma iz familije algoritama za korištenje.
+Algoritmi su neovisni od klijenata koji ih koriste.
+Nije iskorišten u našem projektu. 
+Dobro mjesto za njegovu upotrebu bi bilo kod različitih vrsta plaćanja (unošenje broja kreditne kartice ili preko paypal-a)
+te različitih vrsta gledanja filmova (kupovina ili iznajmljivanje)
+
+						State pattern
+Predstavlja dinamičku verziju Strategy paterna.
+Objekat mijenja način ponašanja na osnovu trenutnog stanja.
+Postiže se promjenom podklase unutar hijerarhije klasa.
+Lokalizira svako stanje u posebnu klasu
+Uklanja probleme sa razbacanim if iskazima u programu koji bi se koristilli za ispitivanje koje je stanje
+Pdržava Otvoren-Zatvoren princip.
+Nije iskorišten u našem projektu.
+Dobro mjesto za njegovu upotrebu bi bilo kod različitih ponašanja prije i poslije kupovine filma.
+Prije kupovine filma imamo opciju dodavanja na listu želja, a nakon kupovine filma opcije ocjenjivanja, stavljanja u listu pregledanih filmova kao i korisnički kreirane liste.
+
+						TemplateMethod pattern
+Omogućava izdvajanje određenih koraka algoritma u odvojene podklase.
+Struktura algoritma se ne mijenja - mali dijelovi operacija se izdvajaju i ti se dijelovi mogu implementirati različito.
+Nije iskorišten u našem projektu.
+Primjer upotrebe TemplateMethod paterna za sortiranje:
+Algorithm - Sortiranje
+TemplateMethod - Mergesort
+IPrimitives – Specifikacija operacije poređenja
+AnyClass - Film
+Operation - Poređenje dva filma.
+Poređenje se izdvaja u drugu klasu jer se može razlikovati ovisno od tipa varijabli koje se porede (ocjena, cijena, žanr)
+
+						Observer pattern
+Uloga Observer paterna je da uspostavi relaciju između objekata tako kada jedan objekat promijeni stanje, drugi zainteresirani objekti se obavještavaju.
+Nije iskorišten u našem projektu.
+Primjer njegove upotrebe: ako dođe do promjene cijene (popust) na filmove koji se nalaze na listi želja korisnika, korisnik dobija obavijest.
+						  korisnik dobija obavijest o filmovima koji su dodani ili koji će uskoro biti dodani
+						  
+						Prototype patern
+Uloga Prototype paterna je da kreira nove objekte klonirajuæi jedan od postojeæi objekat. Ako je trošak kreiranja 
+novog objekta velik i kreiranje objekta je resursno zahtjevno tada se vrši kloniranje veæ postojeæeg objekata.
+Prototype dizajn patern dozvoljava da se kreiraju prilagoðeni objekti bez poznavanja njihove klase ili detalja kako je
+objekat kreiran.
+Patern nije korišten, ali efikasnog istog bi se mogla iskoristiti kod pravljenja razlicitih instanci iz klase Film u projektu.
+
+						Adapter patern
+Omoguèava da dva interfaca rade zajedno kao jedan, kada imamo jedan interface i pozivaju se metode a korisnik
+oèekuje rezultate iz drugog interface-a.
+
+U našem sluèaju nije korišten ni ovaj patern jer nemamo nekih interface-a koji bi radili kao jedan, ali da sada kupimo ili 
+dobijemo novi interface koji ima implementirane metode za pretragu, ne bi prepravljai sve postojeæe metode nego pomoæu adapter 
+paterna pozvali preko postojeæih metoda nove.
+
+
+
