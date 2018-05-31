@@ -8,7 +8,7 @@ namespace OnlineVideotekaFenixASPNET.Models
 {
     public class Film
     {
-        public int FilmId { get; set; }
+        public int Id { get; set; }
         public string NazivFilma { get; set; }
         public int GodinaFilma { get; set; }
         public string ZanrFilma { get; set; }
@@ -16,7 +16,7 @@ namespace OnlineVideotekaFenixASPNET.Models
         public string Glumci { get; set; }
         public int VrijemeTrajanja { get; set; }
         public double Cijena { get; set; }
-        public Image Poster { get; set; }
+        public byte[] Poster { get; set; }
         public string Sinopsis { get; set; }
         public string Direktor { get; set; }
         public int BrojOcjena { get; set; }

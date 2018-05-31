@@ -198,21 +198,18 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AdministratorsController.cs" />
-    <Compile Include="Controllers\DummyClassesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201805310616498_initial1.cs" />
-    <Compile Include="Migrations\201805310616498_initial1.Designer.cs">
-      <DependentUpon>201805310616498_initial1.cs</DependentUpon>
+    <Compile Include="Migrations\201805310711442_initial.cs" />
+    <Compile Include="Migrations\201805310711442_initial.Designer.cs">
+      <DependentUpon>201805310711442_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Administrator.cs" />
-    <Compile Include="Models\DummyClass.cs" />
     <Compile Include="Models\FenixContext.cs" />
     <Compile Include="Models\Film.cs" />
     <Compile Include="Models\FilmViewModels.cs" />
@@ -300,16 +297,6 @@
     <Content Include="Views\Home\_SearchMoviePartial.cshtml" />
     <Content Include="Views\Home\_SearchUserPartial.cshtml" />
     <Content Include="Views\Home\PurchaseMovie.cshtml" />
-    <Content Include="Views\DummyClasses\Create.cshtml" />
-    <Content Include="Views\DummyClasses\Delete.cshtml" />
-    <Content Include="Views\DummyClasses\Details.cshtml" />
-    <Content Include="Views\DummyClasses\Edit.cshtml" />
-    <Content Include="Views\DummyClasses\Index.cshtml" />
-    <Content Include="Views\Administrators\Create.cshtml" />
-    <Content Include="Views\Administrators\Delete.cshtml" />
-    <Content Include="Views\Administrators\Details.cshtml" />
-    <Content Include="Views\Administrators\Edit.cshtml" />
-    <Content Include="Views\Administrators\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -323,8 +310,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201805310616498_initial1.resx">
-      <DependentUpon>201805310616498_initial1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805310711442_initial.resx">
+      <DependentUpon>201805310711442_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

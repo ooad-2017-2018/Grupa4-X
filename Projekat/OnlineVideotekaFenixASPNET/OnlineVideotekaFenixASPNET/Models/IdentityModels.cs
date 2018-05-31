@@ -30,7 +30,6 @@ namespace OnlineVideotekaFenixASPNET.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<OnlineVideotekaFenixASPNET.Models.DummyClass> DummyClasses { get; set; }
 
         public System.Data.Entity.DbSet<OnlineVideotekaFenixASPNET.Models.Administrator> Administrators { get; set; }
     }
