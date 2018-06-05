@@ -36,11 +36,14 @@ namespace OnlineVideotekaFenixASPNET.Models
 
     public class SearchResultsMovieViewModel
     {
+        [Display(Name = "Users")]
+        public List<Korisnik> ListaKorisnika { get; set; }
 
     }
 
     public class SearchResultsUserViewModel
     {
-
+        [Display(Name = "Movies")]
+        public List<Film> ListaFilmova { get; set; }
     }
 }

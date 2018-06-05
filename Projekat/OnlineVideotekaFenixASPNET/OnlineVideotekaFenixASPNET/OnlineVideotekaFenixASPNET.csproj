@@ -197,6 +197,8 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\MoviesController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -297,6 +299,8 @@
     <Content Include="Views\Home\_SearchMoviePartial.cshtml" />
     <Content Include="Views\Home\_SearchUserPartial.cshtml" />
     <Content Include="Views\Home\PurchaseMovie.cshtml" />
+    <Content Include="Views\Movies\SearchResultsMovies.cshtml" />
+    <Content Include="Views\Users\SearchResultsUsers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
