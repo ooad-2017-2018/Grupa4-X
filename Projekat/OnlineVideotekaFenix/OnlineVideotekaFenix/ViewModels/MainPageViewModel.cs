@@ -24,7 +24,13 @@ using System.Runtime.CompilerServices;
 using Windows.UI.Popups;
 using System.ComponentModel;
 using System.Globalization;
+using Windows.Foundation;
+using Windows.Graphics.Imaging;
+using Windows.Media.Capture;
+using Windows.Storage.Streams;
 using Microsoft.WindowsAzure.MobileServices;
+using Windows.Media.Capture;
+using Windows.Storage;
 
 /*
  * 
@@ -64,6 +70,7 @@ namespace OnlineVideotekaFenix.ViewModels
         public ICommand BrisanjeFilmova { get; set; }
         public ICommand BrisanjeKorisnika { get; set; }
         public ICommand KorisnikOverviewOtvori { get; set; }
+
         #endregion
 
         #region Atributi
@@ -279,9 +286,41 @@ namespace OnlineVideotekaFenix.ViewModels
             }
         }
 
-        public async void OtvoriKameru(Object o)
+        public async void OtvoriKameru(Object slika)
         {
-            await(new MessageDialog("Vanjski uredjaj jos nije implementiran!")).ShowAsync();
+            
+            CameraCaptureUI captureUI = new CameraCaptureUI();
+            captureUI.PhotoSettings.Format = CameraCaptureUIPhotoFormat.Jpeg;
+            captureUI.PhotoSettings.CroppedSizeInPixels = new Size(200, 200);
+            StorageFile photo = await captureUI.CaptureFileAsync(CameraCaptureUIMode.Photo);
+
+            if (photo == null)
+                return;
+/*
+            StorageFolder destinationFolder =
+                await ApplicationData.Current.LocalFolder.CreateFolderAsync("ProfilePhotoFolder",
+                    CreationCollisionOption.OpenIfExists);
+
+            await photo.CopyAsync(destinationFolder, "ProfilePhoto.jpg", NameCollisionOption.ReplaceExisting);
+         
+*/
+            IRandomAccessStream stream = await photo.OpenAsync(FileAccessMode.Read);
+            BitmapDecoder decoder = await BitmapDecoder.CreateAsync(stream);
+            SoftwareBitmap softwareBitmap = await decoder.GetSoftwareBitmapAsync();
+
+            SoftwareBitmap softwareBitmapBGR8 = SoftwareBitmap.Convert(softwareBitmap,
+                BitmapPixelFormat.Bgra8,
+                BitmapAlphaMode.Premultiplied);
+
+            SoftwareBitmapSource bitmapSource = new SoftwareBitmapSource();
+            await bitmapSource.SetBitmapAsync(softwareBitmapBGR8);
+
+            ((Image)slika).Source = bitmapSource;
+
+
+
+
+            /* await(new MessageDialog("Vanjski uredjaj jos nije implementiran!")).ShowAsync();*/
             // Pokrece se web kamera da bi se korisnik uslikao
             // Vanjski uredjaj jos nije implementiran
         }
