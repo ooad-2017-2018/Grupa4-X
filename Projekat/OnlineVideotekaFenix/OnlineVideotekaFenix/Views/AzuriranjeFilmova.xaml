@@ -98,7 +98,7 @@
                         <RowDefinition Height="2*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <TextBox TextChanged="filmTextChanged" x:Name="pretragaFilmaTextBox" Grid.Column="0" PlaceholderText="Naziv filma" HorizontalAlignment="Stretch" Margin="10,0,10,0" TextWrapping="Wrap" VerticalAlignment="Center" >
+                    <TextBox  TextChanged="filmTextChanged" x:Name="pretragaFilmaTextBox" Grid.Column="0" PlaceholderText="Naziv filma" HorizontalAlignment="Stretch" Margin="10,0,10,0" TextWrapping="Wrap" VerticalAlignment="Center" >
                         
                     </TextBox>
                     <Button Command ="{Binding Path = BrisanjeFilmova}" Grid.Row="2" Content="Obriši film" HorizontalAlignment="Center" Margin="10" VerticalAlignment="Top"/>

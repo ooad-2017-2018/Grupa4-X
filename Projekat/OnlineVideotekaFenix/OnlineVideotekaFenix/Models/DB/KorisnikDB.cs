@@ -131,7 +131,7 @@ namespace OnlineVideotekaFenix.Models
             this.ListaZelja = listaZelja;
             this.Username = username;
             this.Lozinka = lozinka;
-            this.id = korisnikID.ToString();
+            /*this.id = korisnikID.ToString();*/
 
 
         }
@@ -140,7 +140,7 @@ namespace OnlineVideotekaFenix.Models
         {
             this.Username = username;
             this.Lozinka = lozinka;
-            this.id = korisnikID.ToString();
+            /*this.id = korisnikID.ToString();*/
 
         }
 
@@ -153,7 +153,7 @@ namespace OnlineVideotekaFenix.Models
             this.ListaZelja = "";
             this.Username = username;
             this.Lozinka = lozinka;
-            this.id = korisnikID.ToString();
+            /*this.id = korisnikID.ToString();*/
 
         }
         
@@ -161,7 +161,7 @@ namespace OnlineVideotekaFenix.Models
 
         public KorisnikDB(Korisnik korisnik)
         {
-            id = korisnik.ID.ToString();
+           /* id = korisnik.ID.ToString();*/
             ImePrezime = korisnik.ImePrezime;
             DatumRodjenja = korisnik.DatumRodjenja;
             DatumRegistracije = korisnik.DatumRegistracije;

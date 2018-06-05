@@ -101,7 +101,7 @@ namespace OnlineVideotekaFenix.ViewModels
         public MainPageViewModel()
         {
             videoteka= new Videoteka();
-            if (Pocetak++==0)
+            if (true)
             {
                 InicijalizirajFilmove();
                 InicijalizirajKorisnike();
@@ -166,6 +166,7 @@ namespace OnlineVideotekaFenix.ViewModels
         public async void InicijalizirajKorisnike()
         {
             var users = await (from a in korisnikTabela select a).ToListAsync();
+     
             foreach (KorisnikDB user in users)
             {
                 videoteka.ListaKorisnika.Add(new Korisnik(user));
@@ -175,7 +176,8 @@ namespace OnlineVideotekaFenix.ViewModels
         public async void InicijalizirajAdministratore()
         {
             var administrators = await (from a in administratorTabela select a).ToListAsync();
-            if(administrators.Count==0)
+      
+            if (administrators.Count==0)
             {
                 await administratorTabela.InsertAsync(new Administrator("Goba", "DRVOPROMET",null));
                 await administratorTabela.InsertAsync(new Administrator("amra", "1234", null));
@@ -329,6 +331,7 @@ namespace OnlineVideotekaFenix.ViewModels
                     loginKorisnikImePrezime = loginKorisnik.ImePrezime.ToString();
                     loginKorisnikUsername = loginKorisnik.Username.ToString();
                     KorisnikHomePageOtvori(o);
+                    return;
                 }
             }           
             
