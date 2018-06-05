@@ -1,0 +1,31 @@
+﻿<UserControl
+    x:Class="OnlineVideotekaFenix.Views.KorisnickeKontrole.LoginTextBox"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OnlineVideotekaFenix.Views.KorisnickeKontrole"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowHeight="0"></AdaptiveTrigger>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="Username.(Margin)" Value="20,5,20,5"/>
+                        <Setter Target="Lozinka.(Margin)" Value="20,5,20,5"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+            <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/> 
+        </Grid.RowDefinitions>
+        <TextBox x:Name="Username" Text="{Binding Path = LoginUsername, Mode=TwoWay}" Grid.Row="0" HorizontalAlignment="Stretch" Margin="20,10,20,10"  TextWrapping="Wrap" PlaceholderText="Korisničko ime" VerticalAlignment="Center"/>
+        <PasswordBox x:Name="Lozinka" Password="{Binding LoginPassword, Mode=TwoWay}" Grid.Row="1" HorizontalAlignment="Stretch" Margin="20,10,20,10" PlaceholderText="Lozinka" VerticalAlignment="Center"/>
+    </Grid>
+</UserControl>
