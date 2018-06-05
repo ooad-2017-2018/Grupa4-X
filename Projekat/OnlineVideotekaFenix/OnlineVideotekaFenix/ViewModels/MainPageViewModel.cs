@@ -296,14 +296,7 @@ namespace OnlineVideotekaFenix.ViewModels
 
             if (photo == null)
                 return;
-/*
-            StorageFolder destinationFolder =
-                await ApplicationData.Current.LocalFolder.CreateFolderAsync("ProfilePhotoFolder",
-                    CreationCollisionOption.OpenIfExists);
 
-            await photo.CopyAsync(destinationFolder, "ProfilePhoto.jpg", NameCollisionOption.ReplaceExisting);
-         
-*/
             IRandomAccessStream stream = await photo.OpenAsync(FileAccessMode.Read);
             BitmapDecoder decoder = await BitmapDecoder.CreateAsync(stream);
             SoftwareBitmap softwareBitmap = await decoder.GetSoftwareBitmapAsync();
