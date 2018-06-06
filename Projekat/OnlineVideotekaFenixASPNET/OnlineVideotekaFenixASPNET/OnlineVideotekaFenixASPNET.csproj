@@ -199,6 +199,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="Controllers\PhotoController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\PurchaseController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -301,22 +303,24 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Home\FilmOverview.cshtml" />
-    <Content Include="Views\Home\MyProfile.cshtml" />
-    <Content Include="Views\Home\MyMovies.cshtml" />
-    <Content Include="Views\Home\Search.cshtml" />
-    <Content Include="Views\Home\_SearchMoviePartial.cshtml" />
-    <Content Include="Views\Home\_SearchUserPartial.cshtml" />
-    <Content Include="Views\Home\PurchaseMovie.cshtml" />
-    <Content Include="Views\Movies\SearchResultsMovies.cshtml" />
-    <Content Include="Views\Users\SearchResultsUsers.cshtml" />
-    <Content Include="Views\Home\YourProfile.cshtml" />
+    <Content Include="Views\Movies\FilmOverview.cshtml" />
+    <Content Include="Views\Users\MyMovies.cshtml" />
+    <Content Include="Views\Search\Search.cshtml" />
+    <Content Include="Views\Search\_SearchMoviePartial.cshtml" />
+    <Content Include="Views\Search\_SearchUserPartial.cshtml" />
+    <Content Include="Views\Purchase\PurchaseMovie.cshtml" />
+    <Content Include="Views\Search\SearchResultsUsers.cshtml" />
+    <Content Include="Views\Users\YourProfile.cshtml" />
     <Content Include="Scripts\jscam.as" />
     <Content Include="Scripts\Makefile" />
     <Content Include="Scripts\README.md" />
     <Content Include="Scripts\webcam.jquery.json" />
     <Content Include="Views\Photo\Index.cshtml" />
-    <Content Include="Views\Photo\Changephoto.cshtml" />
+    <Content Include="Views\Search\SearchResultsMovies.cshtml" />
+    <Content Include="Views\Users\MyProfile.cshtml" />
+    <Content Include="Views\Users\_WishlistMoviesPartial.cshtml" />
+    <Content Include="Views\Users\_WatchedMoviesPartial.cshtml" />
+    <Content Include="Views\Users\_BoughtMoviesPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

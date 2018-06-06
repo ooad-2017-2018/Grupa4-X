@@ -1,0 +1,33 @@
+﻿@using OnlineVideotekaFenixASPNET.Models
+@model BoughtMoviesViewModel
+@{
+    ViewBag.Title = "Purchased movies";
+}
+
+
+<fieldset>
+    <legend>Purchased movies</legend>
+    
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>Movie</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var movie in Model.PurchaseList)
+        {
+            <tr>
+                <td>@Html.ActionLink(movie.NazivFilma, "FilmOverview", "Movies", new { id = movie.Id }, null)</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    
+    
+ 
+    <br/>
+    <br/>
+    <br/>
+  
+</fieldset>

@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -16,33 +17,59 @@ namespace OnlineVideotekaFenixASPNET.Controllers
     [Authorize]
     public class UsersController : Controller
     {
-/*
-        public ViewResult Index()
+        private FenixContext db = new FenixContext();
+        /*
+                public ViewResult Index()
+                {
+                    var customers = GetCustomers();
+
+                    return View(customers);
+                }*/
+
+        public ActionResult MyProfile(String a)
         {
-            var customers = GetCustomers();
-
-            return View(customers);
-        }*/
-
-        public ActionResult SearchResultsUsers(/*int id*/)
-        {
-            var user = GetUsers()/*.SingleOrDefault(c => c.Id == id)*/;
-
-            if (user == null)
-                return HttpNotFound();
-
-            return View(user);
-        }
-
-        private IEnumerable<Korisnik> GetUsers()
-        {
-            return new List<Korisnik>
+            if (!String.IsNullOrEmpty(a))
             {
-                new Korisnik { Id = 1, ImePrezime = "Amra Habibovic" },
-                new Korisnik { Id = 2, ImePrezime = "Mujo Hadzic" },
-                new Korisnik { Id = 3, ImePrezime = "Adnan Gobeljic" }
-            };
+                ViewBag.pic = "http://localhost:55694/WebImages/" + a;
+            }
+            else
+            {
+                ViewBag.pic = "../../WebImages/person.png";
+            }
+            return View();
         }
+
+
+        public ActionResult MyMovies()
+        {
+            return View();
+        }
+
+        public ActionResult YourProfile()
+        {
+            return View();
+        }
+        public ActionResult AddMovieWatchList(String a)
+        {
+            db.Film.Add(new Film("Dobar pravo"));
+            db.SaveChanges();
+
+            return RedirectToAction("MyMovies");
+        }
+
+        public ActionResult AddMovieWishList(String a)
+        {
+            db.Film.Add(new Film("Dobar pravo ekstra"));
+            db.SaveChanges();
+            return RedirectToAction("MyMovies");
+        }
+
+        
+
+
+
+
+
 
 
     }

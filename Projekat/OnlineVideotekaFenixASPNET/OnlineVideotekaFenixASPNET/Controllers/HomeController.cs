@@ -37,50 +37,8 @@ namespace OnlineVideotekaFenixASPNET.Controllers
             return View();
         }
 
-        public ActionResult FilmOverview()
-        {
-            
-
-            return View();
-        }
-
-        public ActionResult MyProfile(String a)
-        {
-            if (!String.IsNullOrEmpty(a))
-            {
-                ViewBag.pic = "http://localhost:55694/WebImages/" + a;
-            }
-            else
-            {
-                ViewBag.pic = "../../WebImages/person.png";
-            }
-
-            return View();
-        }
-
-        public ActionResult Search()
-        {
-
-            return View();
-        }
-
-        public ActionResult PurchaseMovie()
-        {
-
-            return View();
-        }
-
-        public ActionResult MyMovies()
-        {
-
-            return View();
-        }
-
-        public ActionResult YourProfile()
-        {
-
-            return View();
-        }
+   
+   
 
         // [HttpPost]
         // [AllowAnonymous]
