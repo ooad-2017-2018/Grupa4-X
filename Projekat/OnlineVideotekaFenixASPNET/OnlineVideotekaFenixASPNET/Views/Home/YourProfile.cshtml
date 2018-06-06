@@ -1,5 +1,5 @@
 ﻿@using OnlineVideotekaFenixASPNET.Models
-@model MyProfileViewModel
+@model YourProfileViewModel
 @{
     ViewBag.Title = "Profile overview";
 }
@@ -8,15 +8,9 @@
     <div class="col-md-4">
 
         <section id="picture">
-            <img  src="@ViewBag.pic" alt="Sample Image" width="400" height="400" />
+            <img src="../Assets/profil.png" alt="Sample Image" width="400" height="400" />
             <br/>
             <br/>
-            <div class="form-group">
-                <div class="col-md-offset-4 col-md-8">
-                    <input type="submit" value="Open camera" class="btn btn-primary" onclick="location.href='@Url.Action("Index","Photo")'" />
-                </div>
-            </div>
-
         </section>
     </div>
 
@@ -77,12 +71,7 @@
             <br />
             <br />
     <br />
-            
-            <div class="form-group">
-                <div class="col-md-offset-5 col-md-8">
-                    <input type="submit" value="Edit info" class="btn btn-primary" />
-                </div>
-            </div>
+      
         </section>
 
     </div>

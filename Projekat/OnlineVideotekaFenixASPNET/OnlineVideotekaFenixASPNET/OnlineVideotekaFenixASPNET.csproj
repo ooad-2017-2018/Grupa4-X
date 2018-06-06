@@ -198,6 +198,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
+    <Compile Include="Controllers\PhotoController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -246,6 +247,9 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\BitString.as" />
+    <Content Include="Scripts\JPGEncoder.as" />
+    <Content Include="Scripts\bower.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -254,6 +258,11 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jquery.webcam.js" />
+    <Content Include="Scripts\jquery.webcam.min.js" />
+    <Content Include="Scripts\jscam.swf" />
+    <Content Include="Scripts\jscam.xml" />
+    <Content Include="Scripts\jscam_canvas_only.swf" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -301,9 +310,18 @@
     <Content Include="Views\Home\PurchaseMovie.cshtml" />
     <Content Include="Views\Movies\SearchResultsMovies.cshtml" />
     <Content Include="Views\Users\SearchResultsUsers.cshtml" />
+    <Content Include="Views\Home\YourProfile.cshtml" />
+    <Content Include="Scripts\jscam.as" />
+    <Content Include="Scripts\Makefile" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\webcam.jquery.json" />
+    <Content Include="Views\Photo\Index.cshtml" />
+    <Content Include="Views\Photo\Changephoto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="App_GlobalResources\" />
+    <Folder Include="App_LocalResources\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -336,7 +354,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>33770</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:33770/</IISUrl>
+          <IISUrl>http://localhost:55694/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

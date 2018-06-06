@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -10,6 +11,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using OnlineVideotekaFenixASPNET.Models;
+
 
 namespace OnlineVideotekaFenixASPNET.Controllers
 {
@@ -47,9 +49,11 @@ namespace OnlineVideotekaFenixASPNET.Controllers
         public ActionResult SearchResultsMovies()
         {
             ViewBag.Message = "Search movie results";
-
+           
             return View();
         }*/
+
+       
 
     }
 }
