@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace OnlineVideotekaFenixASPNET.Models
 {
-    public class ProfileViewModel
+    public class MyProfileViewModel
     {
         [Required]
         [Display(Name = "Name")]
@@ -37,6 +37,37 @@ namespace OnlineVideotekaFenixASPNET.Models
         [Display(Name = "Last movie watched")]
         public string LastMovie { get; set; }
     }
+    public class YourProfileViewModel
+    {
+        [Required]
+        [Display(Name = "Name")]
+        public string Name { get; set; }
+
+        [Required]
+        [Display(Name = "Surname")]
+        public string Surname { get; set; }
+
+        [Required]
+        [Display(Name = "Username")]
+        public string Username { get; set; }
+
+        [Required]
+        [Display(Name = "Birth date")]
+        public string BirthDate { get; set; }
+
+        [Required]
+        [Display(Name = "Movies watched this week")]
+        public string MovieWeek { get; set; }
+
+        [Required]
+        [Display(Name = "Movies watched this month")]
+        public string MovieMonth { get; set; }
+
+        [Required]
+        [Display(Name = "Last movie watched")]
+        public string LastMovie { get; set; }
+    }
+
 
     public class PurchaseViewModel
     {

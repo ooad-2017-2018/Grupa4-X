@@ -44,8 +44,16 @@ namespace OnlineVideotekaFenixASPNET.Controllers
             return View();
         }
 
-        public ActionResult MyProfile()
+        public ActionResult MyProfile(String a)
         {
+            if (!String.IsNullOrEmpty(a))
+            {
+                ViewBag.pic = "http://localhost:55694/WebImages/" + a;
+            }
+            else
+            {
+                ViewBag.pic = "../../WebImages/person.png";
+            }
 
             return View();
         }
@@ -68,14 +76,20 @@ namespace OnlineVideotekaFenixASPNET.Controllers
             return View();
         }
 
-       // [HttpPost]
-       // [AllowAnonymous]
-       // [ValidateAntiForgeryToken]
-       //public async Task<ActionResult> FilmOverview(FilmViewModel model, string returnUrl)
-       //{
-            
-           
-       //}
+        public ActionResult YourProfile()
+        {
+
+            return View();
+        }
+
+        // [HttpPost]
+        // [AllowAnonymous]
+        // [ValidateAntiForgeryToken]
+        //public async Task<ActionResult> FilmOverview(FilmViewModel model, string returnUrl)
+        //{
+
+
+        //}
 
     }
 }
