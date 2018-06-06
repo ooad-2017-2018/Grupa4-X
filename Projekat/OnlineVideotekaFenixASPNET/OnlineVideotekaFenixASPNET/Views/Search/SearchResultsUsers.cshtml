@@ -16,7 +16,7 @@
     
 
 <h2>Users</h2>
-@if (!Model.Any())
+@if (false)
 {
     <p>Your search query ended with no results</p>
 }
@@ -29,10 +29,13 @@ else
         </tr>
         </thead>
         <tbody>
+        <tr>
+            <td>@Html.ActionLink("Imenko Prezimenko", "YourProfile", "Users",null, null)</td>
+        </tr>
         @foreach (var user in Model)
         {
             <tr>
-                <td>@Html.ActionLink(/*user.ImePrezime*/"d", "SearchResultsUsers", "Search", new { id = user.Id }, null)</td>
+                <td>@Html.ActionLink(user.ImePrezime, "YourProfile", "Users", new {id = user.Id}, null)</td>
             </tr>
         }
         </tbody>
