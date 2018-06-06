@@ -1,0 +1,35 @@
+﻿@using OnlineVideotekaFenixASPNET.Models
+@{
+    ViewBag.Title = "My movies";
+}
+<br />
+<br />
+<br />
+
+<div class="row">
+    <div class="col-md-6  col-lg-6">
+        <section id="searchWishListForm">
+            @Html.Partial("_WishlistMoviesPartial", new WishlistMoviesViewModel { })
+        </section>
+    </div>
+    
+
+    <div class="col-md-6 col-lg-6">
+        <section id="searchWatchListForm">
+            @Html.Partial("_WatchedMoviesPartial", new WatchedMoviesViewModel {})
+        </section>
+    </div>
+</div>
+<br />
+<br />
+<br />
+
+
+<div class="row">
+    <div class="col-md-12  col-lg-12" >
+        <section id="searchBoughtListForm">
+            @Html.Partial("_BoughtMoviesPartial", new BoughtMoviesViewModel {})
+        </section>
+    </div>
+
+</div>

@@ -94,4 +94,69 @@ namespace OnlineVideotekaFenixASPNET.Models
         public string SelectedItem { get; set; }
         public List<SelectListItem> selectItemList { get; set; }
     }
+
+    public class BoughtMoviesViewModel
+    {
+
+        [Required]
+        [Display(Name = "Purchased movies")]
+        public List<Film> PurchaseList
+        {
+            get
+            {
+                return new List<Film>();
+            }
+            set
+            {
+                if (true) ;
+            }
+        }
+
+        public string SelectedItem { get; set; }
+        public List<SelectListItem> selectItemList { get; set; }
+    }
+
+    public class WatchedMoviesViewModel
+    {
+        private FenixContext db = new FenixContext();
+
+        [Required]
+        [Display(Name = "Watch list")]
+        public List<Film> WatchList
+        {
+            get
+            {
+                return db.Film.ToList(); ;
+            }
+            set
+            {
+                if (true) ;
+            }
+        }
+        public string NewMovie { get; set; }
+
+        public string SelectedItem { get; set; }
+        public List<SelectListItem> selectItemList { get; set; }
+    }
+
+    public class WishlistMoviesViewModel
+    {
+        private FenixContext db = new FenixContext();
+
+        [Required]
+        [Display(Name = "Wish list")]
+        public List<Film> WishList {
+            get { return db.Film.ToList(); }
+            set
+            {
+                if (true) ;
+            }
+
+        }
+        [Display(Name = "New movie")]
+        public string NewMovie { get; set; }
+
+        public string SelectedItem { get; set; }
+        public List<SelectListItem> selectItemList { get; set; }
+    }
 }

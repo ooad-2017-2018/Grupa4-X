@@ -15,9 +15,18 @@ using OnlineVideotekaFenixASPNET.Models;
 
 namespace OnlineVideotekaFenixASPNET.Controllers
 {
-    [Authorize]
+
     public class MoviesController : Controller
     {
+        private FenixContext db = new FenixContext();
+
+
+
+        public ActionResult FilmOverview()
+        {
+            return View();
+        }
+
         /*
                 public ViewResult Index()
                 {
@@ -26,24 +35,28 @@ namespace OnlineVideotekaFenixASPNET.Controllers
                     return View(customers);
                 }*/
 
-        public ActionResult SearchResultsMovies(/*int id*/)
-        {
-            var movie = GetMovies()/*.SingleOrDefault(c => c.Id == id)*/;
+        /*     public ActionResult SearchResultsMovies()
+             {
+                 var movie = GetMovies();
 
-            if (movie == null)
-                return HttpNotFound();
+                 if (movie == null)
+                     return HttpNotFound();
 
-            return View(movie);
-        }
+                 return View(movie);
+             }
 
-        private IEnumerable<Film> GetMovies()
-        {                  
-            return new List<Film>
-            {
-                new Film { Id = 1, NazivFilma = "Shawshank Redemption" },
-                new Film { Id = 2, NazivFilma = "Godfather" }
-            };
-        }
+             private IEnumerable<Film> GetMovies()
+             {
+                 var movies = db.Film;
+                 return movies;
+
+
+                 return new List<Film>
+                 {
+                     new Film { Id = 1, NazivFilma = "Shawshank Redemption" },
+                     new Film { Id = 2, NazivFilma = "Godfather" }
+                 };
+             }*/
         /*
 
         public ActionResult SearchResultsMovies()
@@ -53,7 +66,7 @@ namespace OnlineVideotekaFenixASPNET.Controllers
             return View();
         }*/
 
-       
+
 
     }
 }

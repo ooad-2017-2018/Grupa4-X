@@ -18,22 +18,9 @@ namespace OnlineVideotekaFenixASPNET.Controllers
         public ActionResult Index(string Imagename)
         {
             ViewBag.pic = "http://localhost:55694/WebImages/" + Session["val"].ToString();
-            return RedirectToAction("MyProfile","Home", new { a = Session["val"].ToString() });
+            return RedirectToAction("MyProfile","Users", new { a = Session["val"].ToString() });
         }
-
-        [HttpGet]
-        public ActionResult Changephoto()
-        {
-            if (Convert.ToString(Session["val"]) != string.Empty)
-            {
-                ViewBag.pic = "http://localhost:55694/WebImages/" + Session["val"].ToString();
-            }
-            else
-            {
-                ViewBag.pic = "../../WebImages/person.png";
-            }
-            return View();
-        }
+      
         public JsonResult Rebind()
         {
             string path = "http://localhost:55694/WebImages/" + Session["val"].ToString();

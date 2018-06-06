@@ -37,7 +37,6 @@ Fenix je aplikacija koja će omogućiti korisniku da se upozna sa najnovijim fil
 * Mogućnost pregleda informacija o filmu (vrijeme trajanja, žanr, kratki sadržaj, glumci, reditelj...)
 * Mogućnost pravljenja liste filmova za gledanje
 * Mogućnost dodavanja filmova na listu pregledanih filmova
-* Mogućnost kupnje poklon filmova drugim korisnicima
 
 ****Akteri:****
 

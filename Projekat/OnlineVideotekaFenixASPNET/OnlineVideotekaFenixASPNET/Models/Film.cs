@@ -22,8 +22,18 @@ namespace OnlineVideotekaFenixASPNET.Models
         public int BrojOcjena { get; set; }
         public double ProsjekOcjena { get; set; }
 
-        
-        
+        public Film(string nazivFilma)
+        {
+            this.NazivFilma = nazivFilma;
+        }
+
+        public Film()
+        {
+            
+        }
+
+
+
 
 
     }

@@ -1,0 +1,39 @@
+﻿@using OnlineVideotekaFenixASPNET.Models
+@model WatchedMoviesViewModel
+@{
+    ViewBag.Title = "Watched movies";
+}
+
+
+<fieldset>
+    <legend>Watched movies</legend>
+    
+     
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>Movie</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var movie in Model.WatchList)
+        {
+            <tr>
+                <td>@Html.ActionLink(movie.NazivFilma, "FilmOverview", "Movies", new { id = movie.Id }, null)</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    
+    
+    <table>
+        <tr>
+            <td><div1>
+                 @Html.TextBoxFor(m => m.NewMovie, new {@class = "form-control"})
+                @Html.ValidationMessageFor(m => m.NewMovie, "", new {@class = "text-danger"})
+            </div1></td>
+            <td><div2><input type="submit" value="Add" onclick="location.href = '@Url.Action("AddMovieWatchList", "Users")'" class="btn btn-primary col-md-offset-4" /></div2></td>
+        </tr>
+    </table>
+</fieldset>
