@@ -1,0 +1,28 @@
+Refaktoring
+
+Ponekad rezultat refaktoringa koda je da klasa nema mnogo da radi. U tom sluèaju treba
+provjeriti da li su sve odgovornosti klase dodijeljene drugim klasama i eliminirati klasu u
+potpunosti. Ovo smo iskoristili u našem kodu i odstranili klasu ocjena koju smo prvobitno imali.
+
+Predati cijeli objekat umjesto specifiènih polja
+Ako se predaje više vrijednosti istog objekta rutini, treba razmotriti promjenu interfejsa rutine
+tako da on uzima cijeli objekat. Ovo smo 
+
+Uradjen je generalni refaktoring u kodu koji je u velikoj mjeri pojednostavio i unaprijedio implementaciju
+i izgled koda. Samim tim kod je postao jednostavniji za èitanje i pogodniji za naknadne promjene. 
+Refaktoring je radjen prateci primjere obradjene na predavanjima.
+
+On ukljucuje zamjenu svih 'magicnih brojeva' varijablama. To je dio koda koji se koristi prilikom proracuna
+cijene filmova. Osnovno poboljsanje koje smo dobili ovim refaktoringom je da prilikom promjene
+cijena tarifa, izmjenu je potrebno izvrsiti samo na jednom mjestu u kodu.
+
+Dodatnu zastitu i bolju citljivost koda postigli smo i koristenjem privremenih varijabli. Za lakse
+razumijevanje koda trudili smo se na sto bolji nacin imenovati atribute i metode. S tim u vezi,
+ukoliko se ime atributa sastoji od vise rijeci, prvu rijec pocinjemo malim slovom, a sve ostale velikim.
+Isto vrijedi i za metode. Isto tako, jedna varijabla se koristi u samo jednu svrhu.
+
+Ubaceni su i try-catch blokovi radi lakse obrade izuzetaka. Kao indikator da je doslo do
+neke greske koristimo izuzetak. 
+
+Neki refaktorinzi su veæi nego drugi. Treba održavati refaktoring malim da bi se u potpunosti
+razumjeli utjecaji promjena koje su napravljene.
