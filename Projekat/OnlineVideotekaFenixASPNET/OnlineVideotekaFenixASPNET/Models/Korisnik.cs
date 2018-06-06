@@ -12,6 +12,7 @@ namespace OnlineVideotekaFenixASPNET.Models
         public string ImePrezime { get; set; }
         public DateTime DatumRodjenja { get; set; }
         public DateTime DatumRegistracije { get; set; }
+        public string ListaFilmova { get; set; }
         public string MojiFilmovi { get; set; }
         public string ListaZelja { get; set; }
         public string Username { get; set; }
