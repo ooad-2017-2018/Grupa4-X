@@ -13,7 +13,7 @@ namespace OnlineVideotekaFenixASPNET.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201806062144071_initial"; }
+            get { return "201806081544530_initial"; }
         }
         
         string IMigrationMetadata.Source
