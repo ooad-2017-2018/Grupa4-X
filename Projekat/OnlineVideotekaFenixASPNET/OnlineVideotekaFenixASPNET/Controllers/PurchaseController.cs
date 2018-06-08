@@ -19,6 +19,10 @@ namespace OnlineVideotekaFenixASPNET.Controllers
 
         public ActionResult PurchaseMovie()
         {
+            
+
+
+
             return View();
         }
         /*

@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
+using System.Security.Policy;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.ModelBinding;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -151,12 +154,37 @@ namespace OnlineVideotekaFenixASPNET.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Username, Email = model.Username };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    FenixContext db = new FenixContext();
                     
+                    db.Korisnik.Add(new Korisnik(model.Username,model.Password,model.DatumRodjenja,model.ImePrezime));
+                    db.SaveChanges();
+
+                    int a = -1;
+                    List<Korisnik> korisnici = db.Korisnik.ToList();
+                    for (int i = 0; i < korisnici.Count; i++)
+                    {
+                        if (korisnici[i].Username == model.Username && korisnici[i].Lozinka == model.Password)
+                        {
+                            a = i;
+                            break;
+                        }
+                    }
+
+                    if(a>=0)
+                        Session["UserID"] = korisnici[a].Id.ToString();
+                    else
+                    {
+                        Session["UserID"] ="";
+                    }
+
+                    
+                    
+
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);

@@ -12,7 +12,8 @@ namespace OnlineVideotekaFenixASPNET.Migrations
         
         public override void Down()
         {
-            DropColumn("dbo.Korisnik", "ListaFilmova");
+           DropColumn("dbo.Korisnik", "ListaFilmova");
+          
         }
     }
 }
