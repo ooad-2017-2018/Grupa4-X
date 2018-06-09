@@ -26,14 +26,17 @@
     </table>
 
 
-   
+@using (Html.BeginForm("AddMovieWishList", "Users", null, FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
+{
     <table>
         <tr>
-            <td><div1>
-                @Html.TextBoxFor(m => m.NewMovie, new {@class = "form-control"})
-                @Html.ValidationMessageFor(m => m.NewMovie, "", new {@class = "text-danger"})
-            </div1></td>
-            <td><div2><input type="submit" value="Add" onclick="location.href = '@Url.Action("AddMovieWishList", "Users")'" class="btn btn-primary col-md-offset-4" /></div2></td>
+            <td>
+                <div1>
+                    @Html.EditorFor(m => m.NewMovie, new {@class = "form-control"})
+                    @Html.ValidationMessageFor(m => m.NewMovie, "", new {@class = "text-danger"})
+                </div1></td>
+            <td><div2><input type="submit" value="Add" class="btn btn-primary col-md-offset-4"/></div2></td>
         </tr>
     </table>
+}
 </fieldset>

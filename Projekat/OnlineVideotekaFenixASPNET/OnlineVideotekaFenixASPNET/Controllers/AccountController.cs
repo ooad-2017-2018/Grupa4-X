@@ -152,6 +152,8 @@ namespace OnlineVideotekaFenixASPNET.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            
+          
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Username, Email = model.Username };
@@ -175,11 +177,11 @@ namespace OnlineVideotekaFenixASPNET.Controllers
                         }
                     }
 
-                    if(a>=0)
-                        Session["UserID"] = korisnici[a].Id.ToString();
+                    if (a >= 0)
+                       VarGlobal.GlobalUserID = korisnici[a].Id.ToString();
                     else
                     {
-                        Session["UserID"] ="";
+                       VarGlobal.GlobalUserID = "";
                     }
 
                     
@@ -416,7 +418,8 @@ namespace OnlineVideotekaFenixASPNET.Controllers
         //
         // POST: /Account/LogOff
         [HttpPost]
-        [ValidateAntiForgeryToken]
+       
+        [AllowAnonymous]
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
@@ -450,35 +453,15 @@ namespace OnlineVideotekaFenixASPNET.Controllers
 
             base.Dispose(disposing);
         }
-
+        /*
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> FilmOverview(FilmViewModel model, string returnUrl)
         {
             return RedirectToAction("MyProfile", "Home");
-           /* if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
-
-            // This doesn't count login failures towards account lockout
-            // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
-            {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
-            }*/
-        }
+         
+        }*/
 
         #region Helpers
         // Used for XSRF protection when adding external logins

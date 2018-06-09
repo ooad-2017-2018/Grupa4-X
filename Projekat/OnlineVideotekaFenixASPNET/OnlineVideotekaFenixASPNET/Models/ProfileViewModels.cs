@@ -3,31 +3,102 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.ModelBinding;
 using System.Web.Mvc;
 
 namespace OnlineVideotekaFenixASPNET.Models
 {
     public class MyProfileViewModel
     {
+        [BindRequired]
         [Required]
-        [Display(Name = "Name")]
-        public string Name { get; set; }
+        [Display(Name = "Name")] public string Name
+        {
+            get
+            {
+                int index = -1;
+                FenixContext db = new FenixContext();
+                List<Korisnik> korisniks = db.Korisnik.ToList();
+                for (int i = 0; i < korisniks.Count; i++)
+                {
+                    if (korisniks[i].Id.ToString() == VarGlobal.GlobalUserID)
+                    {
+                        return korisniks[i].ImePrezime;
+                    }
+                }
+                
+                return "a";
+            }
+            set
+            {
+                if (true) ;
+            }
+        }
 
         [Required]
         [Display(Name = "Surname")]
-        public string Surname { get; set; }
-
+        public string Surname
+        {
+            get; set;
+        }
+        [BindRequired]
         [Required]
         [Display(Name = "Username")]
-        public string Username { get; set; }
+        public string Username
+        {
+            get
+            {
+                int index = -1;
+                FenixContext db = new FenixContext();
+                List<Korisnik> korisniks = db.Korisnik.ToList();
+                for (int i = 0; i < korisniks.Count; i++)
+                {
+                    if (korisniks[i].Id.ToString() == VarGlobal.GlobalUserID)
+                    {
+                        return korisniks[i].Username;
+                    }
+                }
+
+                return "a";
+            }
+            set
+            {
+                if (true) ;
+            }
+        }
+
 
         [Required]
         [Display(Name = "Birth date")]
-        public string BirthDate { get; set; }
+        public string BirthDate
+        {
+            get
+            {
+                int index = -1;
+                FenixContext db = new FenixContext();
+                List<Korisnik> korisniks = db.Korisnik.ToList();
+                for (int i = 0; i < korisniks.Count; i++)
+                {
+                    if (korisniks[i].Id.ToString() == VarGlobal.GlobalUserID)
+                    {
+                        return korisniks[i].DatumRodjenja;
+                    }
+                }
+
+                return "";
+            }
+            set
+            {
+                if (true) ;
+            }
+        }
 
         [Required]
         [Display(Name = "Movies watched this week")]
-        public string MovieWeek { get; set; }
+        public string MovieWeek
+        {
+            get; set;
+        }
 
         [Required]
         [Display(Name = "Movies watched this month")]
@@ -97,6 +168,7 @@ namespace OnlineVideotekaFenixASPNET.Models
 
     public class BoughtMoviesViewModel
     {
+        private FenixContext db = new FenixContext();
 
         [Required]
         [Display(Name = "Purchased movies")]
@@ -104,7 +176,38 @@ namespace OnlineVideotekaFenixASPNET.Models
         {
             get
             {
-                return new List<Film>();
+                List<Film> filmovi = db.Film.ToList();
+                List<Film> resultFilmovi = new List<Film>();
+                String ajdi = VarGlobal.GlobalUserID;
+                List<Korisnik> korisnici = db.Korisnik.ToList();
+                int a = -1;
+                for (int t = 0; t < korisnici.Count; t++)
+                {
+                    if (korisnici[t].Id.ToString() == ajdi)
+                    {
+                        a = t;
+                        break;
+                    }
+                }
+
+                if (a >= 0)
+                {
+                    String watch = korisnici[a].ListaZelja;
+                    List<int> films = StringToArray(watch);
+                    for (int t = 0; t < filmovi.Count; t++)
+                    {
+                        for (int k = 0; k < films.Count; k++)
+                        {
+                            if (filmovi[t].Id == films[k])
+                            {
+                                resultFilmovi.Add(filmovi[t]);
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                return resultFilmovi;
             }
             set
             {
@@ -114,6 +217,26 @@ namespace OnlineVideotekaFenixASPNET.Models
 
         public string SelectedItem { get; set; }
         public List<SelectListItem> selectItemList { get; set; }
+
+        public List<int> StringToArray(string sifra)
+        {
+            List<int> niz = new List<int>();
+            int indeks = 0;
+            for (int i = 0; i < sifra.Length; i++)
+            {
+                if (sifra[i] == ' ')
+                {
+                    string pomocni = sifra.Substring(indeks, i - indeks);
+                    int broj;
+                    Int32.TryParse(pomocni, out broj);
+                    niz.Add(broj);
+                    indeks = i + 1;
+                }
+            }
+
+
+            return niz;
+        }
     }
 
     public class WatchedMoviesViewModel
@@ -126,14 +249,78 @@ namespace OnlineVideotekaFenixASPNET.Models
         {
             get
             {
-                return db.Film.ToList(); ;
+               List<Film> filmovi =  db.Film.ToList();
+                List<Film> resultFilmovi = new List<Film>();
+               String ajdi = VarGlobal.GlobalUserID;
+                List<Korisnik> korisnici = db.Korisnik.ToList();
+                int a = -1;
+                for (int t = 0; t < korisnici.Count; t++)
+                {
+                    if (korisnici[t].Id.ToString() == ajdi)
+                    {
+                        a = t;
+                        break;
+                    }
+                }
+
+                if (a >= 0)
+                {
+                    String watch = korisnici[a].ListaFilmova;
+                    List<int> films = StringToArray(watch);
+                    for (int t = 0; t < filmovi.Count; t++)
+                    {
+                        for (int k = 0; k < films.Count; k++)
+                        {
+                            if (filmovi[t].Id == films[k])
+                            {
+                                resultFilmovi.Add(filmovi[t]);
+                                break;
+                            }
+                        }
+                    }
+                }
+
+
+
+
+               return resultFilmovi;
             }
             set
             {
                 if (true) ;
             }
         }
-        public string NewMovie { get; set; }
+
+        public List<int> StringToArray(string sifra)
+        {
+            List<int> niz = new List<int>();
+            int indeks = 0;
+            for (int i = 0; i < sifra.Length; i++)
+            {
+                if (sifra[i] == ' ')
+                {
+                    string pomocni = sifra.Substring(indeks, i - indeks);
+                    int broj;
+                    Int32.TryParse(pomocni, out broj);
+                    niz.Add(broj);
+                    indeks = i + 1;
+                }
+            }
+
+
+            return niz;
+        }
+
+        private string newMovie;
+        [Display(Name = "New movie")]
+        public string NewMovie
+        {
+            get { return newMovie;}
+            set { newMovie = value;
+                VarGlobal.SearchWatchList = value;
+            }
+        }
+      
 
         public string SelectedItem { get; set; }
         public List<SelectListItem> selectItemList { get; set; }
@@ -146,17 +333,86 @@ namespace OnlineVideotekaFenixASPNET.Models
         [Required]
         [Display(Name = "Wish list")]
         public List<Film> WishList {
-            get { return db.Film.ToList(); }
+            get
+            {
+                List<Film> filmovi = db.Film.ToList();
+                List<Film> resultFilmovi = new List<Film>();
+                String ajdi = VarGlobal.GlobalUserID;
+                List<Korisnik> korisnici = db.Korisnik.ToList();
+                int a = -1;
+                for (int t = 0; t < korisnici.Count; t++)
+                {
+                    if (korisnici[t].Id.ToString() == ajdi)
+                    {
+                        a = t;
+                        break;
+                    }
+                }
+
+                if (a >= 0)
+                {
+                    String watch = korisnici[a].ListaZelja;
+                    List<int> films = StringToArray(watch);
+                    for (int t = 0; t < filmovi.Count; t++)
+                    {
+                        for (int k = 0; k < films.Count; k++)
+                        {
+                            if (filmovi[t].Id == films[k])
+                            {
+                                resultFilmovi.Add(filmovi[t]);
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                return resultFilmovi;
+
+            }
             set
             {
                 if (true) ;
             }
 
         }
+
+     
+
+
+        private string newMovie;
         [Display(Name = "New movie")]
-        public string NewMovie { get; set; }
+        public string NewMovie
+        {
+            get { return newMovie; }
+            set
+            {
+                newMovie = value;
+                VarGlobal.SearchWishList = value;
+            }
+        }
+
 
         public string SelectedItem { get; set; }
         public List<SelectListItem> selectItemList { get; set; }
+
+        public List<int> StringToArray(string sifra)
+        {
+            List<int> niz = new List<int>();
+            int indeks = 0;
+            for (int i = 0; i < sifra.Length; i++)
+            {
+                if (sifra[i] == ' ')
+                {
+                    string pomocni = sifra.Substring(indeks, i - indeks);
+                    int broj;
+                    Int32.TryParse(pomocni, out broj);
+                    niz.Add(broj);
+                    indeks = i + 1;
+                }
+            }
+
+
+            return niz;
+        }
     }
 }

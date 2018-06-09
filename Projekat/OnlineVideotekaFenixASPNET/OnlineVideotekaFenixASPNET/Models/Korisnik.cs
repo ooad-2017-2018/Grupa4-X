@@ -11,13 +11,23 @@ namespace OnlineVideotekaFenixASPNET.Models
         public string ImePrezime { get; set; }
         public string DatumRodjenja { get; set; }
         public string DatumRegistracije { get; set; }
-        public string ListaFilmova { get; set; }
-        public string MojiFilmovi { get; set; }
-        public string ListaZelja { get; set; }
+        public string ListaFilmova { get; set; } // Watchlist
+        public string MojiFilmovi { get; set; } // Bought movies
+        public string ListaZelja { get; set; } // Wishlist
         public string Username { get; set; }
         public string Lozinka { get; set; }
 
-        public Korisnik() { }
+        public Korisnik()
+        {
+            this.ImePrezime = "";
+            this.DatumRodjenja = "";
+            this.DatumRegistracije = "";
+            this.Username = "";
+            this.Lozinka = "";
+            this.ListaFilmova = "";
+            this.MojiFilmovi = "";
+            this.ListaZelja = "";
+        }
 
         public Korisnik(string ImePrezime,  string DatumRodjenja, string DatumRegistracije, string Username, string Lozinka)
         {
@@ -26,13 +36,22 @@ namespace OnlineVideotekaFenixASPNET.Models
             this.DatumRegistracije = DatumRegistracije;
             this.Username = Username;
             this.Lozinka = Lozinka;
+            this.ListaFilmova = "";
+            this.MojiFilmovi = "";
+            this.ListaZelja = "";
 
         }
 
         public Korisnik(string Username, string Lozinka)
         {
+            this.ImePrezime = "";
+            this.DatumRodjenja ="";
+            this.DatumRegistracije = "";
             this.Username = Username;
             this.Lozinka = Lozinka;
+            this.ListaFilmova = "";
+            this.MojiFilmovi = "";
+            this.ListaZelja = "";
 
         }
 
@@ -40,8 +59,12 @@ namespace OnlineVideotekaFenixASPNET.Models
         {
             this.ImePrezime = ImePrezime;
             this.DatumRodjenja = DatumRodjenja;
+            this.DatumRegistracije = DateTime.Now.ToString();
             this.Username = Username;
             this.Lozinka = Lozinka;
+            this.ListaFilmova = "";
+            this.MojiFilmovi = "";
+            this.ListaZelja = "";
         }
 
         public Korisnik(int Id, string ImePrezime, string DatumRodjenja, string DatumRegistracije,

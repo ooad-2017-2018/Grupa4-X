@@ -27,9 +27,48 @@ namespace OnlineVideotekaFenixASPNET.Models
             this.NazivFilma = nazivFilma;
         }
 
-        public Film()
+        public Film(int id,string nazivFilma, int godinaFilma, string zanrFilma, string reziser, string glumci,
+            int vrijemeTrajanja, double cijena, byte[] poster, string sinopsis, string direktor, int brojOcjena,
+            double prosjekOcjena)
+        {
+            Id = id;
+            NazivFilma = nazivFilma;
+            GodinaFilma = godinaFilma;
+            ZanrFilma = zanrFilma;
+            Reziser = reziser;
+            Glumci = glumci;
+            VrijemeTrajanja = vrijemeTrajanja;
+            Cijena = cijena;
+            Poster = poster;
+            Sinopsis = sinopsis;
+            Direktor = direktor;
+            BrojOcjena = brojOcjena;
+            ProsjekOcjena = prosjekOcjena;
+        }
+
+        public Film(string nazivFilma, int godinaFilma, string zanrFilma, string reziser, string glumci,
+            int vrijemeTrajanja, double cijena, byte[] poster, string sinopsis, string direktor, int brojOcjena,
+            double prosjekOcjena)
         {
             
+            NazivFilma = nazivFilma;
+            GodinaFilma = godinaFilma;
+            ZanrFilma = zanrFilma;
+            Reziser = reziser;
+            Glumci = glumci;
+            VrijemeTrajanja = vrijemeTrajanja;
+            Cijena = cijena;
+            Poster = poster;
+            Sinopsis = sinopsis;
+            Direktor = direktor;
+            BrojOcjena = brojOcjena;
+            ProsjekOcjena = prosjekOcjena;
+        }
+
+
+        public Film()
+        {
+
         }
 
 

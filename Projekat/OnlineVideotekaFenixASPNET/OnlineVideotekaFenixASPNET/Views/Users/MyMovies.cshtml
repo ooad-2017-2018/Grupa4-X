@@ -33,3 +33,21 @@
     </div>
 
 </div>
+
+@if (!String.IsNullOrEmpty(VarGlobal.WatchList))
+{
+    <script type="text/javascript">
+        window.onload = function() {
+            alert("@VarGlobal.WatchList");
+        };
+    </script>
+}
+
+@if (!String.IsNullOrEmpty(VarGlobal.WishList))
+{
+    <script type="text/javascript">
+        window.onload = function() {
+            alert("@VarGlobal.WishList");
+        };
+    </script>
+}

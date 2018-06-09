@@ -4,6 +4,9 @@
     ViewBag.Title = "Profile overview";
 }
 <br />
+
+
+
 <div class="row">
     <div class="col-md-4">
 
@@ -36,16 +39,22 @@
             <br />
             <br />
             <br />
+            
+            <div class="form-group">
+                
+                <div class="col-md-offset-1 col-md-10">
+                    @Html.LabelFor(m => m.Surname, new { @class = "col-md-3 control-label" })
+                    @Html.TextBoxFor(m => m.Surname, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Surname, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br />
+            <br />
+            <br />
          
-    <div class="form-group">
+            <div class="form-group">
         
 
-    <div class="col-md-offset-1 col-md-10">
-        @Html.LabelFor(m => m.Surname, new { @class = "col-md-3 control-label" })
-        @Html.TextBoxFor(m => m.Surname, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Surname, "", new { @class = "text-danger" })
-           
-    </div>
     </div>
             <br />
     <br />

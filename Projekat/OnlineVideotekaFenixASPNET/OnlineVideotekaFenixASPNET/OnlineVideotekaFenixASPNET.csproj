@@ -216,6 +216,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Administrator.cs" />
     <Compile Include="Models\FenixContext.cs" />
+    <Compile Include="Models\VarGlobal.cs" />
     <Compile Include="Models\Film.cs" />
     <Compile Include="Models\FilmViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
