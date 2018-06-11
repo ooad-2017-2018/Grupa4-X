@@ -6,33 +6,37 @@
 
 
 <fieldset>
-   <legend>Search movies</legend>
-   
+    <legend>Search movies</legend>
+@using (Html.BeginForm("SearchResultsMovies", "Search", null, FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
+{
+
+
     <div class="form-group">
-        @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
-        
-            @Html.TextBoxFor(m => m.Name, new { @class = "form-control"})
-          
-        
+        @Html.LabelFor(m => m.Name, new {@class = "col-md-2 control-label"})
+
+        @Html.TextBoxFor(m => m.Name, new {@class = "form-control"})
+
+
     </div>
-    
+
     <div class="form-group">
-        @Html.LabelFor(m => m.Genre, new { @class = "col-md-2 control-label" })
-      
-        @Html.TextBoxFor(m => m.Genre, new { @class = "form-control" })
-        
-        
+        @Html.LabelFor(m => m.Genre, new {@class = "col-md-2 control-label"})
+
+        @Html.TextBoxFor(m => m.Genre, new {@class = "form-control"})
+
+
     </div>
-    
+
     <br/>
     <br/>
     <br/>
-    
+
     <div class="form-group">
         <div class="col-md-offset-2 col-md-8">
-            <input type="submit" value="Search" onclick="location.href='@Url.Action("SearchResultsMovies", "Search")'" class="btn btn-primary" />
+            <input type="submit" value="Search" class="btn btn-primary"/>
         </div>
     </div>
+}
 </fieldset>
 
 

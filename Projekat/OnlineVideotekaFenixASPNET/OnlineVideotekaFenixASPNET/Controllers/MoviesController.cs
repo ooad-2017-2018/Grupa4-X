@@ -22,8 +22,9 @@ namespace OnlineVideotekaFenixASPNET.Controllers
 
 
 
-        public ActionResult FilmOverview()
+        public ActionResult FilmOverview(String id)
         {
+            VarGlobal.PickedMovieID = id;
             return View();
         }
 

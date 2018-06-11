@@ -23,17 +23,29 @@ namespace OnlineVideotekaFenixASPNET.Controllers
             return View();
         }
 
-        public ActionResult SearchResultsMovies()
+        [Authorize]
+        [HttpPost]
+        public ActionResult SearchResultsMovies(SearchMovieViewModel smvm)
         {
-            var movie = GetMovies();
+            VarGlobal.SearchMovieName = smvm.Name;
+            VarGlobal.SearchMovieGenre = smvm.Genre;
 
-            if (movie == null)
-                return HttpNotFound();
-
-            return View(movie);
+            return View(new SearchResultsMovieViewModel());
         }
 
-        private IEnumerable<Film> GetMovies()
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult SearchResultsUsers(SearchUserViewModel suvm)
+        {
+            VarGlobal.SearchUserName = suvm.Name;
+            VarGlobal.SearchUserUsername = suvm.Username;
+            return View(new SearchResultsUserViewModel());
+        }
+
+
+
+ /*       private IEnumerable<Film> GetMovies()
         {
             var movies = db.Film;
             return movies;
@@ -69,7 +81,7 @@ namespace OnlineVideotekaFenixASPNET.Controllers
                 new Korisnik { Id = 2, ImePrezime = "Mujo Hadzic" },
                 new Korisnik { Id = 3, ImePrezime = "Adnan Gobeljic" }
             };
-        }
+        }*/
         /*
                 public ViewResult Index()
                 {

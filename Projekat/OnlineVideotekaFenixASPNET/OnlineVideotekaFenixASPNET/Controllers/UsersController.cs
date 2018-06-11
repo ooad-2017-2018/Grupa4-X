@@ -47,8 +47,9 @@ namespace OnlineVideotekaFenixASPNET.Controllers
             return View();
         }
 
-        public ActionResult YourProfile()
+        public ActionResult YourProfile(String id)
         {
+            VarGlobal.PickedUserID = id;
             return View();
         }
 

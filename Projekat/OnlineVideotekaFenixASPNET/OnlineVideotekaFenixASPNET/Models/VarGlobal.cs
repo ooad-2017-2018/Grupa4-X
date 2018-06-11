@@ -13,6 +13,12 @@ namespace OnlineVideotekaFenixASPNET.Models
         public static string WishList { get; set; }
         public static string SearchWishList { get; set; }
         public static string SearchWatchList { get; set; }
+        public static string SearchMovieName { get; set; }
+        public static string SearchMovieGenre { get; set; }
+        public static string SearchUserName { get; set; }
+        public static string SearchUserUsername { get; set; }
+        public static string PickedMovieID { get; set; }
+        public static string PickedUserID { get; set; }
 
 
     }

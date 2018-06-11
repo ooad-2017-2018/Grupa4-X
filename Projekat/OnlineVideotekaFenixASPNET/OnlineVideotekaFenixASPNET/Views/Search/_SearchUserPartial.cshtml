@@ -7,34 +7,31 @@
 
 <fieldset>
     <legend>Search users</legend>
-   
+@using (Html.BeginForm("SearchResultsUsers", "Search", null, FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
+{
+
     <div class="form-group">
-        @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
-       
-            @Html.TextBoxFor(m => m.Name, new { @class = "form-control"})
+        @Html.LabelFor(m => m.Name, new {@class = "col-md-2 control-label"})
+
+        @Html.EditorFor(m => m.Name, new {@class = "form-control"})
 
 
     </div>
-    
+
+  
+
     <div class="form-group">
-       @Html.LabelFor(m => m.Surname, new { @class = "col-md-2 control-label" })
-       
-       @Html.TextBoxFor(m => m.Surname, new { @class = "form-control"})
-       
-        
+        @Html.LabelFor(m => m.Username, new {@class = "col-md-2 control-label"})
+
+        @Html.EditorFor(m => m.Username, new {@class = "form-control"})
+
+
     </div>
-    
-    <div class="form-group">
-        @Html.LabelFor(m => m.Username, new { @class = "col-md-2 control-label" })
-        
-            @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
-          
-        
-    </div>
-    
+
     <div class="form-group">
         <div class="col-md-offset-2 col-md-8">
-            <input type="submit" value="Search"  onclick="location.href = '@Url.Action("SearchResultsUsers", "Search")'" class="btn btn-primary" />
+            <input type="submit" value="Search" class="btn btn-primary"/>
         </div>
     </div>
+}
 </fieldset>

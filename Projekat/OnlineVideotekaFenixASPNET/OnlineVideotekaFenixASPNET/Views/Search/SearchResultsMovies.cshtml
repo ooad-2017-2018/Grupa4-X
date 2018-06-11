@@ -1,27 +1,12 @@
-﻿@model IEnumerable<OnlineVideotekaFenixASPNET.Models.Film>
-@*
-    Note: I've set the model for this view to IEnumerable<Customer>.
-    This is a simple interface implemented by the list class. Since
-    in this view we only want to iterate over this list, and we don't
-    need any of the operations in the List class (eg Add, Remove, etc),
-    it's better to use the IEnumerable interface, which allows use to
-    iterate over the list. If in the future, we replace the List with a
-    different data structure, as long as it is enumerable, our view code
-    will remain unchanged.
-*@
-
+﻿@using OnlineVideotekaFenixASPNET.Models
+@model SearchResultsMovieViewModel
 @{
     ViewBag.Title = "Movies";
 }
-    
+
 
 <h2>Movies</h2>
-@if (!Model.Any())
-{
-    <p>Your search query ended with no results</p>
-}
-else
-{
+
     <table class="table table-bordered table-hover">
         <thead>
             <tr>
@@ -29,12 +14,12 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var movie in Model)
+            @foreach (var movie in Model.ListaFilmova)
             {
                 <tr>
-                    <td>@Html.ActionLink(movie.NazivFilma, "SearchResultsMovies", "Search", new { id = movie.Id }, null)</td>
+                    <td>@Html.ActionLink(movie.NazivFilma, "FilmOverview", "Movies", new {id=movie.Id.ToString()}, null)</td>
                 </tr>
             }
         </tbody>
     </table>
-}
+
